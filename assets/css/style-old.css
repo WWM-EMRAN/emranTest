@@ -1,0 +1,2293 @@
+/*!* --- Global Styles & Variables --- *!*/
+
+:root {
+  --background-color: #ffffff;
+  --default-color: #000000;
+  --heading-color: #040404;
+  --accent-color: #149ddd;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
+  --nav-color: #a8a9b4;
+  --nav-hover-color: #ffffff;
+  --accent-color-rgb: #74adfd;
+  /*--dot-loader-color: #d43f3a;*/
+  --dot-loader-color: #f6310f;
+  --nav-menu-icon-color: #6f7180;
+  --light-background-color: #f4fafd;
+  --resume-text-muted-color: #999999;
+  --cv-wrapper-background-color: #f8f9fa;
+  --cv-title-border-color: #dee2e6;
+
+  /* Fonts strictly from design requirements */
+  --default-font: "Titillium Web", system-ui, -apple-system, sans-serif;
+  --heading-font: "Oswald", sans-serif;
+  --nav-font: "Oswald", sans-serif;
+}
+
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+body {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-family: var(--default-font), serif;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: color-mix(in srgb, var(--accent-color), transparent 25%);
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font), serif;
+}
+
+/**/
+p {
+    text-align: justify;
+    font-size: 16px;
+}
+
+/* Globally disable underscores and outlines for all links */
+a, a:hover, a:focus, .navmenu a, .navmenu a:hover {
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+/* --- Preloader --- */
+/* --- Preloader Styling --- */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background-color: var(--default-color);
+  display: flex;
+  justify-content: center; /* Horizontally centers content */
+  align-items: center;     /* Vertically centers content */
+}
+
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* Centers logo and dots horizontally */
+  justify-content: center;
+  gap: 20px;               /* Space between logo and dots */
+}
+
+#preloadLogo {
+  width: 150px;
+  display: block;
+}
+
+.dot-loader {
+  display: flex;           /* Required to use justify-content */
+  justify-content: center; /* Centers the triple dots horizontally */
+  align-items: center;
+  width: 100%;             /* Ensures it spans the width of the parent */
+}
+
+.dot-loader span {
+  width: 12px;
+  height: 12px;
+  /*background: #ff0000;*/
+  background: var(--dot-loader-color);
+  border-radius: 50%;
+  margin: 0 5px;           /* Equal spacing on both sides for centering */
+  display: inline-block;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+.dot-loader span:nth-child(2) { animation-delay: 0.2s; }
+.dot-loader span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+/* --- Sidebar Header (350px Wide, Flex Layout) --- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 350px;
+  background: var(--default-color);
+  z-index: 997;
+  padding: 0 15px;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header .profile-img,
+.header .logo,
+.header .social-links,
+.header .footer {
+  flex-shrink: 0;
+}
+
+.header .profile-img img {
+  width: 120px;
+  margin: 15px auto;
+  display: block;
+  border: 8px solid rgba(255, 255, 255, 0.15);
+}
+
+.header .logo {
+  line-height: 1;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.header .logo h1 {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 700;
+  color: var(--contrast-color);
+  font-family: var(--heading-font), serif;
+  text-transform: uppercase;
+}
+
+.header .logo img {
+  max-height: 20px;
+  margin-right: 8px;
+  border-radius: 50%;
+}
+
+.header .social-links {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.header .social-links a {
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  margin: 0 2px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  transition: 0.3s;
+}
+
+.header .social-links a:hover {
+  background: var(--accent-color);
+  /*color: var(--contrast-color);*/
+  /*background: var(--accent-color);*/
+}
+
+/* --- Navigation Menu --- */
+.navmenu {
+  flex-grow: 1;
+  overflow-y: auto;
+  min-height: 0;
+  padding: 10px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  z-index: 999999;
+}
+
+.navmenu::-webkit-scrollbar {
+  display: none;
+}
+
+.navmenu ul {
+  list-style: none;
+  padding: 0 0 20px 0;
+  margin: 0;
+}
+
+.navmenu a, .navmenu a:focus {
+  display: flex;
+  align-items: center;
+  color: var(--nav-color);
+  padding: 15px 10px;
+  font-family: var(--nav-font), serif;
+  font-size: 14px;
+  font-weight: 400;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.navmenu a .navicon {
+  font-size: 20px;
+  margin-right: 10px;
+  color: var(--nav-menu-icon-color);
+  transition: 0.3s;
+}
+
+.navmenu a:hover, .navmenu .active, .navmenu li:hover > a {
+  color: var(--nav-hover-color) !important;
+}
+
+.navmenu a:hover .navicon, .navmenu .active .navicon, .navmenu li:hover > a .navicon {
+  color: var(--accent-color) !important;
+}
+
+/* Keep dropdown parent highlighted when a child link is active */
+.navmenu li.active > a {
+  color: var(--nav-hover-color) !important;
+}
+
+.navmenu li.active > a .navicon {
+  color: var(--accent-color) !important;
+}
+
+/* Optional: make toggle button match active parent too */
+.navmenu li.active > a .toggle-dropdown {
+  background-color: var(--accent-color) !important;
+  color: var(--contrast-color) !important;
+}
+
+
+/* --- Dropdown Submenu --- */
+.navmenu .dropdown ul {
+  margin: 5px 20px;
+  padding: 5px 10px;
+  display: none;
+  position: relative;
+  /*background-color: rgba(255, 255, 255, 0.05);*/
+  background-color: rgba(0,0,0, 0.4);
+  /*border: 1px solid rgba(255, 255, 255, 0.1);*/
+  border: 1px solid var(--accent-color);
+  border-radius: 5px;
+}
+
+.navmenu .dropdown.dropdown-active > ul {
+  display: block;
+}
+
+.navmenu a .toggle-dropdown {
+  font-size: 14px;
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.3s;
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navmenu a:hover .toggle-dropdown,
+.navmenu .active .toggle-dropdown,
+.navmenu .dropdown.dropdown-active > a .toggle-dropdown,
+.navmenu .dropdown:hover > a .toggle-dropdown {
+  background-color: var(--accent-color) !important;
+  color: var(--contrast-color) !important;
+}
+
+.navmenu .dropdown.dropdown-active > a .toggle-dropdown {
+  transform: rotate(180deg);
+  z-index: 99999;
+}
+
+/* --- Sidebar Footer --- */
+.header .footer {
+  padding: 15px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header .footer .copyright p {
+  font-size: 14px;
+  white-space: nowrap;
+  margin-bottom: 0;
+  text-align: center;
+  color: var(--contrast-color);
+}
+
+.header .footer .credits {
+  margin-top: 4px;
+  font-size: 13px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* --- Main Page Footer (FIXED: Centered with Black Background) --- */
+#footer {
+  background-color: var(--default-color);
+  color: var(--contrast-color);
+  padding: 30px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center; /* Added centering */
+}
+
+#footer .copyright p {
+  margin-bottom: 0;
+  font-size: 14px;
+  text-align: center; /* Added centering */
+}
+
+#footer .credits {
+  margin-top: 5px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center; /* Added centering */
+}
+
+#footer a {
+  color: var(--accent-color);
+}
+
+/* --- Mobile Navigation Toggle --- */
+.header-toggle {
+  color: var(--contrast-color);
+  background-color: var(--accent-color);
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 99999;
+  transition: 0.3s;
+}
+
+/* --- Scroll Top Button --- */
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+  background-color: var(--accent-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: var(--contrast-color);
+  line-height: 0;
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* --- Layout Adjustments (Fixed Overlap and Footer Alignment) --- */
+@media (min-width: 1200px) {
+  .main, #footer {
+    margin-left: 350px; /* Shifts main content and footer to the right */
+  }
+  .header-toggle {
+    display: none;
+  }
+}
+
+@media (max-width: 1199px) {
+  .header {
+    left: -100%;
+  }
+  .header.header-show {
+    left: 0;
+  }
+}
+
+
+/*--------------------------------------------------------------
+# Global Section Styles
+--------------------------------------------------------------*/
+/* This ensures the 'top' of the section is physically lower,
+   matching where the text actually starts below your menu */
+/*section[id], .main-section-title {*/
+/*    scroll-margin-top: 80px; !* Adjust to match your header height *!*/
+/*}*/
+
+.section {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  /*padding: 35px 0;*/
+  /*padding: 15px 0px 0px 0px;*/
+  padding-bottom: 15px;
+  overflow: hidden;
+  /*border-bottom: 1px solid var(--cv-title-border-color);*/
+  border-bottom: 1px solid var(--accent-color);
+  /*border-bottom: 1px solid var(--default-color);*/
+  /*scroll-margin-top: 150px;*/
+}
+
+.section-title {
+  /*text-align: center;*/
+  /*padding-bottom: 30px;*/
+  padding-top: 15px;
+  padding-bottom: 15px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 24px;
+  font-weight: 700;
+  /*margin-bottom: 20px;*/
+  padding-bottom: 10px;
+  position: relative;
+  font-family: var(--heading-font), serif;
+  display: inline-block;
+  color: var(--accent-color);
+}
+
+.section-title h2:after {
+  content: "";
+  position: absolute;
+  display: block;
+  /*width: 100px;*/
+  height: 3px;
+  background: var(--accent-color);
+  bottom: 0;
+  width: 100%;
+  /*left: calc(50% - 25px);*/
+  /*left: calc(25px);*/
+}
+
+.section-title .content h3 {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--heading-color);
+  font-family: var(--heading-font), serif;
+  margin-bottom: 1px;
+}
+
+.section-title p {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  font-size: 16px;
+  /*padding-bottom: 20px;*/
+}
+
+
+/*=============================================================*/
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+.hero {
+  width: 100%;
+  min-height: 100vh; /* Ensures full screen height */
+  position: relative;
+  /*padding: 45% 0;*/
+  /*padding: 80px 0;*/
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero.section {
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+
+.hero img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1; /* Lowest layer */
+}
+
+/* Semi-transparent overlay to make text pop */
+.hero:before {
+  content: "";
+  /*background: color-mix(in srgb, var(--background-color), transparent 100%);*/
+  background: color-mix(in srgb, var(--default-color), transparent 65%);
+  position: absolute;
+  inset: 0;
+  z-index: 2; /* Middle layer */
+}
+
+.hero .container {
+  position: relative;
+  z-index: 3; /* Top layer for visibility */
+  min-width: 300px;
+  padding-top: 80px;
+  text-align: center;
+}
+
+.hero h2 {
+  margin: 0;
+  font-size: 36px; /* Size from main.css */
+  font-weight: 900;
+  /*color: var(--heading-color);*/
+  color: var(--contrast-color);
+  font-family: var(--heading-font), serif;
+}
+
+.hero p {
+  margin: 5px 0 0 0;
+  font-size: 18px; /* Size from main.css */
+  /*color: var(--default-color);*/
+  color: var(--contrast-color);
+}
+
+/* Styling for the Typed.js text area */
+.hero p span {
+  letter-spacing: 1px;
+  border-bottom: 2px solid var(--accent-color);
+  /*border-bottom: 1px solid var(--default-color);*/
+}
+
+.hero .social-links {
+  margin-top: 25px; /* Spacing for links */
+}
+
+.hero .social-links a {
+  font-size: 16px;
+  display: inline-block;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  line-height: 1;
+  margin-right: 20px;
+  transition: 0.3s;
+}
+
+.hero .social-links a:hover {
+  color: var(--accent-color);
+}
+
+/* Responsive adjustments for mobile visibility */
+@media (max-width: 768px) {
+  .hero h2 {
+    font-size: 22px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+}
+
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+.about .content h3 {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--heading-color);
+  font-family: var(--heading-font), serif;
+  margin-bottom: 1px;
+}
+
+/**/
+/* 1. Expand targeting to include the full-width list at the bottom */
+.about ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about ul li {
+  font-size: 14px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start; /* Keeps icon at the top of multi-line text */
+  text-align: left;
+  line-height: 1.5;
+}
+
+/* 2. Style the icons specifically for the bottom section */
+.about ul i {
+  font-size: 18px; /* Slightly larger for the long list */
+  margin-right: 12px;
+  color: var(--accent-color);
+  flex-shrink: 0; /* CRITICAL: Prevents icon from squishing when text is long */
+  margin-top: 2px; /* Aligns icon perfectly with the first line of text */
+}
+
+/* 3. Handling the wrapped text (Hanging Indent) */
+.about ul li span {
+  display: inline-block;
+}
+
+/* 4. Highlight the "Research Area" and "Recent Works" labels */
+.about ul li strong {
+  color: var(--heading-color);
+  margin-right: 5px;
+  white-space: nowrap; /* Keeps "Research Area:" on one line */
+}
+
+/**/
+
+.about .content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about .content ul li {
+  font-size: 14px;
+  margin-bottom: 10px;
+  display: flex;
+  /*align-items: center; !* FIXED: Vertically centers icon and text relative to each other *!*/
+  align-items: flex-start; /* FIXED: Vertically centers icon and text relative to each other */
+  text-align: left;
+}
+
+.about .content ul strong {
+  /*margin-right: 10px; !* Adjusted for cleaner look *!*/
+  margin-right: 5px; /* Adjusted for cleaner look */
+}
+
+.about .content ul i {
+  font-size: 16px;
+  margin-right: 8px;
+  color: var(--accent-color);
+  line-height: 1; /* FIXED: Allows icon to align properly with text height */
+}
+
+.about .content p {
+  font-size: 14px;
+}
+
+.about .content p:last-child {
+  margin-bottom: 5px;
+}
+
+/* Highlight for Research Area & Recent Works icons */
+.accent-color {
+  color: var(--accent-color) !important;
+}
+
+/* Profile Image Zoom Styling */
+.about .glightbox img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.about .glightbox:hover img {
+  transform: scale(1.05);
+}
+
+
+/*--------------------------------------------------------------
+# Stats Section (Key Information)
+--------------------------------------------------------------*/
+.stats {
+  padding: 60px 0;
+}
+
+.light-background {
+  background-color: var(--light-background-color); /* Soft background tint for the section */
+}
+
+.stats .stats-item {
+  padding: 20px;
+  width: 100%;
+}
+
+.stats .stats-item i {
+  display: block;
+  font-size: 24px;
+  color: var(--accent-color);
+  float: left;
+  line-height: 0;
+}
+
+.stats .stats-item .purecounter {
+  font-size: 35px;
+  line-height: 30px;
+  display: block;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-left: 40px;
+}
+
+.stats .stats-item p {
+  padding: 10px 0 0 0;
+  margin: 0 0 0 40px;
+  font-family: var(--heading-font), sans-serif;
+  font-size: 14px;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+}
+
+
+/*--------------------------------------------------------------
+# Resume Section: Education & Professional Experience
+--------------------------------------------------------------*/
+.resume .resume-title {
+  color: var(--heading-color);
+  font-size: 17px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: var(--heading-font), serif;
+}
+
+.resume .resume-item {
+  padding: 0 0 20px 20px;
+  margin-top: -2px;
+  border-left: 2px solid var(--accent-color);
+  position: relative;
+}
+
+.resume .resume-item h2 {
+  color: var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 5px;
+  font-family: var(--heading-font), serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.resume .resume-item h4 {
+  line-height: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: var(--heading-font), serif;
+  /*color: var(--accent-color);*/;
+  margin-bottom: 10px;
+}
+.resume .resume-item h4.text-muted{
+  color: var(--resume-text-muted-color);
+}
+
+/* The timeline circle dot */
+.resume .resume-item::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50px;
+  left: -7px;
+  top: 0;
+  background: var(--background-color);
+  border: 2px solid var(--accent-color);
+}
+
+.resume .resume-item ul {
+  padding-left: 20px;
+}
+
+.resume .resume-item ul li {
+  padding-bottom: 10px;
+}
+
+.resume .resume-item:last-child {
+  padding-bottom: 0;
+}
+
+/* Styling for HTML <details> and <summary> */
+.resume details summary {
+  outline: none;
+  transition: 0.3s;
+  font-family: var(--default-font), serif;
+  display: list-item; /* Ensures the triangle arrow is visible */
+}
+
+.resume details[open] summary {
+  margin-bottom: 15px;
+  color: var(--heading-color) !important;
+}
+
+
+/* --- Education Summary List Formatting --- */
+.resume .row.mb-5 ul li {
+  font-size: 14px; /* Slightly smaller than default 14px */
+  margin-bottom: 5px;
+  color: var(--default-color);
+}
+
+/* Control font size for all paragraphs in the resume timeline */
+.resume-item p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* --- Vertical List Formatting for Education --- */
+
+/* Ensure the list container stacks items vertically */
+.resume-item ul {
+  list-style: none;
+  /*padding: 5px;*/
+  margin: 5px 0;
+  display: block; /* Ensures the list itself is not forcing items side-by-side */
+}
+
+/* Format each item to be on its own line */
+.resume-item ul li {
+  font-size: 14px;
+  line-height: 1.5;
+  /*margin-bottom: 5px;*/
+  /*display: flex;            !* Keeps icon and text on the same line within the item *!*/
+  /*align-items: flex-start;   !* Aligns icon with the top of the text *!*/
+  width: 100%;              /* Forces the item to take the full width, pushing next item down */
+}
+
+/* Icon alignment and spacing */
+.resume-item ul li i {
+  font-size: 14px;
+  /*margin-right: 8px;*/
+  color: var(--accent-color);
+  line-height: 1.2;
+  flex-shrink: 0;           /* Prevents the icon from shrinking on long text */
+}
+
+/* Ensure the list container stacks items vertically */
+.resume-item ol {
+  list-style: none;
+  /*padding: 5px;*/
+  margin: 5px 0;
+  display: block; /* Ensures the list itself is not forcing items side-by-side */
+}
+
+/* Format each item to be on its own line */
+.resume-item ol li {
+  font-size: 14px;
+  line-height: 1.5;
+  /*margin-bottom: 5px;*/
+  /*display: flex;            !* Keeps icon and text on the same line within the item *!*/
+  /*align-items: flex-start;   !* Aligns icon with the top of the text *!*/
+  width: 100%;              /* Forces the item to take the full width, pushing next item down */
+}
+
+/* Formatting for the 'More Details' section text */
+.resume-item details p {
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: block;           /* Ensures paragraphs in details always start new lines */
+}
+
+/* Specific formatting for the Collaboration and Research boxes */
+.collab-box {
+  background-color: rgba(116, 173, 253, 0.05); /* Uses your --accent-color-rgb */
+  /*padding: 5px 5px;*/
+  /*margin-bottom: 2px;*/
+  border-left: 3px solid var(--accent-color);
+}
+
+.collab-box strong {
+  font-size: 14px;
+  /*display: block;*/
+  /*margin-bottom: 5px;*/
+  color: var(--heading-color);
+  margin-bottom: 10px;
+}
+
+
+.details-box {
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin-bottom: 15px; /* Restores spacing below the button */
+  display: block;      /* Ensures it behaves as a block element */
+  width: 100%;
+}
+
+
+/*--------------------------------------------------------------
+# Professional Experience Section
+--------------------------------------------------------------*/
+/* --- Professional Experience Category Headers --- */
+.resume-category-title {
+  /*color: var(--accent-color);*/
+  /*border-bottom: 2px solid var(--accent-color);*/
+  /*border-bottom: 2px solid var(--accent-color);*/
+  border-bottom: 1px solid var(--default-color);
+  padding-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  font-size: 16px; /* Matches resume-title base */
+  font-family: var(--heading-font), serif;
+  margin-top: 30px;
+}
+
+
+/* Professional Experience extra formatting */
+/* --- Professional Experience Timeline Alignment --- */
+
+/* 1. Clear all previous line/border logic for Professional Experience */
+#professionalExperiences .ms-3.mb-4.mt-3,
+#professionalExperiences .ms-3.mb-4.mt-3::after,
+#professionalExperiences .resume-item {
+    border-left: none !important;
+    padding-left: 0 !important;
+}
+
+/* 2. Setup the individual item container */
+#professionalExperiences .resume-item {
+    position: relative;
+    padding-bottom: 5px; /* Space between roles */
+}
+
+/* 3. The Continuous Line (Individual Segments) */
+#professionalExperiences .resume-item::after {
+    content: "";
+    position: absolute;
+    left: -21px;          /* Matches your bubble horizontal position */
+    width: 2px;
+    background: var(--accent-color);
+    top: 0;               /* Line segment starts at the very top of the item div */
+    bottom: 0;            /* Line segment goes to the very bottom of the item div */
+    z-index: 1;
+}
+
+/* 4. THE MAGIC FIX: Make the line start AT the first bubble */
+/* This targets the first role under every institution */
+#professionalExperiences .resume-item:first-child::after {
+    top: 10px;            /* Forces the line to start exactly at the dot's center point */
+}
+
+/* 5. The Bubbles (Dots) */
+#professionalExperiences .resume-item::before {
+    content: "";
+    position: absolute;
+    left: -26px !important; /* Horizontally centered on the line */
+    top: 2px;               /* Vertically centered with the first line of the title */
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--background-color) !important; /* Masks the line behind it */
+    border: 2px solid var(--accent-color);
+    z-index: 2;             /* Ensures the bubble sits on top of the line */
+}
+
+
+
+
+/*--------------------------------------------------------------
+# Skills and Tools Section
+--------------------------------------------------------------*/
+/*.skills .section-title h6 {*/
+/*  font-size: 16px; !* Matches your main paragraph size *!*/
+/*  line-height: 1.6;*/
+/*  margin-bottom: 30px;*/
+/*}*/
+
+/*.skills .section-title {*/
+/*  font-size: 16px; !* Matches your main paragraph size *!*/
+/*  line-height: 1.6;*/
+/*  margin-bottom: 30px;*/
+/*}*/
+
+.skills .progress {
+  height: 60px;
+  display: block;
+  background: none;
+  border-radius: 0;
+  margin-bottom: 20px;
+}
+
+.skills .progress .skill {
+  padding: 0;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  display: block;
+  font-weight: 700;
+  font-family: var(--heading-font), sans-serif; /* Oswald */
+  color: var(--heading-color);
+  font-size: 13px; /* Consistent with your degree/role details */
+  /*letter-spacing: 0.5px;*/
+}
+
+.skills .progress .skill .val {
+  float: right;
+  font-style: normal;
+}
+
+.skills .progress-bar-wrap {
+  background: rgba(0, 0, 0, 0.08);
+  height: 10px;
+  overflow: hidden;
+}
+
+.skills .progress-bar {
+  width: 1px; /* Start at 1px for the animation to be visible */
+  height: 10px;
+  transition: 2s ease-in-out; /* The animation duration */
+  background-color: var(--accent-color);
+}
+
+
+/*--------------------------------------------------------------
+# Honors and Awards Section
+--------------------------------------------------------------*/
+/*.services .section-title h6 {*/
+/*  font-family: var(--default-font), sans-serif;*/
+/*  font-size: 15px;*/
+/*  color: var(--default-color);*/
+/*  margin-top: 10px;*/
+/*  line-height: 1.6;*/
+/*}*/
+
+/*.services .section-title {*/
+/*  font-family: var(--default-font), sans-serif;*/
+/*  font-size: 15px;*/
+/*  color: var(--default-color);*/
+/*  margin-top: 10px;*/
+/*  line-height: 1.6;*/
+/*}*/
+
+.services .service-item {
+  position: relative;
+  padding: 20px;
+  transition: 0.3s;
+  height: 100%;
+}
+
+.services .service-item:hover {
+  background: var(--surface-color);
+  box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
+}
+
+.services .service-item .icon {
+  margin-right: 20px;
+  width: 48px;
+  height: 48px;
+  background: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  flex-shrink: 0;
+}
+
+.services .service-item .icon i {
+  color: var(--contrast-color);
+  font-size: 24px;
+  line-height: 0;
+}
+
+.services .service-item:hover .icon {
+  /*background: var(--heading-color);*/
+  background: var(--surface-color);
+}
+
+.services .service-item:hover .icon i {
+  color: var(--accent-color);
+}
+
+.services .service-item .title {
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-family: var(--heading-font), sans-serif; /* Oswald */
+  text-transform: uppercase;
+}
+
+.services .service-item .title a {
+  color: var(--heading-color);
+  transition: 0.3s;
+}
+
+.services .service-item .title a:hover {
+  color: var(--accent-color);
+}
+
+.services .service-item .description {
+  line-height: 1.6;
+  font-size: 14px;
+  margin-bottom: 0;
+  color: var(--default-color);
+  text-align: justify; /* Consistent with your site requirement */
+}
+
+/* Meta Information (Date & Organization) */
+.services .service-item small {
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  color: color-mix(in srgb, var(--default-color), transparent 40%) !important;
+}
+
+.services .service-item small i {
+  color: var(--accent-color);
+}
+
+
+/* --- Badge Base Styling --- */
+/* date */
+.badge-dates {
+  /*background-color: var(--accent-color) !important;*/
+  background-color: rgb(86, 149, 47) !important;
+  color: var(--contrast-color) !important;
+
+  /* CRITICAL FOR WRAPPING */
+  white-space: normal !important;      /* Allows text to break into multiple lines */
+  overflow-wrap: break-word;          /* Breaks long words if necessary */
+  display: inline-block;              /* Ensures the badge respects padding while wrapping */
+  max-width: 100%;                    /* Prevents the badge from exceeding its container */
+  height: auto;                       /* Allows the badge to grow vertically */
+  text-align: left;                   /* Optional: keeps text aligned during wrap */
+}
+
+ /* duration */
+.badge-duration {
+  /*color: var(--accent-color);*/
+  /*background-color: transparent;*/
+  /*border: 1px solid var(--accent-color);*/
+  background-color: rgb(100, 100, 100) !important;
+  color: var(--contrast-color) !important;
+
+  /* CRITICAL FOR WRAPPING */
+  white-space: normal !important;      /* Allows text to break into multiple lines */
+  overflow-wrap: break-word;          /* Breaks long words if necessary */
+  display: inline-block;              /* Ensures the badge respects padding while wrapping */
+  max-width: 100%;                    /* Prevents the badge from exceeding its container */
+  height: auto;                       /* Allows the badge to grow vertically */
+  text-align: left;                   /* Optional: keeps text aligned during wrap */
+}
+
+/* type */
+.badge-type {
+  /*background-color: rgb(108, 117, 125) !important;*/
+  background-color: rgb(10, 172, 172) !important;
+  color: var(--contrast-color) !important;
+
+  /* CRITICAL FOR WRAPPING */
+  white-space: normal !important;      /* Allows text to break into multiple lines */
+  overflow-wrap: break-word;          /* Breaks long words if necessary */
+  display: inline-block;              /* Ensures the badge respects padding while wrapping */
+  max-width: 100%;                    /* Prevents the badge from exceeding its container */
+  height: auto;                       /* Allows the badge to grow vertically */
+  text-align: left;                   /* Optional: keeps text aligned during wrap */
+}
+
+/* status */
+.badge-status {
+  /*color: rgb(108, 117, 125);*/
+  /*background-color: transparent;*/
+  /*border: 1px solid rgb(108, 117, 125);*/
+  background-color: rgb(225, 100, 225) !important;
+  color: var(--contrast-color) !important;
+
+  /* CRITICAL FOR WRAPPING */
+  white-space: normal !important;      /* Allows text to break into multiple lines */
+  overflow-wrap: break-word;          /* Breaks long words if necessary */
+  display: inline-block;              /* Ensures the badge respects padding while wrapping */
+  max-width: 100%;                    /* Prevents the badge from exceeding its container */
+  height: auto;                       /* Allows the badge to grow vertically */
+  text-align: left;                   /* Optional: keeps text aligned during wrap */
+}
+
+/* institue */
+.badge-institute {
+  /*color: rgb(108, 117, 125);*/
+  /*background-color: transparent;*/
+  /*border: 1px solid rgb(108, 117, 125);*/
+  background-color: rgb(32, 70, 206) !important;
+  color: var(--contrast-color) !important;
+
+  /* CRITICAL FOR WRAPPING */
+  white-space: normal !important;      /* Allows text to break into multiple lines */
+  overflow-wrap: break-word;          /* Breaks long words if necessary */
+  display: inline-block;              /* Ensures the badge respects padding while wrapping */
+  max-width: 100%;                    /* Prevents the badge from exceeding its container */
+  height: auto;                       /* Allows the badge to grow vertically */
+  text-align: left;                   /* Optional: keeps text aligned during wrap */
+}
+
+/* Specialized badges for Language sub-skills */
+.badge-lrws {
+    font-size: 0.7rem;
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: var(--default-color) !important;
+    font-weight: 400;
+}
+
+/* important */
+.badge-important {
+  /*color: rgb(108, 117, 125);*/
+  /*background-color: transparent;*/
+  /*border: 1px solid rgb(108, 117, 125);*/
+  background-color: rgb(231, 58, 107) !important;
+  color: var(--contrast-color) !important;
+
+  /* CRITICAL FOR WRAPPING */
+  white-space: normal !important;      /* Allows text to break into multiple lines */
+  overflow-wrap: break-word;          /* Breaks long words if necessary */
+  display: inline-block;              /* Ensures the badge respects padding while wrapping */
+  max-width: 100%;                    /* Prevents the badge from exceeding its container */
+  height: auto;                       /* Allows the badge to grow vertically */
+  text-align: left;                   /* Optional: keeps text aligned during wrap */
+}
+
+/* important */
+.flag-icon {
+  width: 20px;
+  height: 15px;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+
+
+/*--------------------------------------------------------------
+# Courses, Trainings and Certificates (Portfolio)
+--------------------------------------------------------------*/
+.portfolio .portfolio-filters {
+  padding: 0;
+  margin: 0 auto 20px auto;
+  list-style: none;
+  text-align: center;
+}
+
+.portfolio .portfolio-filters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--default-color);
+  font-family: var(--heading-font), sans-serif; /* Oswald */
+  transition: all 0.3s ease-in-out;
+  margin: 0 4px 10px 4px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.portfolio .portfolio-filters li:hover,
+.portfolio .portfolio-filters li.filter-active {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+}
+
+.portfolio .portfolio-content {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio .portfolio-content img {
+  transition: 0.3s;
+  width: 100%;
+}
+
+.portfolio .portfolio-info {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  transition: all ease-in-out 0.3s;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.portfolio .portfolio-info h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  font-family: var(--heading-font), sans-serif;
+  text-transform: uppercase;
+}
+
+.portfolio .portfolio-info p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.portfolio .portfolio-info .preview-link,
+.portfolio .portfolio-info .details-link {
+  position: relative;
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 5px;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.portfolio .portfolio-info .preview-link:hover,
+.portfolio .portfolio-info .details-link:hover {
+  background: var(--contrast-color);
+  color: var(--accent-color);
+}
+
+/* Hover Effect: Show Overlay and Zoom Image */
+.portfolio .portfolio-content:hover .portfolio-info {
+  opacity: 1;
+}
+
+.portfolio .portfolio-content:hover img {
+  transform: scale(1.1);
+}
+
+/* Container for buttons to keep them side-by-side */
+.portfolio .portfolio-info .portfolio-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Space between the two buttons */
+  margin-top: 10px;
+}
+
+/* Ensure buttons themselves are centered */
+.portfolio .portfolio-info .preview-link,
+.portfolio .portfolio-info .details-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: 0.3s;
+  font-size: 20px;
+}
+
+.portfolio .portfolio-info .preview-link:hover,
+.portfolio .portfolio-info .details-link:hover {
+  background: var(--contrast-color);
+  color: var(--accent-color);
+}
+
+
+/* summary badge and arow for specific browsers */
+summary.badge {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  list-style: none;    /* Hides the default arrow in most browsers */
+  cursor: pointer;
+  padding: 0.5em 0.8em; /* Matches Bootstrap badge defaults */
+  font-size: 0.75em;
+  line-height: 1;
+  vertical-align: middle;
+  border: none;
+  outline: none;
+}
+
+/* Hide the default arrow marker in Chrome/Safari */
+summary.badge::-webkit-details-marker {
+  display: none;
+}
+
+/* Optional: Add a small margin between buttons in the Publications section */
+.d-flex.gap-2 > .details-box {
+  width: auto; /* Allows it to stay inline with "Copy Citation" and "View Details" */
+  margin-bottom: 0;
+}
+
+
+
+
+/* =============================================================================
+   PRINTABLE CV COMPONENTS (Added December 2025)
+   ============================================================================= */
+
+/* --- CV Page Styling inside the Main Content area --- */
+
+/* Optional: Smooth scrolling effect */
+html {
+    scroll-behavior: smooth;
+    animation-delay: 3s;
+}
+
+
+/* =============================================================================
+   PRINTABLE CV COMPONENTS (Version 3 Sync)
+   ============================================================================= */
+
+/* Ensure the navigation bar stays above all other CV elements */
+#cv-page-section .cv-header {
+    position: fixed; /* Fixes it to the viewport */
+    top: 0;          /* Aligns to the very top */
+    left: 0;         /* Ensures it starts from the left edge */
+    width: 100%;     /* Covers the full screen width */
+    z-index: 2000;   /* High value to stay above sidebar and body */
+    background-color: #ffffff; /* Prevents content from showing through */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Adds separation from the content */
+    /*box-shadow: 0 2px 5px rgba(255,255,255,1); !* Adds separation from the content *!*/
+}
+
+/*!* Update Line 474 *!*/
+/*.cv-header {*/
+/*  position: relative;*/
+/*  background-color: #000;*/
+/*  color: #fff;*/
+/*  padding: 20px 40px; !* Reduced padding since nav moved out *!*/
+/*  !* REMOVE overflow: hidden; (Line 478) *!*/
+/*  border-radius: 0; !* Changed to match a top nav bar *!*/
+/*}*/
+
+/*!* Update Line 536 *!*/
+/*.cv-nav-menu {*/
+/*  position: sticky; !* Makes it stay on top while scrolling *!*/
+/*  top: 0;           !* Sticks to the very top of the viewport *!*/
+/*  z-index: 1100;    !* Ensures it stays above the sidebar (z-index 10) *!*/
+/*  background-color: #111; !* Solid background so content doesn't bleed through *!*/
+/*  border-bottom: 1px solid rgba(255, 255, 255, 0.1);*/
+/*  padding: 10px 40px;*/
+/*  width: 100%;*/
+/*}*/
+
+#cv-page-section .cv-container {
+    margin-top: 60px; /* Adjust this to match your actual header height */
+}
+
+/* --- Sticky Control Bar (The Black Top Bar) --- */
+.cv-sticky-parent {
+  min-height: 100vh;
+}
+
+
+.cv-sticky-bar {
+    background-color: #000000 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    min-height: 80px;
+    z-index: 800;
+    top: 0 !important;
+    /*position: fixed;*/
+}
+
+/*.cv-sticky-bar {*/
+/*  background-color: #000000 !important;*/
+/*  border-bottom: 1px solid rgba(255, 255, 255, 0.2);*/
+/*  height: 80px;*/
+/*  !*min-height: 80px;*!*/
+/*  position: fixed;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  right: 0;*/
+/*  z-index: 1050;*/
+/*}*/
+
+
+.cv-nav-title {
+    color: var(--contrast-color);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    /*font-size: 0.9rem;*/
+    font-size: 18px;
+}
+
+.cv-label-white {
+    color: var(--contrast-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    /*font-size: 0.7rem;*/
+    font-size: 15px;
+}
+
+/* --- CV "Paper" Background & Sheet Layout --- */
+.cv-bg-wrapper {
+    background-color: var(--cv-wrapper-background-color); /* Light grey background to highlight the paper */
+    padding: 40px 0;
+}
+
+.cv-paper-sheet {
+    width: 100%;
+    background: var(--contrast-color);
+    padding: 50px;
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    max-width: 850px;
+    min-height: 297mm; /* Standard A4 height */
+}
+
+/* --- Header Typography --- */
+.cv-name-header {
+    color: var(--heading-color);
+    font-family: var(--heading-font), serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cv-accent-subtitle {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-family: var(--heading-font), serif;
+    text-align: center;   /* Forces the text to the middle */
+    display: block;       /* Ensures it spans the width to allow centering */
+    width: 100%;
+}
+
+/* --- Section Titles (Underlined Accent Style) --- */
+.cv-section-title {
+    color: var(--accent-color) !important;
+    border-bottom: 1px solid var(--cv-title-border-color);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: var(--heading-font), serif;
+    /*font-size: 1.1rem;*/
+    font-size: 18px;
+}
+
+/* --- Utility Classes for Alignment & Emphasis --- */
+.text-justify {
+    text-align: justify;
+}
+
+.italic {
+    font-style: italic;
+}
+
+
+@media print {
+    /* 1. Hide all web-only UI elements */
+    .no-print,
+    #header,
+    .header-toggle,
+    .cv-sticky-bar,
+    #footer,
+    .scroll-top,
+    #preloader {
+        display: none !important;
+    }
+
+    /* 2. Reset the main container layout */
+    .main {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    /*.main {*/
+    /*  padding-top: 0 !important;*/
+    /*  margin-top: 0 !important;*/
+    /*}*/
+
+
+    /* 3. Strip backgrounds and ensure proper display */
+    .cv-bg-wrapper, .cv-section {
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+    }
+
+    /* 4. Format the "Paper" - Let @page handle the margins */
+    .cv-paper-sheet, .cv-page {
+        background: #ffffff !important;
+        width: 100% !important;
+        max-width: none !important;
+        padding: 0 !important; /* Resetting padding so @page controls the edge */
+        /*margin: 0 !important;*/
+        margin: 5mm 0mm 0mm 0mm; !important; /* top, right, bottom, left */
+        box-shadow: none !important;
+        border: none !important;
+    }
+
+    /* 5. Text Clarity & High Contrast */
+    /*body {*/
+    /*    background-color: #ffffff !important;*/
+    /*    color: #000000 !important;*/
+    /*    margin: 0 !important;*/
+    /*    padding: 0 !important;*/
+    /*    !*margin: 95mm 0mm 0mm 0mm; !important; !* top, right, bottom, left *!*!*/
+    /*    !*margin-bottom: 150mm;*!*/
+    /*}*/
+
+    /* Ensure links don't show URLs or colors */
+    a {
+        text-decoration: none !important;
+        color: #000000 !important;
+    }
+
+    /* Improve legibility of muted text for ink printers */
+    .text-muted {
+        color: #444444 !important;
+    }
+
+    /* 6. Page setup for A4 - The primary margin controller */
+    @page {
+        width: 100%;
+        size: A4;
+        /*margin: 15mm; !* Change to 10mm if you need more space *!*/
+        margin: 0; /* Change to 10mm if you need more space */
+        /*margin: 20mm 15mm 15mm 15mm;*/
+    }
+
+    /* Prevent section headers from being stranded at the bottom of a page */
+    h5, h6, .cv-section-title {
+        page-break-after: avoid;
+    }
+
+    /*!* Ensure specific blocks don't split across two pages *!*/
+    /*.mb-3, .small, .row {*/
+    /*    page-break-inside: avoid;*/
+    /*}*/
+
+    /* 8. Force the removal of any lingering system text */
+    header, footer {
+        /* This hides HTML headers/footers, not browser-generated ones */
+        display: none !important;
+        margin: 0 !important; /* Change to 10mm if you need more space */
+        /*margin: 25mm 20mm 20mm 20mm; !important;*/
+    }
+}
+
+
+
+
+/*body.mode-one-page {*/
+/*    !* Slightly tighter margins specifically for the one-pager to keep it on one sheet *!*/
+/*}*/
+/*body.mode-one-page @page {*/
+/*    margin: 10mm !important;*/
+/*}*/
+
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+/*!* Generalized fix for all anchor links *!*/
+/*section[id], [id]:target {*/
+/*    scroll-margin-top: 110px !important;*/
+/*}*/
+
+/* Specific fix for all anchor links */
+/* No offset or smaller offset for the printable CV */
+body.printable-cv-page section[id] {
+    /*scroll-margin-top: 80px !important;*/
+    margin-top: 10px !important;
+    scroll-margin-top: 5px !important;
+}
+
+/* Only apply the offset on the index page where the sticky header exists */
+/*body.index-page section[id] {*/
+/*    !*margin-top: 10px !important;*!*/
+/*    !*scroll-margin-top: 5px !important;*!*/
+/*}*/
+/*section[id], [id]:target {*/
+/*    scroll-margin-top: 0px !important;*/
+/*}*/
+
+
+
+/*--------------------------------------------------------------
+# General Details Section
+--------------------------------------------------------------*/
+.general-details .general-details-slider img {
+  width: 100%;
+}
+
+.general-details .general-details-slider .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.general-details .general-details-slider .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: color-mix(in srgb, var(--default-color), transparent 85%);
+  opacity: 1;
+}
+
+.general-details .general-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
+}
+
+/* From services */
+
+.general-details .general-list {
+  padding: 10px 30px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  margin-bottom: 20px;
+  font-size: 14px; /**/
+}
+
+.general-details .general-list a {
+  display: block;
+  line-height: 1;
+  padding: 8px 0 8px 15px;
+  border-left: 3px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  margin: 20px 0;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  transition: 0.3s;
+}
+
+.general-details .general-list a.active {
+  color: var(--heading-color);
+  font-weight: 700;
+  border-color: var(--accent-color);
+}
+
+.general-details .general-list a:hover {
+  border-color: var(--accent-color);
+}
+/* From services - END */
+
+.general-details .general-cat {
+  padding: 10px;
+  /* background-color: var(--light-background); */
+  /*background-color: rgba(8, 8, 8, 0.1);  */
+  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  box-shadow: 0px 0 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px; /* Adds spacing between divs */
+  /*border-radius: 10px; /* Optional: Add a border-radius for better visual separation */
+}
+
+.general-details .general-info {
+  padding: 30px;
+  box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px; /* Adds spacing between divs */
+  /*border-radius: 10px; /* Optional: Add a border-radius for better visual separation */
+}
+
+.general-details .general-info h3 {
+  font-size: 16px; /*22*/
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+}
+
+.general-details .general-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px; /*15*/
+}
+
+.general-details .general-info ul li+li {
+  margin-top: 10px;
+}
+
+.general-details .general-description {
+  padding-top: 30px;
+}
+
+.general-details .general-description h2 {
+  font-size: 16px; /*26*/
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.general-details .general-description p {
+  padding: 0;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  font-size: 14px; /**/
+}
+
+
+/* Responsive Image */
+.responsive-img {
+  width: 75%; /* Default width for larger screens */
+  max-width: 100%; /* Ensures the image doesn't exceed its container width */
+}
+
+@media (max-width: 768px) {
+  /* Adjust for screens 768px wide or smaller (e.g., tablets, mobile) */
+  .responsive-img {
+    width: 100%; /* Full width for smaller screens */
+  }
+}
+
+
+/*==================================*/
+/* --- Mode Switching Logic --- */
+
+/* Hide elements marked as detailed-only when in one-page mode */
+body.mode-one-page .detailed-only {
+    display: none !important;
+}
+
+/* Specific adjustments for One-Page Mode */
+body.mode-one-page {
+    font-size: 13px; /* Slightly smaller base font */
+}
+
+body.mode-one-page .cv-paper-sheet {
+    padding: 10mm 12mm !important; /* Tighter margins */
+}
+
+body.mode-one-page .cv-section-title {
+    margin-bottom: 10px !important;
+    padding-bottom: 3px !important;
+}
+
+body.mode-one-page section {
+    margin-bottom: 15px !important; /* Reduce space between sections */
+}
+
+/* Ensure sections don't break across pages in 1-page mode if possible */
+body.mode-one-page .cv-section {
+    page-break-inside: avoid;
+}
+
+
+
+/*=====================*/
+
+/* By default, show standard and hide one-page */
+#cv-page-section {
+    display: none;
+}
+
+/* One-page specific style adjustments */
+body.mode-one-page .cv-paper-sheet {
+    padding: 10mm !important; /* Tighter margins to fit 1 page */
+}
+
+body.mode-one-page {
+    font-size: 13px; /* Slightly smaller text for density */
+}
+
+/* Logic for Standard Mode */
+body.mode-standard #standard-section {
+    display: block !important;
+}
+
+body.mode-standard #cv-page-section {
+    display: none !important;
+}
+
+
+
+
+
+/* --- One-Page Specific Style (70% Scale) --- */
+#cv-page-section {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px !important; /* Scaled down base font */
+}
+
+/* Sidebar Styling - Dark Theme */
+.cv-sidebar {
+    /*background-color: #2c3e50 !important; !* Dark Blue/Charcoal *!*/
+    background-color: var(--default-color) !important; /* Dark Blue/Charcoal */
+    flex: 0 0 30%; /* 30% width of the sheet */
+    min-height: 297mm;
+}
+
+.cv-sidebar a{
+  color: #ffffff !important;
+}
+
+.sidebar-title {
+    font-size: 11px !important;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    margin-top: 15px;
+    padding-bottom: 3px;
+    color: #3498db; /* Accent Blue  */
+}
+
+.sidebar-list {
+    line-height: 1.5;
+    font-size: 9px;
+}
+
+/* Main Body Styling - White Theme */
+.cv-main-body {
+    flex: 0 0 70%;
+    background-color: #ffffff !important;
+}
+
+.one-page-name {
+    font-size: 20px !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.one-page-subtitle {
+    font-size: 11px !important;
+    color: #3498db;
+    font-weight: 600;
+}
+
+.main-section-title {
+    font-size: 12px !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    margin-top: 12px;
+    margin-bottom: 8px;
+    padding-bottom: 2px;
+}
+
+.small-date {
+    font-size: 8.5px;
+    color: #6c757d;
+}
+
+.one-page-summary {
+    line-height: 1.4;
+    font-size: 9.5px;
+}
+
+/* Removes the default Bootstrap/Browser padding and margin from lists in One-Page mode */
+.mode-one-page ul {
+    margin-bottom: 0 !important;
+    /*padding-left: 15px !important;*/
+}
+.mode-one-page li {
+    margin-bottom: 0 !important;
+}
+
+
+/* Printing for one-page cv */
+@media print {
+    /* 1. Only apply Flex/Sidebar logic to the One-Page ID */
+    #cv-page-section .cv-paper-sheet {
+        display: flex !important;
+        flex-direction: row !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* 2. Lock the Sidebar Width ONLY for One-Page */
+    #cv-page-section .cv-sidebar {
+        flex: 0 0 30% !important;
+        width: 30% !important;
+        min-width: 30% !important;
+        /*background-color: #2c3e50 !important; !* Charcoal from PDF [cite: 38] *!*/
+        background-color: var(--default-color) !important; /* Charcoal from PDF [cite: 38] */
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* 3. Lock the Main Body Width ONLY for One-Page */
+    #cv-page-section .cv-main-body {
+        flex: 0 0 70% !important;
+        width: 70% !important;
+        background-color: #ffffff !important;
+    }
+
+    /* 4. Restore Standard CV Layout */
+    /* If the Standard CV uses a different ID, ensure it stays as a block */
+    #standard-page-section .cv-paper-sheet {
+        display: block !important;
+        width: auto !important;
+        /*padding: 15mm !important; !* Standard margins *!*/
+        padding: 0mm !important; /* Standard margins */
+    }
+
+    /* 5. Protect the Container */
+    /* Instead of setting width: 100% globally, target the One-Page container specifically */
+    #one-page-cv-container {
+        max-width: none !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+
+
+
+/*--------------------------------------------------------------
+# General Details Section
+--------------------------------------------------------------*/
+.general-details .general-details-slider img {
+  width: 100%;
+}
+
+.general-details .general-details-slider .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.general-details .general-details-slider .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: color-mix(in srgb, var(--default-color), transparent 85%);
+  opacity: 1;
+}
+
+.general-details .general-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
+}
+
+/* From services */
+
+.general-details .general-list {
+  padding: 10px 30px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  margin-bottom: 20px;
+  font-size: 14px; /**/
+}
+
+.general-details .general-list a {
+  display: block;
+  line-height: 1;
+  padding: 8px 0 8px 15px;
+  border-left: 3px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  margin: 20px 0;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  transition: 0.3s;
+}
+
+.general-details .general-list a.active {
+  color: var(--heading-color);
+  font-weight: 700;
+  border-color: var(--accent-color);
+}
+
+.general-details .general-list a:hover {
+  border-color: var(--accent-color);
+}
+/* From services - END */
+
+.general-details .general-cat {
+  padding: 10px;
+  /* background-color: var(--light-background); */
+  /*background-color: rgba(8, 8, 8, 0.1);  */
+  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  box-shadow: 0px 0 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px; /* Adds spacing between divs */
+  /*border-radius: 10px; /* Optional: Add a border-radius for better visual separation */
+}
+
+.general-details .general-info {
+  padding: 30px;
+  box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px; /* Adds spacing between divs */
+  /*border-radius: 10px; /* Optional: Add a border-radius for better visual separation */
+}
+
+.general-details .general-info h3 {
+  font-size: 16px; /*22*/
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+}
+
+.general-details .general-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px; /*15*/
+}
+
+.general-details .general-info ul li+li {
+  margin-top: 10px;
+}
+
+.general-details .general-description {
+  padding-top: 30px;
+}
+
+.general-details .general-description h2 {
+  font-size: 16px; /*26*/
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.general-details .general-description p {
+  padding: 0;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  font-size: 14px; /**/
+}
+
+
+/* Responsive Image */
+.responsive-img {
+  width: 75%; /* Default width for larger screens */
+  max-width: 100%; /* Ensures the image doesn't exceed its container width */
+}
+
+@media (max-width: 768px) {
+  /* Adjust for screens 768px wide or smaller (e.g., tablets, mobile) */
+  .responsive-img {
+    width: 100%; /* Full width for smaller screens */
+  }
+}
+
+
+
+
+/**********************************************************************/
+/*Page Not found style */
+#notfound-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*background: #f5f8fd;*/
+    background: black;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.error-content {
+    max-width: 600px;
+}
+
+.error-content h1 {
+    font-family: "Raleway", sans-serif;
+    font-size: 100px;
+    font-weight: 700;
+    margin: 0;
+    /*color: var(--accent-color);*/
+    color: var(--dot-loader-color);
+    line-height: 1;
+}
+
+.error-content h2 {
+    font-family: "Raleway", sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    /*color: var(--heading-color);*/
+    color: var(--background-color);
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.error-content p {
+    font-size: 18px;
+    /*color: #5f656b;*/
+    color: var(--background-color);
+    margin: 20px 0 30px 0;
+    /*align-content: center;*/
+    text-align: center;
+}
+
+.btn-back-home {
+    background: var(--accent-color);
+    color: #fff;
+    padding: 12px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-back-home:hover {
+    background: #0678d0;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(5, 99, 175, 0.2);
+}
+
+.error-icon {
+    font-size: 60px;
+    height: 130px;
+    /*color: var(--accent-color);*/
+    color: var(--dot-loader-color);
+    margin-bottom: 20px;
+    opacity: 0.2;
+}
+
+
+
+/*--------------------------------------------------------------
+# NEW REFACTORED COMPONENT CLASSES
+# These replace all inline styles found in HTML and JS
+--------------------------------------------------------------*/
+
+/* 1. Global Utilities */
+.text-justify { text-align: justify !important; }
+.cursor-pointer { cursor: pointer; }
+.cursor-zoom { cursor: zoom-in; }
+.object-fit-cover { object-fit: cover; }
+.object-fit-contain { object-fit: contain; }
+.ls-1 { letter-spacing: 1px; }
+.lh-1-2 { line-height: 1.2; }
+.flex-center-middle { display: flex; justify-content: center; align-items: center; }
+
+/* 2. Logo & Image Specifics */
+.logo-sm { height: 20px !important; vertical-align: middle; }
+.error-logo { height: 130px; width: auto; }
+.cv-profile-img { border: 1px solid #808080 !important; }
+
+/* 3. Navigation & Buttons */
+.details-toggle-badge {
+    font-size: 11px;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s ease;
+}
+.details-toggle-badge:hover { background-color: var(--accent-color-rgb); }
+
+.btn-accent-custom {
+    background-color: var(--accent-color);
+    border: none;
+    padding: 10px;
+    color: var(--contrast-color);
+    transition: 0.3s ease;
+}
+.btn-accent-custom:hover { background-color: color-mix(in srgb, var(--accent-color), black 15%); }
+
+.btn-copy-success {
+    background-color: #dc3545 !important; /* Required red alert color */
+    background-image: none !important;
+    color: white !important;
+}
+
+/* 4. Dynamic Component Rendering (site-loader.js) */
+.progress-bar-init { width: 1px; } /* For AOS animation */
+
+.details-category-header {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.map-container-fixed { height: 300px; }
+.map-iframe-styled {
+    filter: grayscale(0.3) contrast(1.1);
+    height: 100%;
+    width: 100%;
+    border: 0;
+}
+
+/* 5. Printable & One-Page CV Specifics */
+.cv-one-page-body { font-size: 9px; line-height: 1.2; }
+.cv-summary-grid-text { font-size: 8px; line-height: 1.1; }
+
+.cv-card-accent {
+    border-left: 5px solid var(--accent-color) !important;
+    border-radius: 12px;
+}
+
