@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         'academic_information.json', 'professional_experiences.json',
         'expertise_skills_achievements.json', 'skills_tools.json',
         'honors_awards.json', 'courses_trainings_certificates.json',
-        'projects.json', 'oranisational_memberships.json',
+        'projects.json', 'organisational_memberships.json',
         'sessions_events.json', 'languages.json', 'portfolios.json',
         'volunteering_services.json', 'publications.json',
         'contact_details.json', 'ea_logo.json', 'copyright.json',
@@ -19,49 +19,61 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // 2. Load all data into cache (RAM or LocalStorage via Core)
-        await SiteCore.preloadAll(BASE, FILES);
+        await SiteCore.preloadAllData(BASE, FILES);
+
         // 2.1. Sync data first
-        SiteUtil.syncGlobalMetrics();
+        await SiteUtil.syncGlobalMetrics();
 
         // 3. Routing Logic: Detect page and initialize correct module
-        const path = location.pathname.toLowerCase();
-        const params = new URLSearchParams(location.search);
+        // const pathName = location.pathname.toLowerCase();
+        // const allParams = new URLSearchParams(location.search);
+        const [url, origin, pathName, fileName, allParams, hashes] = SiteUtil.getCurrentPathDetails();
 
-        // Load common elements for the entire site
+        // 4. Load common elements for the entire site
         SiteCommon.init();
 
-        if (path.endsWith('index.html') || path === '/' || path.endsWith('/')) {
-            console.log("Routing to: Home Index");
+        // 4.1 --- DYNAMIC ANCHOR UPDATE ---
+        // Locate the Home link in your navmenu
+        const homeLink = document.querySelector('#navmenu a i.bx-home')?.parentElement ||
+                         document.querySelector('#navmenu a[href="#hero"], #navmenu a[href="#all_cv_wrapper"]');
+
+        // Load URL specific pages/elements
+        if (pathName.endsWith('index.html') || pathName === '/' || pathName === '/' || pathName.endsWith('/')) {
+            console.log("### Routing to: index.html");
+            homeLink.setAttribute('href', '#hero');
             SiteIndex.init();
         }
-        else if (path.includes('section-details.html')) {
-            const sectionKey = params.get('section');
-            console.log(`Routing to: Section View [${sectionKey}]`);
+        else if (pathName.includes('section_details.html')) {
+            // const section = allParams.get('section');
+            section = allParams.section?.toLowerCase() || '';
+            console.log(`### Routing to: Section View [${sectionKey}]`);
+            homeLink.setAttribute('href', '#hero');
             SiteSection.init(sectionKey);
         }
-        else if (path.includes('page-details.html')) {
-            const pageKey = params.get('page');
-            console.log(`Routing to: Page View [${pageKey}]`);
+        else if (pathName.includes('page_details.html')) {
+            // const page = allParams.get('page');
+            page = allParams.page?.toLowerCase() || '';
+            console.log(`### Routing to: Page View [${pageKey}]`);
+            homeLink.setAttribute('href', '#hero');
             SitePage.init(pageKey);
         }
-        else if (path.includes('curriculum-vitae.html')) {
-            const mode = params.get('mode') || 'standard';
-            console.log(`Routing to: CV View [Mode: ${mode}]`);
-            SiteCV.init(mode);
+        else if (pathName.includes('curriculum_vitae.html')) {
+            // CV types: standard, onePage, twoPage, detailed
+            // const type = allParams.get('type') || 'standard';
+            // type = allParams.type?.toLowerCase() || 'standard';
+            type = allParams.type || 'standard';
+            console.log(`### Routing to: CV View [Type: ${type}]`);
+            homeLink.setAttribute('href', '#all_cv_wrapper');
+            SiteCV.init(type);
         }
+        
+        // 4. Re-initialize UI Libraries
+        window.initExternalLibraries();
 
-        // NOW call the navigation behavior once the HTML is ready
-        if (window.initNavigationBehavior) {
-            window.initNavigationBehavior();
-        }
-        if (window.initSkillBars) {
-            window.initSkillBars();
-        }
-
-        // 4. Global UI Refresh: Re-run libraries like AOS or Typed if needed
-        if (window.initExternalLibraries) window.initExternalLibraries();
-
-    } catch (error) {
+    }
+    catch (error) {
         console.error("Critical Load Error:", error);
     }
+
+
 });

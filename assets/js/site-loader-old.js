@@ -9,7 +9,7 @@ let SITE_DATA = {};
 const BASE_DATA_PATH = './assets/data/';
 const ALL_CV_MODES = ['one-page', 'standard', 'detailed'];
 const MAIN_MENU_PAGES = [
-    ['index.html', 'index', '', '/', './', 'curriculum-vitae.html'],
+    ['index.html', 'index', '', '/', './', 'curriculum_vitae.html'],
     ALL_CV_MODES.filter(mode => mode !== 'one-page') // This is treated as ONE item (an array)
 ];
 const JSON_DATA_FILES = [
@@ -23,7 +23,7 @@ const JSON_DATA_FILES = [
     'honors_awards.json',
     'courses_trainings_certificates.json',
     'projects.json',
-    'oranisational_memberships.json',
+    'organisational_memberships.json',
     'sessions_events.json',
     'languages.json',
     'portfolios.json',
@@ -95,21 +95,21 @@ function populateSite(main_menu_pages) {
         // ;
     }
     // Re-initialize page details page after DOM updates
-    else if (pathName.includes('page-details.html')) {
+    else if (pathName.includes('page_details.html')) {
         console.log("*******>>> Rendering page details page...");
         pageKey = allParams.page?.toLowerCase() || '';
         console.log("*******>>> Page Key:", pageKey);
         renderPageDetailsPage(pageKey)
     }
     // Re-initialize section details page after DOM updates
-    else if (pathName.includes('section-details.html')) {
+    else if (pathName.includes('section_details.html')) {
         console.log("*******>>> Rendering section details page...");
         sectionKey = allParams.section?.toLowerCase() || '';
         console.log("*******>>> Section Key:", sectionKey);
         renderSectionDetailsPage(sectionKey)
     }
     // Re-initialize CV page after DOM updates
-    else if (pathName.includes('curriculum-vitae.html')) {
+    else if (pathName.includes('curriculum_vitae.html')) {
         console.log("*******>>> Rendering section details page...");
         modeKey = allParams.mode?.toLowerCase() || '';
         console.log("*******>>> Mode Key:", modeKey);
@@ -287,7 +287,7 @@ function getMenuToRender(main_menu_pages) {
 
     if (main_menu_pages[0].includes(fileName)) {
         console.log("Rendering main/detailed menu to the sidebar...");
-        if (fileName.includes('curriculum-vitae.html') && !main_menu_pages[1].includes(mode)) {
+        if (fileName.includes('curriculum_vitae.html') && !main_menu_pages[1].includes(mode)) {
             console.log("Rendering short menu to the sidebar for CV page...");
             menuToRender = SITE_DATA.site.navigation.short_menu;
         }
@@ -296,7 +296,7 @@ function getMenuToRender(main_menu_pages) {
             menuToRender = SITE_DATA.site.navigation.main_menu;
         }
 
-        if (fileName.includes('curriculum-vitae.html')) {
+        if (fileName.includes('curriculum_vitae.html')) {
             const homeItem = menuToRender.find(item => item.label.startsWith('Home'));
             if (homeItem) {
                 // homeItem.url = './index.html#about';
@@ -401,8 +401,8 @@ function renderMenuFooter(footerMeta, assetData) {
         <div class="copyright">
           <p style="text-align: center;">
             © Copyright · ${copyrightYear} <strong><span> 
-            <a href="./page-details.html?page=${menuFooter.copyright_logo_url}"> <img style="height: 20px;" src="${logoPath}" alt="Logo" class="img-fluid rounded-circle"> </a> 
-            <a href="./page-details.html?page=${menuFooter.copyright_text_url}"> ${menuFooter.copyright_owner} </a> 
+            <a href="./page_details.html?page=${menuFooter.copyright_logo_url}"> <img style="height: 20px;" src="${logoPath}" alt="Logo" class="img-fluid rounded-circle"> </a> 
+            <a href="./page_details.html?page=${menuFooter.copyright_text_url}"> ${menuFooter.copyright_owner} </a> 
             </span></strong>
           </p>
         </div>
@@ -410,7 +410,7 @@ function renderMenuFooter(footerMeta, assetData) {
 
     // 2. Render Credits/Links Block
     const linksHTML = menuFooter.links.map(link =>
-        `<a href="./page-details.html?page=${link.url}"> ${link.label} </a>`
+        `<a href="./page_details.html?page=${link.url}"> ${link.label} </a>`
     ).join(' | ');
 
     const creditsHTML = `
@@ -1036,7 +1036,7 @@ function renderIndexAcademicInformation() {
     if (titleH2) {
         titleH2.innerHTML = `<i class="${sectionInfo.icon_class}"></i>
         ${sectionInfo.title}
-        <a href="section-details.html?section=academic_information"><i class="bx bx-link ms-2"></i></a>`;
+        <a href="section_details.html?section=academic_information"><i class="bx bx-link ms-2"></i></a>`;
     }
 
     const descPara = eduSection.querySelector('.section-title h6');
@@ -1181,7 +1181,7 @@ function renderIndexProfessionalExperiences() {
     if (titleH2) {
         titleH2.innerHTML = `<i class="${sectionInfo.icon_class}"></i> 
                              ${sectionInfo.title} 
-                             <a href="section-details.html?section=professional_experiences"> <i class="bx bx-link ms-2"></i></a>`;
+                             <a href="section_details.html?section=professional_experiences"> <i class="bx bx-link ms-2"></i></a>`;
     }
 
     const descPara = expSection.querySelector('.section-title h6');
@@ -1302,7 +1302,7 @@ function renderIndexSkillsTools() {
     if (titleH2) {
         titleH2.innerHTML = `<i class="${sectionInfo.icon_class}"></i> 
         ${sectionInfo.title} 
-        <a href="section-details.html?section=skills_tools"><i class="bx bx-link ms-2"></i></a>`;
+        <a href="section_details.html?section=skills_tools"><i class="bx bx-link ms-2"></i></a>`;
     }
 
     const descPara = skillsSection.querySelector('.section-title h6');
@@ -1386,7 +1386,7 @@ function renderIndexHonorsAwards() {
     if (titleH2) {
         titleH2.innerHTML = `<i class="${sectionInfo.icon_class}"></i> 
         ${sectionInfo.title} 
-        <a href="section-details.html?section=honors_awards"><i class="bx bx-link ms-2"></i></a>`;
+        <a href="section_details.html?section=honors_awards"><i class="bx bx-link ms-2"></i></a>`;
     }
 
     const descPara = honorsSection.querySelector('.section-title h6');
@@ -1447,7 +1447,7 @@ function renderIndexCoursesTrainingsCertificates() {
     if (titleH2) {
         titleH2.innerHTML = `<i class="${sectionInfo.icon_class}"></i> 
         ${sectionInfo.title}
-        <a href="section-details.html?section=courses_trainings_certificates"><i class="bx bx-link ms-2"></i></a>`;
+        <a href="section_details.html?section=courses_trainings_certificates"><i class="bx bx-link ms-2"></i></a>`;
     }
 
     const descPara = coursesSection.querySelector('.section-title h6');
@@ -1567,7 +1567,7 @@ function renderIndexProjects() {
     if (titleH2) {
         titleH2.innerHTML = `<i class="${sectionInfo.icon_class}"></i> 
         ${sectionInfo.title}
-        <a href="section-details.html?section=projects"><i class="bx bx-link ms-2"></i></a>`;
+        <a href="section_details.html?section=projects"><i class="bx bx-link ms-2"></i></a>`;
     }
 
     const descPara = projectSection.querySelector('.section-title h6');
@@ -1586,7 +1586,7 @@ function renderIndexProjects() {
 
 /**
  * Renders an individual Membership item for the index page.
- * @param {Object} membership - The membership object from oranisational_memberships.json.
+ * @param {Object} membership - The membership object from organisational_memberships.json.
  * @param {number} index - The index for AOS delay calculation.
  * @returns {string} - The HTML string for the service item.
  */
@@ -1606,7 +1606,7 @@ function renderIndexMembershipItem(membership, index) {
             </div>
             <div>
                 <h4 class="title">
-                    <a href="/oranisational_memberships-details#${membership.id_ref}" class="stretched-link">
+                    <a href="/organisational_memberships-details#${membership.id_ref}" class="stretched-link">
                         ${membership.title}
                     </a>
                 </h4>
@@ -1629,13 +1629,13 @@ function renderIndexMembershipItem(membership, index) {
 
 /**
  * Renders the Memberships section on the index page.
- * Target: #oranisational_memberships
+ * Target: #organisational_memberships
  */
 function renderIndexOrganisationalMemberships() {
-    const memSection = document.getElementById('oranisational_memberships');
-    if (!memSection || !SITE_DATA.oranisational_memberships) return;
+    const memSection = document.getElementById('organisational_memberships');
+    if (!memSection || !SITE_DATA.organisational_memberships) return;
 
-    const data = SITE_DATA.oranisational_memberships;
+    const data = SITE_DATA.organisational_memberships;
     const sectionInfo = data.section_info;
 
     // 1. Update Section Title and Description
@@ -1643,7 +1643,7 @@ function renderIndexOrganisationalMemberships() {
     if (titleH2) {
         titleH2.innerHTML = `<i class="${sectionInfo.icon_class}"></i> 
         ${sectionInfo.title} 
-        <a href="section-details.html?section=oranisational_memberships"><i class="bx bx-link ms-2"></i></a>`;
+        <a href="section_details.html?section=organisational_memberships"><i class="bx bx-link ms-2"></i></a>`;
     }
 
     const descPara = memSection.querySelector('.section-title h6');
@@ -1716,7 +1716,7 @@ function renderIndexSessionsEvents() {
     if (titleH2) {
         titleH2.innerHTML = `<i class="${sectionInfo.icon_class}"></i> 
         ${sectionInfo.title} 
-        <a href="section-details.html?section=sessions_events"><i class="bx bx-link ms-2"></i></a>`;
+        <a href="section_details.html?section=sessions_events"><i class="bx bx-link ms-2"></i></a>`;
     }
 
     const descPara = eventsSection.querySelector('.section-title h6');
@@ -1806,7 +1806,7 @@ function renderIndexLanguages() {
     if (titleH2) {
         titleH2.innerHTML = `<i class="${sectionInfo.icon_class}"></i> 
         ${sectionInfo.title} 
-        <a href="section-details.html?section=languages"><i class="bx bx-link ms-2"></i></a>`;
+        <a href="section_details.html?section=languages"><i class="bx bx-link ms-2"></i></a>`;
     }
 
     const descPara = langSection.querySelector('.section-title h6');
@@ -1872,7 +1872,7 @@ function renderIndexPortfolios() {
     if (titleH2) {
         titleH2.innerHTML = `<i class="${sectionInfo.icon_class}"></i> 
         ${sectionInfo.title} 
-        <a href="section-details.html?section=portfolios"><i class="bx bx-link ms-2"></i></a>`;
+        <a href="section_details.html?section=portfolios"><i class="bx bx-link ms-2"></i></a>`;
     }
 
     const descPara = portSection.querySelector('.section-title h6');
@@ -1946,7 +1946,7 @@ function renderIndexVolunteeringServices() {
     if (titleH2) {
         titleH2.innerHTML = `<i class="${sectionInfo.icon_class}"></i> 
         ${sectionInfo.title} 
-        <a href="section-details.html?section=volunteering_services"><i class="bx bx-link ms-2"></i></a>`;
+        <a href="section_details.html?section=volunteering_services"><i class="bx bx-link ms-2"></i></a>`;
     }
 
     const descPara = volSection.querySelector('.section-title h6');
@@ -2019,7 +2019,7 @@ function renderIndexPublications() {
     if (titleH2) {
         titleH2.innerHTML = `<i class="${sectionInfo.icon_class}"></i> 
         ${sectionInfo.title} 
-        <a href="section-details.html?section=publications"><i class="bx bx-link ms-2"></i></a>`;
+        <a href="section_details.html?section=publications"><i class="bx bx-link ms-2"></i></a>`;
     }
 
     const descPara = pubSection.querySelector('.section-title h6');
@@ -2098,7 +2098,7 @@ function renderIndexContactItem(contact, index) {
 //     if (titleH2) {
 //         titleH2.innerHTML = `<i class="${sectionInfo.icon_class}"></i>
 //         ${sectionInfo.title}
-//         <a href="section-details.html?section=contact_details"><i class="bx bx-link ms-2"></i></a>`;
+//         <a href="section_details.html?section=contact_details"><i class="bx bx-link ms-2"></i></a>`;
 //     }
 //
 //     const descPara = contSection.querySelector('.section-title h6');
@@ -2143,7 +2143,7 @@ function renderIndexContactDetails() {
     if (titleH2) {
         titleH2.innerHTML = `<i class="${sectionInfo.icon_class}"></i> 
         ${sectionInfo.title} 
-        <a href="section-details.html?section=contact_details"><i class="bx bx-link ms-2"></i></a>`;
+        <a href="section_details.html?section=contact_details"><i class="bx bx-link ms-2"></i></a>`;
     }
 
     const descPara = contSection.querySelector('.section-title h6');
@@ -2726,15 +2726,15 @@ function renderStandardCVProjects() {
 
 /**
  * Renders the Memberships section of the Standard CV page.
- * Target: #oranisational_memberships
+ * Target: #organisational_memberships
  */
 function renderStandardCVOrganisationalMemberships() {
-    const section = document.getElementById('oranisational_memberships');
-    if (!section || !SITE_DATA.oranisational_memberships) return;
+    const section = document.getElementById('organisational_memberships');
+    if (!section || !SITE_DATA.organisational_memberships) return;
 
-    const data = SITE_DATA.oranisational_memberships;
+    const data = SITE_DATA.organisational_memberships;
     const sectionInfo = data.section_info;
-    const oranisational_memberships = data.memberships;
+    const organisational_memberships = data.memberships;
 
     // 1. Update Section Header
     const headerElement = section.querySelector('.cv-section-title');
@@ -2745,8 +2745,8 @@ function renderStandardCVOrganisationalMemberships() {
     // 2. Clear and Render Memberships List
     const listContainer = document.getElementById('memberships-list');
     if (listContainer) {
-        listContainer.innerHTML = oranisational_memberships.map((item, index) => {
-            const isLast = index === oranisational_memberships.length - 1;
+        listContainer.innerHTML = organisational_memberships.map((item, index) => {
+            const isLast = index === organisational_memberships.length - 1;
             const spacingClass = isLast ? 'mb-0' : 'mb-2';
 
             // Calculate duration (e.g., "1 yr 4 mos")
@@ -3425,13 +3425,13 @@ function renderOnePageCVSidebarLanguages(limit = 3) {
 
 /**
  * Renders the Memberships section for the One-Page CV sidebar.
- * Dynamically loads title, icon, and items from oranisational_memberships.json.
+ * Dynamically loads title, icon, and items from organisational_memberships.json.
  */
 function renderOnePageCVSidebarOrganisationalMemberships(limit = 7) {
     const sidebar = document.querySelector('#one-page-section .cv-sidebar');
-    if (!sidebar || !SITE_DATA.oranisational_memberships) return;
+    if (!sidebar || !SITE_DATA.organisational_memberships) return;
 
-    const { section_info: info, memberships = [] } = SITE_DATA.oranisational_memberships;
+    const { section_info: info, memberships = [] } = SITE_DATA.organisational_memberships;
 
     // 1. Locate and Update Section Header
     const header = Array.from(sidebar.querySelectorAll('h5.sidebar-title'))
@@ -4858,8 +4858,8 @@ function renderSectionDetailsPage(sectionKey) {
         console.log(`Showing ${sectionKey} details page:`, (sectionKey === 'projects'));
         renderFullProjectsDetails(data.projects);
     }
-    else if (sectionKey === 'oranisational_memberships') {
-        console.log(`Showing ${sectionKey} details page:`, (sectionKey === 'oranisational_memberships'));
+    else if (sectionKey === 'organisational_memberships') {
+        console.log(`Showing ${sectionKey} details page:`, (sectionKey === 'organisational_memberships'));
         renderFullOrganisationalMembershipDetails(data.memberships);
     }
     else if (sectionKey === 'sessions_events') {
@@ -5596,7 +5596,7 @@ function renderFullProjectsDetails(projects) {
 /**
  * Renders Organisational Memberships using a modern card-based layout.
  * Includes precise "yrs and mos" duration calculation and multi-organisation joining.
- * @param {Array} memberships - The memberships array from oranisational_memberships.json.
+ * @param {Array} memberships - The memberships array from organisational_memberships.json.
  */
 function renderFullOrganisationalMembershipDetails(memberships) {
     const listContainer = document.getElementById('details-list-container');
@@ -6283,9 +6283,21 @@ function renderFullContactsDetails(contactMethods) {
  * Re-initialize UI Libraries
  */
 function initExternalLibraries() {
-    // AOS (Animations)
+
+    // NOW call the navigation behavior once the HTML is ready
+    if (window.initNavigationBehavior) window.initNavigationBehavior();
+    if (window.initSkillBars) window.initSkillBars();
+    if (window.initLightbox) window.initLightbox();
+
+    // --- THE FIX: Refresh AOS so it "sees" the new dynamic elements ---
     if (typeof AOS !== 'undefined') {
-        AOS.init({ duration: 600, easing: 'ease-in-out', once: true, mirror: false });
+        AOS.init({
+            duration: 600,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        AOS.refresh(); // Forces a re-calculation of all AOS elements
     }
 
     // Typed.js (Hero)

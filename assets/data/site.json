@@ -135,7 +135,7 @@
           {"label": "Honors and Awards_XX", "url": "#honors_awards", "icon_class": "bi bi-award"},
           {"label": "Courses Training and Certificates_XX", "url": "#courses_trainings_certificates", "icon_class": "bx bi-journal-bookmark-fill"},
           {"label": "Projects_XX", "url": "#projects", "icon_class": "bi bi-lightbulb"},
-          {"label": "Organisational Memberships_XX", "url": "#oranisational_memberships", "icon_class": "bi bi-people"},
+          {"label": "Organisational Memberships_XX", "url": "#organisational_memberships", "icon_class": "bi bi-people"},
           {"label": "Sessions and Events_XX", "url": "#sessions_events", "icon_class": "bi bi-calendar-event"},
           {"label": "Languages_XX", "url": "#languages", "icon_class": "bi bi-translate"},
           {"label": "Portfolios_XX", "url": "#portfolios", "icon_class": "bi bi-window-sidebar"},

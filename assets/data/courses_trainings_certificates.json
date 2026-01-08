@@ -17,7 +17,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_kaggleGoogleAgAI",
       "details": {
         "type": "All, Certificate, Course",
         "date": "Dec. 19, 2025",
@@ -48,7 +47,6 @@
         "filter-cour",
         "filter-train"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_berudand608genAI",
       "details": {
         "type": "All, Certificate, Training, Course",
         "date": "Jul. 27, 2025",
@@ -79,7 +77,6 @@
         "filter-cert",
         "filter-train"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#train_akkodisMsMsfsAgntCopilot",
       "details": {
         "type": "All, Certificate, Training",
         "date": "June 13, 2025",
@@ -107,7 +104,6 @@
         "filter-cour",
         "filter-train"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_berudand608foundGenAI",
       "details": {
         "type": "All, Certificate, Training, Course",
         "date": "Dec. 27, 2024",
@@ -139,7 +135,6 @@
         "filter-cour",
         "filter-train"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_awsudand189mlFun",
       "details": {
         "type": "All, Certificate, Training, Course",
         "date": "Aug. 21, 2024",
@@ -171,7 +166,6 @@
         "filter-cour",
         "filter-train"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_awsudand089aiProPy",
       "details": {
         "type": "All, Certificate, Training, Course",
         "date": "Dec. 24, 2023",
@@ -202,7 +196,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_mscertai900",
       "details": {
         "type": "All, Certificate",
         "date": "Feb. 21, 2024",
@@ -229,7 +222,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_mscertdp900",
       "details": {
         "type": "All, Certificate",
         "date": "Apr 28, 2024",
@@ -256,7 +248,6 @@
         "filter-conf",
         "filter-boot"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_gtecsprschl2022",
       "details": {
         "type": "Conference, Bootcamp",
         "date": "May 20, 2022",
@@ -283,7 +274,6 @@
       "filter_tags": [
         "filter-boot"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_embssumschl2022",
       "details": {
         "type": "Bootcamp",
         "date": "Oct. 5, 2022",
@@ -312,7 +302,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_llcritdecmakprobsolv2023",
       "details": {
         "type": "Certificate, Course",
         "date": "Feb. 27, 2023",
@@ -341,7 +330,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_atndigfutdatana2023",
       "details": {
         "type": "Certificate, Course",
         "date": "Jul 7, 2023",
@@ -364,7 +352,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_atnfutdatana2023",
       "details": {
         "type": "Certificate, Course",
         "date": "Mar 26, 2023",
@@ -386,7 +373,6 @@
       "filter_tags": [
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_keggleintml",
       "details": {
         "type": "Course",
         "date": "Jul 5, 2024",
@@ -414,7 +400,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_stanfordcip2023",
       "details": {
         "type": "Certificate, Course",
         "date": "Apr 1, 2023",
@@ -442,7 +427,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_gcldfnd2022",
       "details": {
         "type": "Certificate, Course",
         "date": "Apr 25, 2022",
@@ -471,7 +455,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_gldsfound2022",
       "details": {
         "type": "Certificate, Course",
         "date": "Apr 1, 2022",
@@ -499,7 +482,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_glpy4ml2022",
       "details": {
         "type": "Certificate, Course",
         "date": "Apr 1, 2022",
@@ -527,7 +509,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_glmlalgo2022",
       "details": {
         "type": "Certificate, Course",
         "date": "Apr 1, 2022",
@@ -555,7 +536,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_glintr2dl2022",
       "details": {
         "type": "Certificate, Course",
         "date": "Apr 1, 2022",
@@ -583,7 +563,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_glintr2tfkr2022",
       "details": {
         "type": "Certificate, Course",
         "date": "Apr 1, 2022",
@@ -611,7 +590,6 @@
         "filter-cert",
         "filter-train"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_intdatman2022",
       "details": {
         "type": "Certificate, Training",
         "date": "Mar 1, 2022",
@@ -638,7 +616,6 @@
         "filter-cert",
         "filter-train"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_intdatvis2022",
       "details": {
         "type": "Certificate, Training",
         "date": "Apr 1, 2022",

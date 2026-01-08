@@ -1393,31 +1393,15 @@ body.mode-standard #one-page-section {
 body.mode-one-page #standard-page-section {
     display: none !important;
 }
-/*body.mode-one-page #one-page-section {*/
-/*    display: flex !important; !* One-page uses flex for the sidebar layout *!*/
-/*}*/
+body.mode-one-page #one-page-section {
+    display: flex !important; /* One-page uses flex for the sidebar layout */
+}
 
-/*!* Global CV Wrapper (The Page Background) *!*/
-/*.cv-bg-wrapper {*/
-/*    !*background-color: var(--cv-wrapper-background-color);*!*/
-/*    padding: 40px 0;*/
-/*    min-height: 100vh;*/
-/*    background-color: red;*/
-
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*}*/
-
-/* style.css Section 30 */
+/* Global CV Wrapper (The Page Background) */
 .cv-bg-wrapper {
     background-color: var(--cv-wrapper-background-color);
-    /*background-color: red;*/
     padding: 40px 0;
     min-height: 100vh;
-    display: flex !important;
-    flex-direction: column !important; /* Stack any content vertically */
-    align-items: center !important;    /* Forces horizontal centering */
-    width: 100% !important;
 }
 
 /* --- 1. RESPONSIVE PAPER SHEET --- */
@@ -1431,8 +1415,7 @@ body.mode-one-page #standard-page-section {
     padding: 40px;          /* Default desktop padding */
     background: #ffffff;
     color: #000000;
-    /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);*/
-    box-shadow: 0 0 15px rgba(255, 5, 5, 1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 /* --- 2. MOBILE OVERRIDES (< 768px) --- */
@@ -1552,21 +1535,6 @@ body.mode-one-page #standard-page-section {
     color: #ffffff !important;
 }
 
-/*!* Section 32: One-Page Proportions *!*/
-/*.cv-sidebar {*/
-/*    !*background-color: var(--default-color) !important;*!*/
-/*    flex: 0 0 30% !important;*/
-/*    max-width: 30% !important;*/
-/*    padding: 25px 15px;*/
-/*    !*color: #ffffff !important;*!*/
-/*}*/
-
-.cv-main-body {
-    flex: 0 0 70% !important;
-    max-width: 70% !important;
-    /*padding: 25px 30px;*/
-}
-
 .cv-sidebar a { color: #ffffff !important; }
 
 .sidebar-title {
@@ -1584,12 +1552,12 @@ body.mode-one-page #standard-page-section {
     font-size: var(--cv-one-page-summary-fs); /* 8px */
 }
 
-/*!* Main Body - Clean White Theme *!*/
-/*.cv-main-body {*/
-/*    flex: 0 0 70%;*/
-/*    background-color: #ffffff !important;*/
-/*    padding: 25px 30px;*/
-/*}*/
+/* Main Body - Clean White Theme */
+.cv-main-body {
+    flex: 0 0 70%;
+    background-color: #ffffff !important;
+    padding: 25px 30px;
+}
 
 .one-page-name {
     font-size: 20px !important;
@@ -1931,16 +1899,16 @@ html {
 }
 
 
-/*!* --- CV Page General Layout --- *!*/
-/*.all-cv-wrapper {*/
-/*    background-color: var(--cv-wrapper-background-color);*/
-/*    padding: 30px 0;*/
-/*}*/
+/* --- CV Page General Layout --- */
+.all-cv-wrapper {
+    background-color: var(--cv-wrapper-background-color);
+    padding: 30px 0;
+}
 
-/*.cv-bg-wrapper {*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*}*/
+.cv-bg-wrapper {
+    display: flex;
+    justify-content: center;
+}
 
 
 /* --- Standard CV Specifics --- */
@@ -1966,15 +1934,15 @@ html {
 }
 
 /* --- One-Page CV Specifics --- */
-/*.cv-sidebar {*/
-/*    width: 250px;*/
-/*    background-color: #343a40; !* Dark sidebar *!*/
-/*    min-height: 100%;*/
-/*}*/
+.cv-sidebar {
+    width: 250px;
+    background-color: #343a40; /* Dark sidebar */
+    min-height: 100%;
+}
 
-/*.cv-main-body {*/
-/*    flex: 1;*/
-/*}*/
+.cv-main-body {
+    flex: 1;
+}
 
 .sidebar-title {
     font-size: 14px;
@@ -2151,25 +2119,14 @@ html {
        -------------------------------------------------------------- */
     body.mode-one-page { margin: 0 !important; }
 
-    /*body.mode-one-page .all-cv-wrapper,*/
-    /*body.mode-one-page #one-page-section,*/
-    /*body.mode-one-page .cv-bg-wrapper {*/
-    /*    !*!*display: flex !important;*!*!*/
-    /*    !*width: 210mm !important; !* Locked to A4 *!*!*/
-    /*    !*height: 297mm !important;*!*/
-    /*    !*!*margin: -8mm !important; !* Negates the @page margin for full bleed *!*!*!*/
-    /*    !*padding: 0 !important;*!*/
-
-    /*    display: block !important;*/
-    /*    width: 100% !important;*/
-    /*    margin: 0 !important;*/
-    /*    padding: 0 !important;*/
-    /*}*/
-
-    body.mode-one-page #one-page-section {
-        width: 210mm !important;
+    body.mode-one-page .all-cv-wrapper,
+    body.mode-one-page #one-page-section,
+    body.mode-one-page .cv-bg-wrapper {
+        display: flex !important;
+        width: 210mm !important; /* Locked to A4 */
         height: 297mm !important;
-        margin: -8mm 0 0 -8mm !important;
+        margin: -8mm !important; /* Negates the @page margin for full bleed */
+        padding: 0 !important;
     }
 
     body.mode-one-page .cv-paper-sheet {
@@ -2232,61 +2189,30 @@ body.mode-one-page {
     display: block !important;
 }
 
-/*body.mode-one-page .all-cv-wrapper,*/
-/*body.mode-one-page .cv-bg-wrapper {*/
-/*!*    !*display: flex !important;*!*!*/
-/*!*    justify-content: center !important; !* FORCES CENTERING ON THE PAGE *!*!*/
-/*!*    align-items: flex-start !important;*!*/
-/*!*    width: 100% !important;*!*/
-/*!*    !*background: white !important;*!*!*/
-/*!*    !*background: #ef0b0b !important;*!*!*/
-/*!*    background-color: var(--cv-wrapper-background-color);*!*/
-/*!*    margin: 0 !important;*!*/
-/*!*    !*padding: 0 !important;*!*!*/
-/*!*    !*padding: 40px 0;*!*!*/
-/*!*    !*min-height: 100vh;*!*!*/
-/*!*}*!*/
-/*!*{*!*/
-/*    background-color: var(--cv-wrapper-background-color);*/
-/*    !*padding: 40px 0;*!*/
-/*    min-height: 100vh;*/
-
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*}*/
-
-
-/*!* style.css Section 32 *!*/
-/*body.mode-one-page #one-page-section {*/
-/*    display: flex !important; !* Keep the Sidebar/Body split *!*/
-/*    flex-direction: row;*/
-/*    width: 100% !important;*/
-/*    max-width: 850px !important;   !* MATCHES Standard CV Paper *!*/
-/*    height: auto !important;       !* REPAIR: Removes the fixed height overflow *!*/
-/*    margin: 0 auto !important;     !* REPAIR: Removes the -8mm shift *!*/
-/*    !*background: #ffffff;*!*/
-/*    !*box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);*!*/
-/*    background: blue;*/
-/*    box-shadow: 0 0 15px rgba(50, 200, 20, 1);*/
-/*}*/
-
-/* style.css Section 32 */
-body.mode-one-page #one-page-section {
-    display: flex !important; /* Keep the Sidebar/Body split */
-    /*flex-direction: row;*/
+body.mode-one-page .all-cv-wrapper,
+body.mode-one-page .cv-bg-wrapper {
+    display: flex !important;
+    justify-content: center !important; /* FORCES CENTERING ON THE PAGE */
+    align-items: flex-start !important;
     width: 100% !important;
-    /*max-width: 850px !important;   !* MATCHES Standard CV Paper *!*/
-    height: auto !important;       /* REPAIR: Removes the fixed height overflow */
-    margin: 0 auto !important;     /* REPAIR: Removes the -8mm shift */
-    /*background: #ffffff;*/
-    /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);*/
-    /*background: blue;*/
-    /*box-shadow: 0 0 15px rgba(50, 200, 20, 1);*/
+    /*background: white !important;*/
+    /*background: #ef0b0b !important;*/
+    background-color: var(--cv-wrapper-background-color);
+    margin: 0 !important;
+    /*padding: 0 !important;*/
+    padding: 40px 0;
+    min-height: 100vh;
 }
 
-/* Remove the fixed height that causes footer overlap */
 body.mode-one-page #one-page-section {
-    height: auto !important;
+    display: flex !important; /* Maintains Sidebar/Body Split */
+    width: 210mm !important;   /* Exact A4 Width */
+    height: 297mm !important;  /* Exact A4 Height */
+    position: relative !important;
+    /*margin: -8mm 0 0 -8mm !important; !* Offset for @page margin bleed *!*/
+    margin: -8mm 0 0 -8mm !important; /* Offset for @page margin bleed */
+    padding: 0 !important;
+    box-shadow: none !important;
 }
 
 /*body.mode-one-page .cv-paper-sheet {*/
@@ -2312,64 +2238,15 @@ body.mode-one-page .cv-paper-sheet {
 }
 
 
-/* ==========================================================================
-   ONE-PAGE CV: ALIGNMENT & OVERFLOW REFACTOR
-   ========================================================================== */
+/* Offset for Sticky Bar on CV Page */
+.printable-cv-page section {
+    scroll-margin-top: 85px; /* Adjust this value to match the height of your .cv-sticky-bar */
+}
 
-/*!* 1. Reset the wrapper to handle flow naturally *!*/
-/*.all-cv-wrapper {*/
-/*    display: block !important;*/
-/*    width: 100%;*/
-/*    overflow: visible !important; !* Prevents "hidden" content cutting off *!*/
-/*    background-color: var(--cv-wrapper-background-color);*/
-/*}*/
-
-/* 2. Center the paper sheet and manage the split layout */
-/*body.mode-one-page #one-page-section {*/
-/*    !*display: flex !important;*!*/
-/*    !*flex-direction: row;*!*/
-/*    justify-content: center; !* Horizontally centers the sheet *!*/
-/*    !*align-items: flex-start;*!*/
-/*    width: 100%;*/
-/*    !*max-width: 850px;       !* Standard web-view width *!*!*/
-/*    !*margin: 20px auto !important; !* Creates a gap from top and footer *!*!*/
-/*    background: #ffffff;*/
-/*    !*box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);*!*/
-/*    position: relative;*/
-/*    !*z-index: 10;            !* Keeps it above the wrapper but below the footer if necessary *!*!*/
-/*}*/
-
-/* 3. Handle the sidebar/body split proportionally */
-/*body.mode-one-page .cv-sidebar {*/
-/*    !*flex: 0 0 30% !important; !* Fixed 30% width *!*!*/
-/*    background-color: var(--default-color) !important;*/
-/*    color: #ffffff !important;*/
-/*    !*padding: 25px 15px;*!*/
-/*}*/
-
-/*body.mode-one-page .cv-main-body {*/
-/*    !*flex: 0 0 70% !important; !* Fixed 70% width *!*!*/
-/*    !*padding: 25px 30px;*!*/
-/*    background-color: #ffffff !important;*/
-/*}*/
-
-/*!* 4. Fix for the footer collision *!*/
-/*#footer {*/
-/*    position: relative;*/
-/*    z-index: 100;           !* Ensures footer always sits on top of any overflows *!*/
-/*    margin-top: 50px !important; !* Forces clear space after the CV ends *!*/
-/*}*/
-
-
-/*!* Offset for Sticky Bar on CV Page *!*/
-/*.printable-cv-page section {*/
-/*    scroll-margin-top: 85px; !* Adjust this value to match the height of your .cv-sticky-bar *!*/
-/*}*/
-
-/*!* If you have specific IDs outside of <section> tags that are targets *!*/
-/*.printable-cv-page [id] {*/
-/*    scroll-margin-top: 85px;*/
-/*}*/
+/* If you have specific IDs outside of <section> tags that are targets */
+.printable-cv-page [id] {
+    scroll-margin-top: 85px;
+}
 
 
 /****************************/
@@ -2467,6 +2344,3 @@ body.mode-one-page .cv-paper-sheet {
     font-size: var(--cv-one-page-summary-fs, 8px); /* Uses 8px from root */
     color: var(--resume-text-muted-color); /* Uses your muted grey */
 }
-
-
-

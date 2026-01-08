@@ -73,7 +73,7 @@
 
     <div class="social-links text-center">
         <!--      <a href="https://www.twitter.com/WWM_EMRAN" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>&ndash;>-->
-        <a href="https://www.x.com/WWM_EMRAN" target="_blank" class="x"><i class="bi bi-twitter-x"></i></a>
+<!--        <a href="https://www.x.com/WWM_EMRAN" target="_blank" class="x"><i class="bi bi-twitter-x"></i></a>-->
         <!--        <a href="https://facebook.com/wwm.emran" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>-->
         <!--        <a href="https://instagram.com/wwm.emran" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>-->
         <a href="https://www.linkedin.com/in/wwmemran" target="_blank" class="linkedin"><i
@@ -139,17 +139,23 @@
     <!-- <footer id="menu_footer" class="footer position-relative"> -->
     <div id="menu_footer" class="footer">
         <div class="container">
-            <div class="copyright">
-                <p style="text-align: center;">
-                    &copy; Copyright · 2025 <strong><span>
-                    <a href="./ea-logo.html">
-                        <img style="height: 20px;" src="assets/img/Emran_Ali_Logo_Fav.png" alt="Emran Ali - Personal Website | emran ali logo fav" class="img-fluid rounded-circle">
-                    </a>
-                    <a href="./copyright.html"> WWM Emran </a> </span></strong>
+            <div class="copyright text-center-force">
+                <p>
+                    © Copyright · 2025
+                    <strong>
+                            <span>
+                                <a href="page_details.html?page=ea_logo">
+                                    <img src="assets/img/Emran_Ali_Logo_Fav.png" alt="Logo"
+                                         class="img-fluid rounded-circle logo-sm">
+                                </a>
+                                <a href="page_details.html?page=copyright"> WWM Emran </a>
+                            </span>
+                    </strong>
                 </p>
             </div>
-            <div class="credits">
-                <a href="./diary.html"> Diary </a> | <a href="./gallery.html"> Gallery </a>
+            <div class="credits text-center-force">
+                <a href="page_details.html?page=diary"> Diary </a> |
+                <a href="page_details.html?page=gallery"> Gallery </a>
             </div>
         </div>
     </div>
@@ -160,33 +166,58 @@
 <main class="main" >
 
 <!--    <div class="no-print one-page-section shadow-sm">-->
-    <div class="no-print shadow-sm">
-        <div class="row align-items-center cv-sticky-bar sticky-top h-100 w-100 m-0 px-2 px-md-4 py-3">
-            <div class="col-4 d-flex align-items-center gap-2 gap-md-3 p-0">
-                <a href="./" class="btn btn-primary btn-sm px-4 py-2 fw-bold">
-                    <i class="bi bi-house"></i> <span class="d-none d-sm-inline">Home</span>
-                </a>
-                <div class="d-flex align-items-center gap-6 cv-controls no-print ms-3">
-<!--                    <label class="cv-label-white mb-0 d-none d-lg-inline">CV Type:</label>-->
-<!--                    <select id="cvModeSelector" class="form-select form-select-sm shadow-sm border-primary" onchange="changeCVMode(this.value)">-->
-                    <select id="cvModeSelector" class="form-select form-select-sm shadow-sm border-primary" >
-                        <option value="" disabled> ---   CV Type (Mode)   --- </b> </option>
-                        <option value="standard">Standard (Multi-page)</option>
-                        <option value="one-page">One-Page Summary</option>
-                        <option value="detailed" disabled>Detailed (Coming Soon)</option>
-                    </select>
-                </div>
+<!--    <div class="no-print shadow-sm sticky-top">-->
+<!--        <div class="row align-items-center cv-sticky-bar h-100 w-100 m-0 px-2 px-md-4 py-3">-->
+<!--            <div class="col-4 d-flex align-items-center gap-2 gap-md-3 p-0">-->
+<!--                <a href="./" class="btn btn-primary btn-sm px-4 py-2 fw-bold">-->
+<!--                    <i class="bi bi-house"></i> <span class="d-none d-sm-inline">Home</span>-->
+<!--                </a>-->
+<!--                <div class="flex-grow-1 ms-2 ms-md-3">-->
+<!--                    <select id="cvTypeSelector" class="form-select form-select-sm shadow-sm">-->
+<!--                        <option value="" disabled selected>Select CV Type</option>-->
+<!--                        <option value="standard">Standard (Multi-page)</option>-->
+<!--                        <option value="onePage">One-Page Summary</option>-->
+<!--                        <option value="twoPage" disabled>Two-Page Summary (Coming soon)</option>-->
+<!--                        <option value="detailed" disabled>Detailed (Coming soon)</option>-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="col-4 text-center p-0">-->
+<!--                <h6 class="cv-nav-title m-0 d-none d-md-block">Curriculum Vitae (CV)</h6>-->
+<!--            </div>-->
+
+<!--            <div class="col-4 d-flex justify-content-end align-items-center p-0">-->
+<!--                <button class="btn btn-primary btn-sm px-4 py-2 fw-bold" onclick="window.print()">-->
+<!--                    <i class="bi bi-printer me-2"></i> <span class="d-none d-sm-inline">Print / Save PDF</span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+    <div class="no-print shadow-sm sticky-top">
+        <div class="cv-sticky-bar d-flex align-items-center justify-content-between px-2 px-md-4 py-3">
+
+            <a href="./" class="btn btn-primary btn-sm px-3 py-2 fw-bold flex-shrink-0">
+                <i class="bi bi-house"></i> <span class="d-none d-sm-inline">Home</span>
+            </a>
+
+            <div class="cv-type-wrapper flex-grow-1 mx-2 mx-md-3">
+                <select id="cvTypeSelector" class="form-select form-select-sm shadow-sm border-primary w-100 py-2">
+                    <option value="" disabled selected>--- Select CV Type ---</option>
+                    <option value="standard">Standard (Multi-page)</option>
+                    <option value="onePage">One-Page Summary</option>
+                    <option value="twoPage" disabled>Two-Page Summary (Soon)</option>
+                    <option value="detailed" disabled>Detailed (Soon)</option>
+                </select>
             </div>
 
-            <div class="col-4 text-center p-0">
-                <h6 class="cv-nav-title m-0 d-none d-md-block">Curriculum Vitae (CV)</h6>
-            </div>
+            <button class="btn btn-primary btn-sm px-3 py-2 fw-bold flex-shrink-0" onclick="window.print()">
+                <i class="bi bi-printer"></i> <span class="d-none d-sm-inline">Print / PDF</span>
+            </button>
 
-            <div class="col-4 d-flex justify-content-end align-items-center p-0">
-                <button class="btn btn-primary btn-sm px-4 py-2 fw-bold" onclick="window.print()">
-                    <i class="bi bi-printer me-2"></i> <span class="d-none d-sm-inline">Print / Save PDF</span>
-                </button>
-            </div>
+            <h6 class="cv-nav-title m-0 d-none d-xl-block ps-3 border-start ms-3">CV</h6>
         </div>
     </div>
 
@@ -483,53 +514,6 @@
 
                         <section id="skills_tools" class="mb-4">
                             <h5 class="cv-section-title">Skills and Tools</h5>
-<!--                            <div class="row small g-3" id="skills-grid">-->
-<!--                                <div class="col-md-6">-->
-<!--                                    <div class="mb-2">-->
-<!--                                        <i class="bi bi-file-earmark-code me-2"></i><strong>Programming:</strong>-->
-<!--                                        <span class="text-dark">Python, Java, Swift, Objective-C, C, C++, C#, SQL, PHP, R</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="mb-2">-->
-<!--                                        <i class="bi bi-bar-chart-line me-2"></i><strong>Data Science:</strong>-->
-<!--                                        <span class="text-dark">Data Collection, Cleaning, Preprocessing, EDA, Analysis, Feature Engineering, Numpy, Pandas, Matplotlib</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="mb-2">-->
-<!--                                        <i class="bi bi-cpu me-2"></i><strong>Machine Learning:</strong>-->
-<!--                                        <span class="text-dark">Concept and Application, Scikit-learn, Auto-ML</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="mb-2">-->
-<!--                                        <i class="bi bi-diagram-3 me-2"></i><strong>Deep Learning:</strong>-->
-<!--                                        <span class="text-dark">Concept and Application, Pytorch, Tensorflow, Keras</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="mb-2">-->
-<!--                                        <i class="bi bi-robot me-2"></i><strong>Generative & Agentic AI:</strong>-->
-<!--                                        <span class="text-dark">(Gemini & Huggingface): Multi-Agent, Tools & MCP, Session & Memory, Observability, A2A</span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-
-<!--                                <div class="col-md-6">-->
-<!--                                    <div class="mb-2">-->
-<!--                                        <i class="bi bi-activity me-2"></i><strong>Health Informatics & Signal Processing:</strong>-->
-<!--                                        <span class="text-dark">Disorder detection, Epilepsy, Sleep disorders, EEG, Hypnogram</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="mb-2">-->
-<!--                                        <i class="bi bi-cloud me-2"></i><strong>Cloud Platforms:</strong>-->
-<!--                                        <span class="text-dark">AWS, AWS Sagemaker, MS Azure, Azure ML Designer</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="mb-2">-->
-<!--                                        <i class="bi bi-vector-pen me-2"></i><strong>Teaching and Training:</strong>-->
-<!--                                        <span class="text-dark">Demonstration, Communication, Supervision</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="mb-2">-->
-<!--                                        <i class="bi bi-briefcase me-2"></i><strong>Management and Leadership:</strong>-->
-<!--                                        <span class="text-dark">Project Management, Team Lead, Client Management</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="mb-2">-->
-<!--                                        <i class="bi bi-chat-dots me-2"></i><strong>Soft Skills:</strong>-->
-<!--                                        <span class="text-dark">Critical Thinking, Problem Solving, Communication, Collaboration</span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
 
                             <div class="row small mb-2" id="skills-grid">
                                 <div class="col-6">
@@ -1716,7 +1700,14 @@
 <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 
-<script src="assets/js/new/site-loader.js"></script>
-<script src="assets/js/new/scripts.js"></script>
+
+<script src="assets/js/site-core.js"></script>
+<script src="assets/js/site-util.js"></script>
+<script src="assets/js/site-common.js"></script>
+<script src="assets/js/site-cv.js"></script>
+
+<script src="assets/js/scripts.js"></script>
+
+<script src="assets/js/site-loader.js"></script>
 </body>
 </html>

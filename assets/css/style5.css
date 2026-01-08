@@ -332,14 +332,14 @@ p {
 }
 
 
-/*!* Keep the sub-menu visible when active *!*/
-/*.navmenu .dropdown ul {*/
-/*  display: none;*/
-/*}*/
+/* Keep the sub-menu visible when active */
+.navmenu .dropdown ul {
+  display: none;
+}
 
-/*.navmenu .dropdown.active > ul {*/
-/*  display: block !important;*/
-/*}*/
+.navmenu .dropdown.active > ul {
+  display: block !important;
+}
 
 /*!* Rotate the arrow icon when open *!*/
 /*.navmenu .dropdown.active > a .toggle-dropdown {*/
@@ -375,10 +375,10 @@ p {
   border-radius: 5px;
 }
 
-/*!* Display dropdown when active *!*/
-/*.navmenu .dropdown.dropdown-active > ul {*/
-/*  display: block;*/
-/*}*/
+/* Display dropdown when active */
+.navmenu .dropdown.dropdown-active > ul {
+  display: block;
+}
 
 /* Dropdown Toggle Arrow */
 .navmenu a .toggle-dropdown {
@@ -1381,43 +1381,17 @@ p {
 # Controls visibility between the dynamic modes in site-loader.js.
 --------------------------------------------------------------*/
 /* Mode Toggling Logic */
-/* Standard CV Mode */
-body.mode-standard #standard-page-section {
-    display: block !important;
-}
-body.mode-standard #one-page-section {
-    display: none !important;
-}
+body.mode-standard #standard-page-section { display: block !important; }
+body.mode-standard #cv-page-section { display: none !important; }
 
-/* One-Page CV Mode */
-body.mode-one-page #standard-page-section {
-    display: none !important;
-}
-/*body.mode-one-page #one-page-section {*/
-/*    display: flex !important; !* One-page uses flex for the sidebar layout *!*/
-/*}*/
+body.mode-one-page #standard-page-section { display: none !important; }
+body.mode-one-page #cv-page-section { display: flex !important; }
 
-/*!* Global CV Wrapper (The Page Background) *!*/
-/*.cv-bg-wrapper {*/
-/*    !*background-color: var(--cv-wrapper-background-color);*!*/
-/*    padding: 40px 0;*/
-/*    min-height: 100vh;*/
-/*    background-color: red;*/
-
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*}*/
-
-/* style.css Section 30 */
+/* Global CV Wrapper (The Page Background) */
 .cv-bg-wrapper {
     background-color: var(--cv-wrapper-background-color);
-    /*background-color: red;*/
     padding: 40px 0;
     min-height: 100vh;
-    display: flex !important;
-    flex-direction: column !important; /* Stack any content vertically */
-    align-items: center !important;    /* Forces horizontal centering */
-    width: 100% !important;
 }
 
 /* --- 1. RESPONSIVE PAPER SHEET --- */
@@ -1425,22 +1399,18 @@ body.mode-one-page #standard-page-section {
     width: 100% !important; /* Allow it to shrink */
     max-width: 850px;       /* Keep desktop size bound */
     min-height: auto !important; /* Remove fixed A4 height on web view */
-    /*width: 210mm; !* A4 Width *!*/
-    /*min-height: 297mm; !* A4 Height *!*/
     margin: 0 auto;
     padding: 40px;          /* Default desktop padding */
     background: #ffffff;
-    color: #000000;
-    /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);*/
-    box-shadow: 0 0 15px rgba(255, 5, 5, 1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 /* --- 2. MOBILE OVERRIDES (< 768px) --- */
 @media (max-width: 767px) {
-    /*!* Shrink padding so content has more room *!*/
-    /*.cv-paper-sheet {*/
-    /*    padding: 20px 15px !important;*/
-    /*}*/
+    /* Shrink padding so content has more room */
+    .cv-paper-sheet {
+        padding: 20px 15px !important;
+    }
 
     /* Standard CV: stack contact grids */
     #contact-grid .col-4 {
@@ -1470,46 +1440,25 @@ body.mode-one-page #standard-page-section {
         padding: 5px 10px !important;
         font-size: 10px !important;
     }
-
-
-    /* Stack the sidebar on top of the main body */
-    body.mode-one-page #one-page-section {
-        flex-direction: column !important;
-        display: block !important;
-        width: 100% !important;
-    }
-
-    /* Sidebar becomes full width and adjusts padding */
-    body.mode-one-page .cv-sidebar {
-        flex: 0 0 100% !important;
-        width: 100% !important;
-        min-width: 100% !important;
-        padding: 20px !important;
-    }
-
-    /* Main body becomes full width and adjusts padding */
-    body.mode-one-page .cv-main-body {
-        flex: 0 0 100% !important;
-        width: 100% !important;
-        padding: 20px 15px !important;
-    }
-
-    /* Ensure the profile image scales well on small screens */
-    body.mode-one-page .cv-sidebar img {
-        width: 120px !important;
-        margin: 0 auto 15px auto;
-    }
 }
 
-
+/*!* --- 3. PRINT ONLY: Restore A4 Dimensions --- *!*/
+/*@media print {*/
+/*    .cv-paper-sheet {*/
+/*        width: 210mm !important;*/
+/*        min-height: 297mm !important;*/
+/*        padding: 20mm !important;*/
+/*        box-shadow: none !important;*/
+/*    }*/
+/*}*/
 
 /*--------------------------------------------------------------
 # 31. STANDARD & DETAILED CV (FULL WIDTH)
 # Used for Standard/Detailed modes. Focuses on clarity and spacing.
 --------------------------------------------------------------*/
-/*#standard-page-section .cv-paper-sheet {*/
-/*    padding: 50px;*/
-/*}*/
+#standard-page-section .cv-paper-sheet {
+    padding: 50px;
+}
 
 .cv-name-header {
     color: var(--heading-color);
@@ -1529,10 +1478,9 @@ body.mode-one-page #standard-page-section {
 
 .cv-section-title {
     color: var(--accent-color) !important;
-  background: rgba(0, 0, 0, 0.05);
     border-bottom: 1px solid var(--cv-title-border-color);
-    padding: 5px 10px;
-    border-left: 5px solid var(--accent-color);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
     text-transform: uppercase;
     font-weight: 700;
     font-family: var(--heading-font), serif;
@@ -1552,21 +1500,6 @@ body.mode-one-page #standard-page-section {
     color: #ffffff !important;
 }
 
-/*!* Section 32: One-Page Proportions *!*/
-/*.cv-sidebar {*/
-/*    !*background-color: var(--default-color) !important;*!*/
-/*    flex: 0 0 30% !important;*/
-/*    max-width: 30% !important;*/
-/*    padding: 25px 15px;*/
-/*    !*color: #ffffff !important;*!*/
-/*}*/
-
-.cv-main-body {
-    flex: 0 0 70% !important;
-    max-width: 70% !important;
-    /*padding: 25px 30px;*/
-}
-
 .cv-sidebar a { color: #ffffff !important; }
 
 .sidebar-title {
@@ -1584,12 +1517,12 @@ body.mode-one-page #standard-page-section {
     font-size: var(--cv-one-page-summary-fs); /* 8px */
 }
 
-/*!* Main Body - Clean White Theme *!*/
-/*.cv-main-body {*/
-/*    flex: 0 0 70%;*/
-/*    background-color: #ffffff !important;*/
-/*    padding: 25px 30px;*/
-/*}*/
+/* Main Body - Clean White Theme */
+.cv-main-body {
+    flex: 0 0 70%;
+    background-color: #ffffff !important;
+    padding: 25px 30px;
+}
 
 .one-page-name {
     font-size: 20px !important;
@@ -1892,10 +1825,6 @@ html {
     background-color: var(--heading-color) !important; /* Professional dark/black background */
     border-bottom: 1px solid var(--accent-color);
     color: #ffffff !important;
-    z-index: 1000;
-    min-height: 70px;
-    /*z-index: 1020;*/
-    transition: all 0.3s ease;
 }
 
 /* Bigger Title Text in Sticky Bar */
@@ -1931,17 +1860,33 @@ html {
 }
 
 
-/*!* --- CV Page General Layout --- *!*/
-/*.all-cv-wrapper {*/
-/*    background-color: var(--cv-wrapper-background-color);*/
-/*    padding: 30px 0;*/
-/*}*/
+/* --- CV Page General Layout --- */
+.all-cv-wrapper {
+    background-color: var(--cv-wrapper-background-color);
+    padding: 30px 0;
+}
 
-/*.cv-bg-wrapper {*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*}*/
+.cv-bg-wrapper {
+    display: flex;
+    justify-content: center;
+}
 
+.cv-paper-sheet {
+    background: white;
+    width: 210mm; /* A4 Width */
+    min-height: 297mm; /* A4 Height */
+    margin: 0 auto;
+    padding: 40px;
+    color: #333;
+    font-family: var(--default-font);
+}
+
+.cv-sticky-bar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #dee2e6;
+    z-index: 1000;
+}
 
 /* --- Standard CV Specifics --- */
 .cv-name-header {
@@ -1960,21 +1905,29 @@ html {
     padding-bottom: 5px;
 }
 
+.cv-section-title {
+    background-color: #f8f9fa;
+    padding: 5px 10px;
+    border-left: 5px solid var(--accent-color);
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
 
 .cv-paper-sheet img {
     border: 1px solid gray !important;
 }
 
 /* --- One-Page CV Specifics --- */
-/*.cv-sidebar {*/
-/*    width: 250px;*/
-/*    background-color: #343a40; !* Dark sidebar *!*/
-/*    min-height: 100%;*/
-/*}*/
+.cv-sidebar {
+    width: 250px;
+    background-color: #343a40; /* Dark sidebar */
+    min-height: 100%;
+}
 
-/*.cv-main-body {*/
-/*    flex: 1;*/
-/*}*/
+.cv-main-body {
+    flex: 1;
+}
 
 .sidebar-title {
     font-size: 14px;
@@ -2024,183 +1977,75 @@ html {
     color: #6c757d;
 }
 
-
-
-/* ==========================================================================
-   REVISED PRINT ENGINE: FIXED MARGINS & FLEX INTEGRITY
-   ========================================================================== */
 /*@media print {*/
-/*    !* 1. Hide Web UI *!*/
-/*    .no-print, .cv-sticky-bar, #header, #footer, .scroll-top, .header-toggle, #preloader {*/
-/*        display: none !important;*/
-/*    }*/
-
-/*    !* 2. Physical Page Setup *!*/
-/*    @page {*/
-/*        size: A4;*/
-/*        !*margin: 15mm; !* Forces a safety margin on EVERY physical page *!*!*/
-/*        !*margin: 5mm; !* Forces a safety margin on EVERY physical page *!*!*/
-/*        margin: 8mm; !* Forces a safety margin on EVERY physical page *!*/
-/*    }*/
-
-/*    !* 3. Global Reset *!*/
-/*    body {*/
-/*        background: white !important;*/
-/*        margin: 0 !important;*/
-/*        padding: 0 !important;*/
-/*        width: 100% !important;*/
-/*        -webkit-print-color-adjust: exact !important;*/
-/*        print-color-adjust: exact !important;*/
-/*    }*/
-
-/*    !* 4. Preserve Flex Layout (Side-by-Side) *!*/
-/*    .main, .all-cv-wrapper, #standard-page-section, .cv-bg-wrapper {*/
-/*        display: block !important; !* Wrapper stays block *!*/
-/*        !*width: 100% !important;*!*/
-/*        !*margin: 0 !important;*!*/
-/*        !*padding: 0 !important;*!*/
-/*        width: 100% !important;*/
-/*        margin: 0 !important;*/
-/*        padding: 0 !important;*/
-/*    }*/
-
-/*    !* IMPORTANT: Do NOT force .row or .col to block. Let Bootstrap Flex work *!*/
-/*    .row { display: flex !important; flex-wrap: wrap !important; }*/
-/*    .col-2, .col-4, .col-6, .col-10 { display: block !important; }*/
-
-/*    !* 5. The Paper Sheet: Responsive to Page Margins *!*/
-/*    #standard-page-section .cv-paper-sheet {*/
-/*        !*width: 100% !important; !* Scales to fit inside the 15mm @page margin *!*!*/
-/*        !*max-width: none !important;*!*/
-/*        !*margin: 0 !important;*!*/
-/*        padding: 0 !important; !* Internal padding is now handled by @page margin *!*/
-/*        box-shadow: none !important;*/
-/*        border: none !important;*/
-/*        background: transparent !important;*/
-/*        width: 140% !important; !* Scales to fit inside the 15mm @page margin *!*/
-/*        max-width: none !important;*/
-/*        margin: 0mm -20mm -8mm -26mm !important;*/
-/*    }*/
-
-/*    !* 6. Fix Backgrounds & Avoid Messy Breaks *!*/
-/*    .cv-section-title {*/
-/*        background-color: #f8f9fa !important;*/
-/*        -webkit-print-color-adjust: exact !important;*/
-/*    }*/
-
-/*    !*section, .resume-item, .cv-item-compact {*!*/
-/*    !*    page-break-inside: avoid; !* Prevents splitting a single entry across two pages *!*!*/
-/*    !*}*!*/
-
-/*    !*section, .resume-item, .cv-item-compact {*!*/
-/*    !*    page-break-inside: inherit; !* Prevents splitting a single entry across two pages - avoid | auto | inherit *!*!*/
-/*    !*}*!*/
+/*    .no-print { display: none !important; }*/
+/*    .printable-cv-page { background: white !important; }*/
+/*    .all-cv-wrapper { padding: 0; }*/
+/*    .cv-paper-sheet { box-shadow: none !important; margin: 0; padding: 20mm; }*/
 /*}*/
 
 
 /* ==========================================================================
-   GENERALIZED HYBRID PRINT ENGINE
+   FINAL PRINT ENGINE: Optimized for A4
    ========================================================================== */
 @media print {
-    /* 1. Universal Hide */
-    .no-print, .cv-sticky-bar, #header, #footer, .scroll-top, .header-toggle, #preloader {
+    /* 1. Hide everything except the CV Paper */
+    .no-print,
+    .cv-sticky-bar,
+    #header,
+    #footer,
+    .scroll-top,
+    .header-toggle {
         display: none !important;
     }
 
-    /* 2. Physical Page Reset */
+    /* 2. Reset Page Margins and Body */
+    @page {
+        size: A4;
+        margin: 0; /* Let the container handle margins for precision */
+    }
+
     body {
         background: white !important;
         margin: 0 !important;
         padding: 0 !important;
-        width: 100% !important;
-        -webkit-print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important; /* Force colors/backgrounds */
         print-color-adjust: exact !important;
     }
 
-    /* 3. Layout Integrity (Flexbox) */
-    .row { display: flex !important; flex-wrap: wrap !important; }
-    .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-9, .col-10 { display: block !important; }
-
-    /* --------------------------------------------------------------
-       MODE A: STANDARD CV (Based on your working settings)
-       -------------------------------------------------------------- */
-    @page { size: A4; margin: 8mm; } /* Your preferred 8mm safety margin */
-
-    body.mode-standard .main,
-    body.mode-standard .all-cv-wrapper,
-    body.mode-standard #standard-page-section,
-    body.mode-standard .cv-bg-wrapper {
-        display: block !important;
-        width: 100% !important;
-        margin: 0 !important;
+    /* 3. The Main Wrapper */
+    .main {
+        margin-left: 0 !important; /* Remove desktop sidebar offset */
         padding: 0 !important;
     }
 
-    body.mode-standard #standard-page-section .cv-paper-sheet {
+    .all-cv-wrapper {
         padding: 0 !important;
-        box-shadow: none !important;
-        border: none !important;
-        background: transparent !important;
-        width: 140% !important; /* Your custom scaling */
-        max-width: none !important;
-        margin: 0mm -20mm -8mm -26mm !important; /* Your specific offsets */
+        background: white !important;
     }
 
-    /* --------------------------------------------------------------
-       MODE B: ONE-PAGE CV (Zero Margin / Full Bleed)
-       -------------------------------------------------------------- */
-    body.mode-one-page { margin: 0 !important; }
-
-    /*body.mode-one-page .all-cv-wrapper,*/
-    /*body.mode-one-page #one-page-section,*/
-    /*body.mode-one-page .cv-bg-wrapper {*/
-    /*    !*!*display: flex !important;*!*!*/
-    /*    !*width: 210mm !important; !* Locked to A4 *!*!*/
-    /*    !*height: 297mm !important;*!*/
-    /*    !*!*margin: -8mm !important; !* Negates the @page margin for full bleed *!*!*!*/
-    /*    !*padding: 0 !important;*!*/
-
-    /*    display: block !important;*/
-    /*    width: 100% !important;*/
-    /*    margin: 0 !important;*/
-    /*    padding: 0 !important;*/
-    /*}*/
-
-    body.mode-one-page #one-page-section {
+    /* 4. The Paper Sheet: Force A4 Dimensions */
+    #standard-page-section .cv-paper-sheet {
         width: 210mm !important;
-        height: 297mm !important;
-        margin: -8mm 0 0 -8mm !important;
-    }
-
-    body.mode-one-page .cv-paper-sheet {
-        display: flex !important;
-        width: 100% !important;
-        padding: 0 !important;
+        min-height: 297mm !important;
         margin: 0 !important;
-        box-shadow: none !important;
+        padding: 20mm !important; /* Professional A4 margins */
+        box-shadow: none !important; /* Remove web shadows */
+        border: none !important;
+        display: block !important;
     }
 
-    body.mode-one-page .cv-sidebar {
-        background-color: var(--default-color) !important;
-        -webkit-print-color-adjust: exact !important;
-    }
-
-    /* --------------------------------------------------------------
-       4. TYPOGRAPHY & FINISHING
-       -------------------------------------------------------------- */
+    /* 5. Typography Adjustments */
     .cv-section-title {
-        background-color: #f8f9fa !important;
-        -webkit-print-color-adjust: exact !important;
+        background-color: #f8f9fa !important; /* Force background shade */
+        -webkit-print-color-adjust: exact;
     }
 
-    /*!* Keeps entries together *!*/
-    /*section, .resume-item, .cv-item-compact {*/
-    /*    page-break-inside: inherit;*/
-    /*}*/
+    p, div, span {
+        orphans: 3; /* Prevent single lines at bottom of page */
+        widows: 3;  /* Prevent single lines at top of page */
+    }
 }
-
-
-
 
 
 /* Ensure the mobile menu slides ABOVE the sticky CV bar */
@@ -2223,153 +2068,15 @@ html {
 
 
 
-
-/* --------------------------------------------------------------
-   MODE B: ONE-PAGE CV (FIXED ALIGNMENT & FULL BLEED)
-   -------------------------------------------------------------- */
-body.mode-one-page {
-    margin: 0 !important;
-    display: block !important;
+/* Offset for Sticky Bar on CV Page */
+.printable-cv-page section {
+    scroll-margin-top: 85px; /* Adjust this value to match the height of your .cv-sticky-bar */
 }
 
-/*body.mode-one-page .all-cv-wrapper,*/
-/*body.mode-one-page .cv-bg-wrapper {*/
-/*!*    !*display: flex !important;*!*!*/
-/*!*    justify-content: center !important; !* FORCES CENTERING ON THE PAGE *!*!*/
-/*!*    align-items: flex-start !important;*!*/
-/*!*    width: 100% !important;*!*/
-/*!*    !*background: white !important;*!*!*/
-/*!*    !*background: #ef0b0b !important;*!*!*/
-/*!*    background-color: var(--cv-wrapper-background-color);*!*/
-/*!*    margin: 0 !important;*!*/
-/*!*    !*padding: 0 !important;*!*!*/
-/*!*    !*padding: 40px 0;*!*!*/
-/*!*    !*min-height: 100vh;*!*!*/
-/*!*}*!*/
-/*!*{*!*/
-/*    background-color: var(--cv-wrapper-background-color);*/
-/*    !*padding: 40px 0;*!*/
-/*    min-height: 100vh;*/
-
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*}*/
-
-
-/*!* style.css Section 32 *!*/
-/*body.mode-one-page #one-page-section {*/
-/*    display: flex !important; !* Keep the Sidebar/Body split *!*/
-/*    flex-direction: row;*/
-/*    width: 100% !important;*/
-/*    max-width: 850px !important;   !* MATCHES Standard CV Paper *!*/
-/*    height: auto !important;       !* REPAIR: Removes the fixed height overflow *!*/
-/*    margin: 0 auto !important;     !* REPAIR: Removes the -8mm shift *!*/
-/*    !*background: #ffffff;*!*/
-/*    !*box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);*!*/
-/*    background: blue;*/
-/*    box-shadow: 0 0 15px rgba(50, 200, 20, 1);*/
-/*}*/
-
-/* style.css Section 32 */
-body.mode-one-page #one-page-section {
-    display: flex !important; /* Keep the Sidebar/Body split */
-    /*flex-direction: row;*/
-    width: 100% !important;
-    /*max-width: 850px !important;   !* MATCHES Standard CV Paper *!*/
-    height: auto !important;       /* REPAIR: Removes the fixed height overflow */
-    margin: 0 auto !important;     /* REPAIR: Removes the -8mm shift */
-    /*background: #ffffff;*/
-    /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);*/
-    /*background: blue;*/
-    /*box-shadow: 0 0 15px rgba(50, 200, 20, 1);*/
+/* If you have specific IDs outside of <section> tags that are targets */
+.printable-cv-page [id] {
+    scroll-margin-top: 85px;
 }
-
-/* Remove the fixed height that causes footer overlap */
-body.mode-one-page #one-page-section {
-    height: auto !important;
-}
-
-/*body.mode-one-page .cv-paper-sheet {*/
-/*    display: flex !important;*/
-/*    width: 100% !important;*/
-/*    padding: 0 !important;*/
-/*    margin: 0 !important;*/
-/*    box-shadow: none !important;*/
-/*}*/
-
-
-body.mode-one-page .cv-paper-sheet {
-    width: 100% !important; /* Allow it to shrink */
-    max-width: 850px;       /* Keep desktop size bound */
-    min-height: auto !important; /* Remove fixed A4 height on web view */
-    /*width: 210mm; !* A4 Width *!*/
-    /*min-height: 297mm; !* A4 Height *!*/
-    margin: 0 auto;
-    padding: 40px;          /* Default desktop padding */
-    background: #ffffff;
-    color: #000000;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-
-/* ==========================================================================
-   ONE-PAGE CV: ALIGNMENT & OVERFLOW REFACTOR
-   ========================================================================== */
-
-/*!* 1. Reset the wrapper to handle flow naturally *!*/
-/*.all-cv-wrapper {*/
-/*    display: block !important;*/
-/*    width: 100%;*/
-/*    overflow: visible !important; !* Prevents "hidden" content cutting off *!*/
-/*    background-color: var(--cv-wrapper-background-color);*/
-/*}*/
-
-/* 2. Center the paper sheet and manage the split layout */
-/*body.mode-one-page #one-page-section {*/
-/*    !*display: flex !important;*!*/
-/*    !*flex-direction: row;*!*/
-/*    justify-content: center; !* Horizontally centers the sheet *!*/
-/*    !*align-items: flex-start;*!*/
-/*    width: 100%;*/
-/*    !*max-width: 850px;       !* Standard web-view width *!*!*/
-/*    !*margin: 20px auto !important; !* Creates a gap from top and footer *!*!*/
-/*    background: #ffffff;*/
-/*    !*box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);*!*/
-/*    position: relative;*/
-/*    !*z-index: 10;            !* Keeps it above the wrapper but below the footer if necessary *!*!*/
-/*}*/
-
-/* 3. Handle the sidebar/body split proportionally */
-/*body.mode-one-page .cv-sidebar {*/
-/*    !*flex: 0 0 30% !important; !* Fixed 30% width *!*!*/
-/*    background-color: var(--default-color) !important;*/
-/*    color: #ffffff !important;*/
-/*    !*padding: 25px 15px;*!*/
-/*}*/
-
-/*body.mode-one-page .cv-main-body {*/
-/*    !*flex: 0 0 70% !important; !* Fixed 70% width *!*!*/
-/*    !*padding: 25px 30px;*!*/
-/*    background-color: #ffffff !important;*/
-/*}*/
-
-/*!* 4. Fix for the footer collision *!*/
-/*#footer {*/
-/*    position: relative;*/
-/*    z-index: 100;           !* Ensures footer always sits on top of any overflows *!*/
-/*    margin-top: 50px !important; !* Forces clear space after the CV ends *!*/
-/*}*/
-
-
-/*!* Offset for Sticky Bar on CV Page *!*/
-/*.printable-cv-page section {*/
-/*    scroll-margin-top: 85px; !* Adjust this value to match the height of your .cv-sticky-bar *!*/
-/*}*/
-
-/*!* If you have specific IDs outside of <section> tags that are targets *!*/
-/*.printable-cv-page [id] {*/
-/*    scroll-margin-top: 85px;*/
-/*}*/
 
 
 /****************************/
@@ -2468,5 +2175,20 @@ body.mode-one-page .cv-paper-sheet {
     color: var(--resume-text-muted-color); /* Uses your muted grey */
 }
 
+/* Update these lines in style.css to match your HTML exactly */
 
+/* Standard CV Mode */
+body.mode-standard #standard-page-section {
+    display: block !important;
+}
+body.mode-standard #one-page-section {
+    display: none !important;
+}
 
+/* One-Page CV Mode */
+body.mode-one-page #standard-page-section {
+    display: none !important;
+}
+body.mode-one-page #one-page-section {
+    display: flex !important; /* One-page uses flex for the sidebar layout */
+}

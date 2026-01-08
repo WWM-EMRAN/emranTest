@@ -37,7 +37,7 @@ const SiteUtil = {
     /**
      * Master Synchronization Logic
      */
-    syncGlobalMetrics() {
+    async syncGlobalMetrics() {
         console.log("Syncing metrics across modules...");
         const keyInfo = SiteCore.get('key_information');
         if (!keyInfo) return;
@@ -107,5 +107,95 @@ const SiteUtil = {
         if (years > 0) duration += `${years} yr${years > 1 ? 's' : ''} `;
         if (months > 0) duration += `${months} mo${months > 1 ? 's' : ''}`;
         return duration === "" ? "1 mo" : duration.trim();
+    },
+
+    /**
+     * Filters and sorts certificates for the index page.
+     * Returns the top X items based on serial_no.
+     */
+    getTopCertificates(data, limit = 12) {
+        if (!data || !data.coursestrainingscertificates) return [];
+
+        // 1. Create a copy and sort by serial_no numerically
+        const sorted = [...data.coursestrainingscertificates].sort((a, b) => {
+            const numA = parseInt(a.serial_no) || 999; // Fallback for missing serials
+            const numB = parseInt(b.serial_no) || 999;
+            return numA - numB;
+        });
+
+        // 2. Return only the top 'limit' items
+        return sorted.slice(0, limit);
+    },
+
+
+    /**
+     * Extracts unique filter tags and maps them to readable labels
+     */
+    getFilterMenuData(data) {
+        if (!data || !data.coursestrainingscertificates) return [];
+
+        const tags = new Set();
+        data.coursestrainingscertificates.forEach(item => {
+            if (item.filter_tags) {
+                item.filter_tags.forEach(tag => tags.add(tag));
+            }
+        });
+
+        // Mapping for specific tags to pretty labels
+        const filterMap = {
+            'filter-cert': 'Certificate',
+            'filter-cour': 'Course',
+            'filter-train': 'Training',
+            'filter-conf': 'Conference',
+            'filter-boot': 'Bootcamp'
+        };
+
+        return Array.from(tags).map(tag => ({
+            tag: `.${tag}`,
+            label: filterMap[tag] || tag.replace('filter-', '').replace(/^\w/, c => c.toUpperCase())
+        }));
+    },
+
+
+    /**
+     * Get current URL path and parameter details
+     */
+    getCurrentPathDetails() {
+        // 0. Main URL and origin
+        const url = window.location.href;
+        const origin = window.location.origin;
+
+        // 1. File Name Fallback
+        const pathName = window.location.pathname;
+        // If path is just "/" or empty, default to "index.html"
+        const fileName = pathName.substring(pathName.lastIndexOf('/') + 1) || 'index.html';
+
+        // 2. Query Parameter Fallback (Mode)
+        const urlParams = new URLSearchParams(window.location.search);
+        // Pase all parameters to dictionary
+        const allParams = Object.fromEntries(urlParams) || {};
+
+        // 3. Hash/Fragment Fallback (Section)
+        // If #about is missing, hash will be an empty string ""
+        const hashStr = window.location.hash || '';
+        // Split hash values
+        const hashes = hashStr.split('#').filter(Boolean);
+        // const hashes = hashStr.split('#');
+
+        console.log("====> CURRENT URL INFO:",
+                            "\nURL              = ", url,
+                            "\nORIGIN           = ", origin,
+                            "\nPATH             = ", pathName,
+                            "\nFILE             = ", fileName,
+                            "\nGET PARAMETERS   = ", allParams,
+                            "\nHASH VALS        = ", hashes);
+
+        // let hashStr = "#home#about";
+        // let parts = hashStr.split('#');
+        // console.log('===>', allParams, hashes); // true
+        // console.log('--->', allParams.mode, hashes[0]); // true
+
+        return [url, origin, pathName, fileName, allParams, hashes];
     }
+
 };

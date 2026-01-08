@@ -52,6 +52,11 @@
       "text": "_XXHypnogram Analysis, Sleep, Sleep Analysis, Sleep Disorder Detection, Aging, EEG Signal Analysis, EEG Channel Optimisation, Epileptic Seizure Detection, ML Model Interpretability, Meteorological Data Analysis, Air Quality Prediction, Realestate House Price Suggestion (GenAI), Multi-Agent AI Application, Research Assistant, Business Data Analysis, Education Data Analysis."
     }
   },
+  "assets": {
+    "images": {
+      "profile_image_formal": "./assets/img/myimg/emran-ali-formal.jpg"
+    }
+  },
   "about_full_text": {
     "icon_class": "bx bx-user",
     "title": "About_XX",

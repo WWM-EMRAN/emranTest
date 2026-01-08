@@ -37,9 +37,14 @@ const SiteCommon = {
         if (nameEl) nameEl.textContent = personal.name;
 
         // Profile Images
-        const profileImg = document.querySelector('#header .profile-img img');
-        if (profileImg && site.assets.images.profile_image_pp) {
-            profileImg.src = site.assets.images.profile_image_pp;
+        const profileImgWrap = about.querySelector('#header .profile-img');
+        if (profileImgWrap && site?.assets?.images?.profile_image_pp) {
+            const link = profileImgWrap.querySelector('a');
+            const img = profileImgWrap.querySelector('img');
+            const photoPath = site.assets.images.profile_image_pp;
+
+            if (link) link.href = photoPath;
+            if (img) img.src = photoPath;
         }
 
         const logoImg = document.querySelector('#header .logo img');
@@ -102,14 +107,14 @@ const SiteCommon = {
                 <div class="container">
                     <div class="copyright">
                         <p>© Copyright · ${year} <strong><span>
-                            <a href="page-details.html?page=${footer.copyright_logo_url}">
+                            <a href="page_details.html?page=${footer.copyright_logo_url}">
                                 <img style="height: 20px;" src="${assets.icons.logo_png}" alt="Logo" class="img-fluid rounded-circle">
                             </a>
-                            <a href="page-details.html?page=${footer.copyright_text_url}">${footer.copyright_owner}</a>
+                            <a href="page_details.html?page=${footer.copyright_text_url}">${footer.copyright_owner}</a>
                         </span></strong></p>
                     </div>
                     <div class="credits">
-                        ${footer.links.map(l => `<a href="page-details.html?page=${l.url}">${l.label}</a>`).join(' | ')}
+                        ${footer.links.map(l => `<a href="page_details.html?page=${l.url}">${l.label}</a>`).join(' | ')}
                     </div>
                 </div>`;
         }

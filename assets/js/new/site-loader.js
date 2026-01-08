@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
  await SiteCore.preloadAll(BASE,FILES);
  const p=location.pathname.toLowerCase();
  if(p.endsWith('index.html')||p.endsWith('/')) SiteIndex.init();
- else if(p.includes('section-details')) SiteSection.init();
- else if(p.includes('page-details')) SitePage.init();
- else if(p.includes('curriculum-vitae')) SiteCV.init();
+ else if(p.includes('section_details')) SiteSection.init();
+ else if(p.includes('page_details')) SitePage.init();
+ else if(p.includes('curriculum_vitae')) SiteCV.init();
 });

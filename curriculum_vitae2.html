@@ -73,7 +73,7 @@
 
     <div class="social-links text-center">
         <!--      <a href="https://www.twitter.com/WWM_EMRAN" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>&ndash;>-->
-        <a href="https://www.x.com/WWM_EMRAN" target="_blank" class="x"><i class="bi bi-twitter-x"></i></a>
+<!--        <a href="https://www.x.com/WWM_EMRAN" target="_blank" class="x"><i class="bi bi-twitter-x"></i></a>-->
         <!--        <a href="https://facebook.com/wwm.emran" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>-->
         <!--        <a href="https://instagram.com/wwm.emran" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>-->
         <a href="https://www.linkedin.com/in/wwmemran" target="_blank" class="linkedin"><i
@@ -139,17 +139,23 @@
     <!-- <footer id="menu_footer" class="footer position-relative"> -->
     <div id="menu_footer" class="footer">
         <div class="container">
-            <div class="copyright">
-                <p style="text-align: center;">
-                    &copy; Copyright · 2025 <strong><span>
-                    <a href="./ea-logo.html">
-                        <img style="height: 20px;" src="assets/img/Emran_Ali_Logo_Fav.png" alt="Emran Ali - Personal Website | emran ali logo fav" class="img-fluid rounded-circle">
-                    </a>
-                    <a href="./copyright.html"> WWM Emran </a> </span></strong>
+            <div class="copyright text-center-force">
+                <p>
+                    © Copyright · 2025
+                    <strong>
+                            <span>
+                                <a href="page_details.html?page=ea_logo">
+                                    <img src="assets/img/Emran_Ali_Logo_Fav.png" alt="Logo"
+                                         class="img-fluid rounded-circle logo-sm">
+                                </a>
+                                <a href="page_details.html?page=copyright"> WWM Emran </a>
+                            </span>
+                    </strong>
                 </p>
             </div>
-            <div class="credits">
-                <a href="./diary.html"> Diary </a> | <a href="./gallery.html"> Gallery </a>
+            <div class="credits text-center-force">
+                <a href="page_details.html?page=diary"> Diary </a> |
+                <a href="page_details.html?page=gallery"> Gallery </a>
             </div>
         </div>
     </div>
@@ -166,13 +172,12 @@
                 <a href="./" class="btn btn-primary btn-sm px-4 py-2 fw-bold">
                     <i class="bi bi-house"></i> <span class="d-none d-sm-inline">Home</span>
                 </a>
-                <div class="d-flex align-items-center gap-6 cv-controls no-print ms-3">
-<!--                    <label class="cv-label-white mb-0 d-none d-lg-inline">CV Type:</label>-->
-<!--                    <select id="cvModeSelector" class="form-select form-select-sm shadow-sm border-primary" onchange="changeCVMode(this.value)">-->
-                    <select id="cvModeSelector" class="form-select form-select-sm shadow-sm border-primary" >
-                        <option value="" disabled> ---   CV Type (Mode)   --- </b> </option>
+                <div class="flex-grow-1 ms-2 ms-md-3">
+                    <select id="cvTypeSelector" class="form-select form-select-sm shadow-sm border-primary w-100 py-2 cv-controls no-print ">
+                        <option value="" disabled selected> ---   Select CV Type   --- </option>
                         <option value="standard">Standard (Multi-page)</option>
-                        <option value="one-page">One-Page Summary</option>
+                        <option value="onePage">One-Page Summary</option>
+                        <option value="twoPage" disabled>Two-Page Summary (Coming Soon)</option>
                         <option value="detailed" disabled>Detailed (Coming Soon)</option>
                     </select>
                 </div>
@@ -1716,7 +1721,14 @@
 <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 
-<script src="assets/js/new/site-loader.js"></script>
-<script src="assets/js/new/scripts.js"></script>
+
+<script src="assets/js/site-core.js"></script>
+<script src="assets/js/site-util.js"></script>
+<script src="assets/js/site-common.js"></script>
+<script src="assets/js/site-cv.js"></script>
+
+<script src="assets/js/scripts.js"></script>
+
+<script src="assets/js/site-loader.js"></script>
 </body>
 </html>

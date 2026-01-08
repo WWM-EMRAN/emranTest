@@ -7,7 +7,7 @@ window.SiteCore = (function() {
     /**
      * Loads all data, prioritizing Persistent Cache -> RAM Cache -> Server Fetch
      */
-    async function preloadAll(base, files) {
+    async function preloadAllData(base, files) {
         if (mem.promise) return mem.promise;
 
         const now = Date.now();
@@ -79,5 +79,5 @@ window.SiteCore = (function() {
         return c;
     };
 
-    return { preloadAll, get, el, append, card };
+    return { preloadAllData, get, el, append, card };
 })();
