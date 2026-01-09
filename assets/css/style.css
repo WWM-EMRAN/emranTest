@@ -41,6 +41,7 @@
      ========================================================================== */
   --cv-one-page-body-fs: 9px;            /* Core text size for One-Page CV mode */
   --cv-one-page-summary-fs: 8px;         /* Tighter text for summary grids in CV */
+  --cv-one-page-sidebar-fs: 6px;         /* Tighter text for sidebar in CV */
   --badge-details-fs: 11px;              /* Font size for "More Details" button toggles */
   --map-fixed-height: 300px;             /* Standard height for contact/location maps */
   --map-filter: grayscale(0.3) contrast(1.1); /* FIXED: Missing filter for iframes */
@@ -1432,7 +1433,7 @@ body.mode-one-page #standard-page-section {
     background: #ffffff;
     color: #000000;
     /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);*/
-    box-shadow: 0 0 15px rgba(255, 5, 5, 1);
+    /*box-shadow: 0 0 15px rgba(255, 5, 5, 1);*/
 }
 
 /* --- 2. MOBILE OVERRIDES (< 768px) --- */
@@ -1454,9 +1455,14 @@ body.mode-one-page #standard-page-section {
     }
 
     .cv-sidebar {
-        flex: 0 0 100% !important;
-        width: 100% !important;
-        min-width: 100% !important;
+        /*flex: 0 0 100% !important;*/
+        /*width: 100% !important;*/
+        /*min-width: 100% !important;*/
+
+        font-size: var(--cv-one-page-sidebar-fs);
+        flex: 0 0 30% !important;
+        width: 30% !important;
+        min-width: 30% !important;
     }
 
     .cv-main-body {
@@ -1481,9 +1487,24 @@ body.mode-one-page #standard-page-section {
 
     /* Sidebar becomes full width and adjusts padding */
     body.mode-one-page .cv-sidebar {
-        flex: 0 0 100% !important;
-        width: 100% !important;
-        min-width: 100% !important;
+        /*flex: 0 0 100% !important;*/
+        /*width: 100% !important;*/
+        /*min-width: 100% !important;*/
+        font-size: var(--cv-one-page-sidebar-fs);
+        flex: 0 0 30% !important;
+        width: 30% !important;
+        min-width: 40% !important;
+        padding: 20px !important;
+    }
+
+    /* Sidebar becomes full width and adjusts padding */
+    body.mode-one-page .cv-main-body {
+        /*flex: 0 0 100% !important;*/
+        /*width: 100% !important;*/
+        /*min-width: 100% !important;*/
+        flex: 0 0 70% !important;
+        width: 70% !important;
+        min-width: 70% !important;
         padding: 20px !important;
     }
 
@@ -1496,7 +1517,7 @@ body.mode-one-page #standard-page-section {
 
     /* Ensure the profile image scales well on small screens */
     body.mode-one-page .cv-sidebar img {
-        width: 120px !important;
+        width: 100px !important;
         margin: 0 auto 15px auto;
     }
 }
@@ -1546,6 +1567,7 @@ body.mode-one-page #standard-page-section {
 /* Sidebar - Dark/Charcoal Theme */
 .cv-sidebar {
     background-color: var(--default-color) !important;
+    font-size: var(--cv-one-page-sidebar-fs);
     flex: 0 0 30%;
     min-width: 30%;
     padding: 25px 15px;
@@ -2166,23 +2188,42 @@ html {
     /*    padding: 0 !important;*/
     /*}*/
 
-    body.mode-one-page #one-page-section {
-        width: 210mm !important;
-        height: 297mm !important;
-        margin: -8mm 0 0 -8mm !important;
-    }
+    /*body.mode-one-page #one-page-section {*/
+    /*    width: 210mm !important;*/
+    /*    height: 297mm !important;*/
+    /*    margin: -8mm 0 0 -8mm !important;*/
+    /*}*/
 
-    body.mode-one-page .cv-paper-sheet {
-        display: flex !important;
-        width: 100% !important;
+    /*body.mode-one-page .cv-paper-sheet {*/
+    /*    display: flex !important;*/
+    /*    width: 100% !important;*/
+    /*    padding: 0 !important;*/
+    /*    margin: 0 !important;*/
+    /*    box-shadow: none !important;*/
+    /*}*/
+
+    body.mode-one-page #one-page-section .cv-paper-sheet {
+        font-size: var(--cv-one-page-sidebar-fs);
         padding: 0 !important;
-        margin: 0 !important;
         box-shadow: none !important;
+        border: none !important;
+        background: transparent !important;
+        width: 140% !important; /* Your custom scaling */
+        max-width: none !important;
+        /*margin: 0mm 0mm -8mm -26mm !important; !* Your specific offsets *!*/
+        margin: -10mm 0mm -8mm -28mm !important; /* Your specific offsets */
     }
 
     body.mode-one-page .cv-sidebar {
         background-color: var(--default-color) !important;
+        /*width: 100%;*/
         -webkit-print-color-adjust: exact !important;
+
+        font-size: var(--cv-one-page-sidebar-fs);
+        flex: 0 0 30% !important;
+        width: 30% !important;
+        min-width: 30% !important;
+        padding: 20px !important;
     }
 
     /* --------------------------------------------------------------
@@ -2441,9 +2482,9 @@ body.mode-one-page .cv-paper-sheet {
     border: 1px solid var(--cv-title-border-color);
     border-radius: 4px;
     background-color: var(--light-background-color);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    /*height: 100%;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
     justify-content: center;
     transition: transform 0.2s ease;
 }

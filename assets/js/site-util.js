@@ -127,7 +127,6 @@ const SiteUtil = {
         return sorted.slice(0, limit);
     },
 
-
     /**
      * Extracts unique filter tags and maps them to readable labels
      */
@@ -155,7 +154,6 @@ const SiteUtil = {
             label: filterMap[tag] || tag.replace('filter-', '').replace(/^\w/, c => c.toUpperCase())
         }));
     },
-
 
     /**
      * Get current URL path and parameter details

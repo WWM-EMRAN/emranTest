@@ -42,7 +42,7 @@
     {"platform": "kaggle", "url": "https://kaggle.com/wwmemran", "icon_class": "fa-brands fa-kaggle"},
     {"platform": "stack-overflow", "url": "https://stackoverflow.com/users/2314674/wwm-emran", "icon_class": "bi bi-stack-overflow"},
     {"platform": "quora", "url": "https://quora.com/Wwm-Emran", "icon_class": "bi bi-quora"},
-    {"platform": "website", "url": "https://emran.humachlab.com/", "icon_class": "bi bi-globe"}
+    {"platform": "website", "url": "https://emran.humachlab.com", "icon_class": "bi bi-globe"}
   ],
     "basic": [
     {"platform": "x", "url": "https://www.x.com/WWM_EMRAN", "icon_class": "bi bi-twitter-x"},
@@ -56,7 +56,7 @@
     {"platform": "kaggle", "url": "https://kaggle.com/wwmemran", "icon_class": "fa-brands fa-kaggle"},
     {"platform": "stack-overflow", "url": "https://stackoverflow.com/users/2314674/wwm-emran", "icon_class": "bi bi-stack-overflow"},
     {"platform": "quora", "url": "https://quora.com/Wwm-Emran", "icon_class": "bi bi-quora"},
-    {"platform": "website", "url": "https://emran.humachlab.com/", "icon_class": "bi bi-globe"}
+    {"platform": "website", "url": "https://emran.humachlab.com", "icon_class": "bi bi-globe"}
   ],
   "standard": [
     {"platform": "x", "url": "https://www.x.com/WWM_EMRAN", "icon_class": "bi bi-twitter-x"},
@@ -73,7 +73,7 @@
     {"platform": "stack-overflow", "url": "https://stackoverflow.com/users/2314674/wwm-emran", "icon_class": "bi bi-stack-overflow"},
     {"platform": "quora", "url": "https://quora.com/Wwm-Emran", "icon_class": "bi bi-quora"},
     {"platform": "youtube", "url": "https://www.youtube.com/c/WWMEMRAN", "icon_class": "bi bi-youtube"},
-    {"platform": "website", "url": "https://emran.humachlab.com/", "icon_class": "bi bi-globe"}
+    {"platform": "website", "url": "https://emran.humachlab.com", "icon_class": "bi bi-globe"}
   ],
   "all": [
     {"platform": "x", "url": "https://www.x.com/WWM_EMRAN", "icon_class": "bi bi-twitter-x"},
@@ -90,7 +90,7 @@
     {"platform": "stack-overflow", "url": "https://stackoverflow.com/users/2314674/wwm-emran", "icon_class": "bi bi-stack-overflow"},
     {"platform": "quora", "url": "https://quora.com/Wwm-Emran", "icon_class": "bi bi-quora"},
     {"platform": "youtube", "url": "https://www.youtube.com/c/WWMEMRAN", "icon_class": "bi bi-youtube"},
-    {"platform": "website", "url": "https://emran.humachlab.com/", "icon_class": "bi bi-globe"},
+    {"platform": "website", "url": "https://emran.humachlab.com", "icon_class": "bi bi-globe"},
     {"platform": "skype", "url": "skype:wwm.emran?chat", "icon_class": "bi bi-skype"},
     {"platform": "tel", "url": "tel:+61480248845", "icon_class": "bi bi-telephone"},
     {"platform": "whatsapp", "url": "https://wa.me/+61480248845", "icon_class": "bi bi-whatsapp"}
@@ -114,7 +114,7 @@
     {"platform": "stack-overflow", "url": "https://stackoverflow.com/users/2314674/wwm-emran", "icon_class": "bi bi-stack-overflow"},
     {"platform": "quora", "url": "https://quora.com/Wwm-Emran", "icon_class": "bi bi-quora"},
     {"platform": "youtube", "url": "https://www.youtube.com/c/WWMEMRAN", "icon_class": "bi bi-youtube"},
-    {"platform": "website", "url": "https://emran.humachlab.com/", "icon_class": "bi bi-globe"},
+    {"platform": "website", "url": "https://emran.humachlab.com", "icon_class": "bi bi-globe"},
     {"platform": "skype", "url": "skype:wwm.emran?chat", "icon_class": "bi bi-skype"},
     {"platform": "tel", "url": "tel:+61480248845", "icon_class": "bi bi-telephone"},
     {"platform": "whatsapp", "url": "https://wa.me/+61480248845", "icon_class": "bi bi-whatsapp"}

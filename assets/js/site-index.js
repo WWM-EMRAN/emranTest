@@ -57,15 +57,6 @@ const SiteIndex = {
         }
     },
 
-    // // Hide preloader
-    // hide_preloader() {
-    //     const preloader = document.getElementById('preloader');
-    //     if (preloader) {
-    //         preloader.style.opacity = "0";
-    //         setTimeout(() => { preloader.style.display = "none"; }, 600);
-    //     }
-    // },
-
 
 
     /**
@@ -674,62 +665,6 @@ const SiteIndex = {
      * Renders Courses, Trainings and Certificates section
      * Target: #courses_trainings_certificates
      */
-    // render_courses_trainings_certificates() {
-    //     const data = SiteCore.get('courses_trainings_certificates');
-    //     const section = document.getElementById('courses_trainings_certificates');
-    //     if (!data || !section) return;
-    //
-    //     // 1. Update Section Header
-    //     const info = data.section_info;
-    //     const header = section.querySelector('.section-title');
-    //     if (header && info) {
-    //         header.querySelector('h2').innerHTML = `<i class="${info.icon_class}"></i> ${info.title}
-    //             <a href="section_details.html?section=courses_trainings_certificates"><i class="bx bx-link ms-2"></i></a>`;
-    //         header.querySelector('h6').textContent = info.details;
-    //     }
-    //
-    //     // 2. Identify Grid Container
-    //     const gridContainer = section.querySelector('.isotope-container');
-    //     if (gridContainer) {
-    //         // --- THE LOGIC: Get top 12 items via SiteUtil ---
-    //         const topItems = SiteUtil.getTopCertificates(data, 12);
-    //
-    //         // --- THE FIX: Clear placeholders ---
-    //         gridContainer.innerHTML = '';
-    //
-    //         const itemsHtml = topItems.map((item, index) => {
-    //             const filterClasses = item.filter_tags.join(' ');
-    //             const delay = (index % 3) * 100;
-    //
-    //             return `
-    //                 <div class="col-lg-4 col-md-6 portfolio-item isotope-item ${filterClasses}" data-aos="fade-up" data-aos-delay="${delay}">
-    //                     <div class="portfolio-content h-100">
-    //                         <img src="${item.image_path}" class="img-fluid" alt="${item.title}">
-    //                         <div class="portfolio-info">
-    //                             <h4>${item.title}</h4>
-    //                             <p>${item.source}</p>
-    //                             <div class="portfolio-links">
-    //                                 <a href="${item.image_path}" title="${item.title}" data-gallery="portfolio-gallery-cert" class="glightbox preview-link">
-    //                                     <i class="bi bi-zoom-in"></i>
-    //                                 </a>
-    //                                 <a href="section_details.html?section=courses_trainings_certificates&id=${item.id_ref}" title="More Details" class="details-link">
-    //                                     <i class="bi bi-link-45deg"></i>
-    //                                 </a>
-    //                             </div>
-    //                         </div>
-    //                     </div>
-    //                 </div>`;
-    //         }).join('');
-    //
-    //         gridContainer.innerHTML = itemsHtml;
-    //     }
-    // },
-
-
-    /**
-     * Renders Courses, Trainings and Certificates section
-     * Target: #courses_trainings_certificates
-     */
     render_courses_trainings_certificates() {
         const data = SiteCore.get('courses_trainings_certificates');
         const section = document.getElementById('courses_trainings_certificates');
@@ -1123,6 +1058,7 @@ const SiteIndex = {
                             </h4>
                             <div class="mb-2">
                                 <span class="badge badge-status">
+<!--                                <span class="badge badge-important">-->
                                     <a href="${item.portfolio_url}" target="_blank" rel="noreferrer">
                                         <i class="bi bi-github me-1"></i> GitHub Repository
                                     </a>
@@ -1261,7 +1197,7 @@ const SiteIndex = {
                             <div class="d-flex gap-1 justify-content-md-end flex-wrap mb-2">
                                 <button class="badge border-0 badge-dates" 
                                         onclick="handleCopyAction(this, 'Citation')" 
-                                        data-citation='${pub.citation_text.replace(/'/g, "&apos;")}'>
+                                        data-citation='${pub.citation_text.replace(/<[^>]*>/g, "").replace(/'/g, "&apos;")}'>
                                     <i class="bi bi-clipboard-plus me-1"></i> Copy Citation
                                 </button>
                                 <a href="${pub.journal_link}" target="_blank" class="badge badge-status d-block">
