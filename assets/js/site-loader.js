@@ -30,9 +30,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         const [url, origin, pathName, fileName, allParams, hashes] = SiteUtil.getCurrentPathDetails();
 
         // 4. Load common elements for the entire site
-        SiteCommon.init();
+        let menuType = "main";
+        if ( (pathName.includes('page_details.html')) || (pathName.includes('curriculum_vitae.html') && ((allParams.type || 'standard')?.includes('onePage')) || (allParams.type || 'standard')?.includes('twoPage')) ){
+            menuType = "short";
+        }
 
-        // 4.1 --- DYNAMIC ANCHOR UPDATE ---
+        // 4.1 Load common elements for the entire site
+        SiteCommon.init(menuType);
+
+        // 4.2 --- DYNAMIC ANCHOR UPDATE ---
         // Locate the Home link in your navmenu
         const homeLink = document.querySelector('#navmenu a i.bx-home')?.parentElement ||
                          document.querySelector('#navmenu a[href="#hero"], #navmenu a[href="#all_cv_wrapper"]');
@@ -46,9 +52,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         else if (pathName.includes('section_details.html')) {
             // const section = allParams.get('section');
             section = allParams.section?.toLowerCase() || '';
-            console.log(`### Routing to: Section View [${sectionKey}]`);
-            homeLink.setAttribute('href', '#hero');
-            SiteSection.init(sectionKey);
+            console.log(`### Routing to: Section View [${section}]`);
+            homeLink.setAttribute('href', './');
+            SiteSection.init(section);
         }
         else if (pathName.includes('page_details.html')) {
             // const page = allParams.get('page');

@@ -3,7 +3,7 @@
  * Handles elements shared across all pages (Sidebar, Header, Footers, Metadata).
  */
 const SiteCommon = {
-    init() {
+    init(menuType='main') {
         console.log("Initializing Global Site Elements...");
         const siteData = SiteCore.get('site');
         const personalData = SiteCore.get('personal_information');
@@ -15,7 +15,7 @@ const SiteCommon = {
 
         this.updateMetadata(siteData.site_info, siteData.assets);
         this.renderHeader(personalData, siteData);
-        this.renderNavigation(siteData.navigation);
+        this.renderNavigation(siteData.navigation, menuType);
         this.renderFooters(siteData.footer_meta, siteData.assets);
     },
 
@@ -37,7 +37,7 @@ const SiteCommon = {
         if (nameEl) nameEl.textContent = personal.name;
 
         // Profile Images
-        const profileImgWrap = about.querySelector('#header .profile-img');
+        const profileImgWrap = document.querySelector('#header .profile-img');
         if (profileImgWrap && site?.assets?.images?.profile_image_pp) {
             const link = profileImgWrap.querySelector('a');
             const img = profileImgWrap.querySelector('img');
@@ -64,12 +64,15 @@ const SiteCommon = {
     },
 
     /** Renders the Sidebar Navigation Menu */
-    renderNavigation(nav) {
+    renderNavigation(nav, menuType) {
         const navContainer = document.getElementById('navmenu');
-        if (!navContainer || !nav?.main_menu) return;
+        if (!navContainer || !nav?.main_menu || !nav?.short_menu) return;
+
+        selected_menu = (menuType==="main") ? nav.main_menu : nav.short_menu;
+        console.log("Rendering Navigation Menu: " + selected_menu)
 
         let html = '<ul>';
-        nav.main_menu.forEach(item => {
+        selected_menu.forEach(item => {
             const activeClass = (item.url === '#hero' || item.url === 'index.html') ? 'active' : '';
 
             if (item.is_dropdown && item.submenu?.length > 0) {
