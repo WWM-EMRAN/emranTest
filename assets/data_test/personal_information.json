@@ -37,7 +37,7 @@
       {"icon_class": "bx bx-group", "strong": "Membership", "text": "ACS, IEEE, EMBS, DUSA, DAIS & DSEC"},
       {"icon_class": "bx bx-medal", "strong": "Awards", "text": "(AWS AI/ML & Bertelsmann NextGen) Scholarship"},
       {"icon_class": "bi bi-envelope-at", "strong": "Email", "text": "emran.ali@research.deakin.edu.au", "link": "mailto:emran.ali@research.deakin.edu.au"},
-      {"icon_class": "bi bi-microsoft-teams", "strong": "MS Teams", "text": "wwm.emran@hotmail.com", "link": "https://teams.microsoft.com/l/chat/0/0?users=wwm.emran@hotmail.com"},
+      {"icon_class": "bi bi-microsoft-teams", "strong": "MS Teams", "text": "wwm.emran@outlook.com", "link": "https://teams.microsoft.com/l/chat/0/0?users=wwm.emran@outlook.com"},
       {"icon_class": "bx bxl-linkedin", "strong": "LinkedIn_XX", "text": "https//www.linkedin.com/in/wwmemran", "link": "https//www.linkedin.com/in/wwmemran"},
       {"icon_class": "bx bx-globe", "strong": "Website", "text": "https://emran.humachlab.com", "link": "https://emran.humachlab.com"}
     ],
