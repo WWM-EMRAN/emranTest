@@ -925,7 +925,7 @@ const SiteCV_Standard = {
     render_footer() {
         const personal = SiteCore.get('personal_information');
         const site = SiteCore.get('site');
-        console.log("render_footer initialized...");
+        console.log("render_footer initialized...", site, personal);
         const footerSection = document.querySelector("#cv-footer");
 
         if (!personal || !footerSection) return;
@@ -940,6 +940,10 @@ const SiteCV_Standard = {
         footerSection.innerHTML = `
             <p class="mb-0 small italic">I hereby certify that the information provided is true and correct to the best of my knowledge.</p>
             <br /><br />
+            <div class="d-flex justify-content-between mt-2 text-dark text-uppercase">
+                <span class="small"></span>
+                <span class="text-muted rounded-0"><img style="opacity: 0.2;" src="${site.assets.icons.logo_png}"></span>
+            </div>
             <div class="d-flex justify-content-between mt-2 text-dark text-uppercase">
                 <span class="small">Generated: <span>${currentDate}</span></span>
                 <span class="fw-bold">${personal.name}</span>

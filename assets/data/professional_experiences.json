@@ -40,10 +40,11 @@
       {
         "title": "Research Areas_XX",
         "cv_research_areas": [
-          "Data Science & Analytics_XX",
+          "Data Science & Business Analytics_XX",
           "Machine (Deep) Learning",
           "Health Informatics & MedTech",
           "Disease Detection & Prediction",
+          "Agentic Business Automation",
           "_XXTime-series Data Analysis",
           "(Bio)Signal Processing"
         ]
