@@ -940,9 +940,8 @@ const SiteCV_Standard = {
         footerSection.innerHTML = `
             <p class="mb-0 small italic">I hereby certify that the information provided is true and correct to the best of my knowledge.</p>
             <br /><br />
-            <div class="d-flex justify-content-between mt-2 text-dark text-uppercase">
-                <span class="small"></span>
-                <span class="text-muted rounded-0"><img style="opacity: 0.2;" src="${site.assets.icons.logo_png}"></span>
+            <div class="cv-footer-container">
+                <img src="assets/img/Emran_Ali_Logo_Fav.png" class="standard-footer-logo" alt="Branding Logo">
             </div>
             <div class="d-flex justify-content-between mt-2 text-dark text-uppercase">
                 <span class="small">Generated: <span>${currentDate}</span></span>
@@ -984,6 +983,7 @@ const SiteCV_OnePage = {
             this.render_sidebar_programming()
             this.render_sidebar_languages()
             this.render_sidebar_memberships()
+            this.render_sidebar_logo()
 
             // --- 2. MAIN BODY SECTIONS ---
             this.render_header()
@@ -1081,7 +1081,7 @@ const SiteCV_OnePage = {
     contactsList.innerHTML = html;
 },
 
-    render_sidebar_expertise(limit = 6) {
+    render_sidebar_expertise(limit = 5) {
         const data = SiteCore.get('professional_experiences');
         if (!data || !data.summary || !data.summary.expertise_list) return;
         console.log("render_sidebar_expertise: ", data, "");
@@ -1194,7 +1194,7 @@ const SiteCV_OnePage = {
         }
     },
 
-    render_sidebar_memberships(limit = 4) {
+    render_sidebar_memberships(limit = 3) {
         const data = SiteCore.get('organisational_memberships');
         if (!data || !data.memberships) return;
         console.log("render_sidebar_memberships: ", data, "");
@@ -1210,6 +1210,22 @@ const SiteCV_OnePage = {
                 <li><i class="bi bi-dot"></i> ${m.title} </li>
             `).join('');
         }
+    },
+
+    // Sidebar sections
+    render_sidebar_logo() {
+        const site = SiteCore.get('site');
+        if (!site) return;
+
+        const imageContainer = document.querySelector("#one-page-section .cv-sidebar .cv-sidebar-footer-container");
+        if (!imageContainer) return;
+
+        console.log("render_sidebar_logo: ", site, "");
+
+        // Injects the formal profile image with glightbox support
+        imageContainer.innerHTML = `
+            <img src="${site.assets.icons.logo_png}" alt="${site.site_info.author} - CV" class="sidebar-footer-logo" alt="Branding Overlay">
+        `;
     },
 
 
