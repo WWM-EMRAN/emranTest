@@ -89,23 +89,6 @@
                             });
                         }
                     }
-
-                    // const targetId = this.getAttribute('href');
-                    if (targetId && targetId.startsWith('#')) {
-                        const target = document.querySelector(targetId);
-                        if (target) {
-                            e.preventDefault();
-
-                            // Update URL immediately upon clicking
-                            history.pushState(null, null, targetId);
-
-                            window.scrollTo({
-                                top: target.offsetTop - headerOffset,
-                                behavior: "smooth"
-                            });
-                        }
-                    }
-
                     if (body.classList.contains('mobile-nav-active')) {
                         body.classList.remove('mobile-nav-active');
                         const toggleBtn = document.querySelector('.header-toggle');
@@ -116,25 +99,16 @@
         });
 
         // ScrollSpy Highlighting (Remains as we built it)
-        // ScrollSpy Highlighting & URL Hash Synchronization
         const runScrollSpy = () => {
-            const position = window.scrollY + (headerOffset + 100);
+            const position = window.scrollY + (headerOffset + 100); // Sync with dynamic offset
             navLinks.forEach(link => {
                 if (!link.hash || link.hash === '#') return;
                 const section = document.querySelector(link.hash);
 
                 if (section && position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-                    // Existing Highlighting Logic
                     document.querySelectorAll('#navmenu a.active, #navmenu li.active').forEach(el => el.classList.remove('active', 'dropdown-active'));
                     link.classList.add('active');
 
-                    // --- THE URL UPDATE FIX ---
-                    // Update URL hash without triggering a page jump or reload
-                    if (window.location.hash !== link.hash) {
-                        history.replaceState(null, null, link.hash);
-                    }
-
-                    // Existing Parent Highlight Logic
                     let parent = link.parentElement;
                     while (parent && parent.tagName !== 'NAV') {
                         if (parent.tagName === 'LI') {
