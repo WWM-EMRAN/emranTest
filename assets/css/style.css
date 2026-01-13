@@ -2540,6 +2540,21 @@ body.mode-one-page .cv-paper-sheet {
     }
 }
 
+@media (max-width: 767px) {
+    .sidebar-footer-logo {
+        /* Prevents mobile resets from overriding your fixed dimensions */
+        width: 20px !important;
+        height: 20px !important;
+        max-width: 20px !important;
+        max-height: 20px !important;
+        opacity: 0.9 !important;
+        display: inline-block !important;
+    }
+}
+
+
+
+
 /****************************/
 /* --- CV Sticky Bar Flex Refactor --- */
 
