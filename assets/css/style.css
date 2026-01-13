@@ -277,6 +277,7 @@ p {
   padding: 10px 0;
   scrollbar-width: none;     /* Hides scrollbar for Firefox */
   z-index: 999;
+  /*border: 1px solid var(--accent-color);*/
 }
 
 /* Hide scrollbar for Chrome, Safari, and Opera */

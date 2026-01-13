@@ -90,19 +90,31 @@
                         }
                     }
 
+                    /// Change URL hash or section id display option
                     // const targetId = this.getAttribute('href');
                     if (targetId && targetId.startsWith('#')) {
                         const target = document.querySelector(targetId);
+
+                        // Check if target exists to prevent errors
                         if (target) {
                             e.preventDefault();
 
-                            // Update URL immediately upon clicking
-                            history.pushState(null, null, targetId);
+                            // 1. Logic Fix: Compare the string targetId, not the object target
+                            if (targetId === "#hero") {
+                                // Removes hash when clicking home/hero
+                                history.pushState(null, null, window.location.pathname);
+                            } else {
+                                // Update URL hash for all other sections
+                                history.pushState(null, null, targetId);
+                            }
 
+                            // 2. Execute the scroll
                             window.scrollTo({
                                 top: target.offsetTop - headerOffset,
                                 behavior: "smooth"
                             });
+                        } else {
+                            console.warn(`Target section ${targetId} not found on this page.`);
                         }
                     }
 
@@ -131,7 +143,13 @@
                     // --- THE URL UPDATE FIX ---
                     // Update URL hash without triggering a page jump or reload
                     if (window.location.hash !== link.hash) {
-                        history.replaceState(null, null, link.hash);
+                        if (link.hash === '#hero') {
+                            // Removes the hash entirely when on the Hero section
+                            history.replaceState(null, null, window.location.pathname);
+                        } else {
+                            // Updates the hash for all other sections
+                            history.replaceState(null, null, link.hash);
+                        }
                     }
 
                     // Existing Parent Highlight Logic
