@@ -1060,7 +1060,7 @@ const SiteIndex = {
                                 <span class="badge badge-status">
 <!--                                <span class="badge badge-important">-->
                                     <a href="${item.portfolio_url}" target="_blank" rel="noreferrer">
-                                        <i class="bi bi-github me-1"></i> GitHub Repository
+                                        <i class="bi bi-github me-1"></i> ${item.type} Link <i class="bx bx-link-external"></i>
                                     </a>
                                 </span>
                             </div>

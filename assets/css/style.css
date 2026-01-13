@@ -496,7 +496,8 @@ p {
 }
 
 .section-title h2 {
-  font-size: 24px;
+  font-size: 22px;
+  /*font-size: 24px;*/
   font-weight: 700;
   padding-bottom: 10px;
   position: relative;
@@ -1054,6 +1055,28 @@ p {
   max-width: 100%;
   height: auto;
   text-align: left;
+}
+
+/* Ensure all links within badges are white */
+.badge-dates a,
+.badge-duration a,
+.badge-type a,
+.badge-status a,
+.badge-institute a,
+.badge-important a {
+    color: var(--background-color) !important;
+    text-decoration: none; /* Keeps it clean */
+}
+
+/* Optional: Add a slight hover effect so users know it is clickable */
+.badge-dates a:hover,
+.badge-duration a:hover,
+.badge-type a:hover,
+.badge-status a:hover,
+.badge-institute a:hover,
+.badge-important a:hover {
+    color: var(--background-color) !important;
+    text-decoration: underline !important;
 }
 
 
