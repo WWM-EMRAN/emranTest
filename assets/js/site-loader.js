@@ -52,14 +52,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         else if (pathName.includes('section_details.html')) {
             // const section = allParams.get('section');
             section = allParams.section?.toLowerCase() || '';
-            console.log(`### Routing to: Section View [${section}]`);
+            console.log(`### Routing to: Section View: ${section}`);
             homeLink.setAttribute('href', './');
             SiteSection.init(section);
         }
         else if (pathName.includes('page_details.html')) {
             // const page = allParams.get('page');
             page = allParams.page?.toLowerCase() || '';
-            console.log(`### Routing to: Page View [${pageKey}]`);
+            console.log(`### Routing to: Page View: ${pageKey}`);
             homeLink.setAttribute('href', '#hero');
             SitePage.init(pageKey);
         }

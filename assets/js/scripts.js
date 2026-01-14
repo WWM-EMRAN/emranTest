@@ -131,6 +131,7 @@
         // ScrollSpy Highlighting & URL Hash Synchronization
         const runScrollSpy = () => {
             const position = window.scrollY + (headerOffset + 100);
+            // const position = window.scrollY + (headerOffset + 0);
             navLinks.forEach(link => {
                 if (!link.hash || link.hash === '#') return;
                 const section = document.querySelector(link.hash);
@@ -139,6 +140,12 @@
                     // Existing Highlighting Logic
                     document.querySelectorAll('#navmenu a.active, #navmenu li.active').forEach(el => el.classList.remove('active', 'dropdown-active'));
                     link.classList.add('active');
+
+                    // // 2. ADD THIS: Update Sticky Header
+                    // const sectionId = section.replace('#', ''); // Extracts 'about' from '#about'
+                    // if (typeof SiteSection !== 'undefined' && SiteSection.render_sticky_header) {
+                    //     SiteSection.render_sticky_header(sectionId);
+                    // }
 
                     // --- THE URL UPDATE FIX ---
                     // Update URL hash without triggering a page jump or reload
@@ -164,6 +171,7 @@
                 }
             });
         };
+
         window.addEventListener('scroll', runScrollSpy);
         runScrollSpy();
     }

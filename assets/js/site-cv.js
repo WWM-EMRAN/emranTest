@@ -195,66 +195,123 @@ const SiteCV_Standard = {
         `;
     },
 
+    // render_about() {
+    //     const personal = SiteCore.get('personal_information');
+    //     if (!personal || !personal.profile_summary) return;
+    //
+    //     console.log("render_about: ", personal, "");
+    //
+    //     const aboutSection = document.querySelector("#about");
+    //     if (!aboutSection) return;
+    //
+    //     const summary = personal.profile_summary;
+    //
+    //     aboutSection.innerHTML = `
+    //         <h5 class="cv-section-title">${summary.title || 'Profile Summary'}</h5>
+    //         <p class="small text-justify mb-2">
+    //             ${summary.intro_paragraph_short}
+    //         </p>
+    //     `;
+    // },
+    //
+    // render_key_information() {
+    //     // Retrieve data from SiteCore cache
+    //     const data = SiteCore.get('key_information');
+    //     if (!data || !data.metrics) return;
+    //
+    //     console.log("render_key_information: ", data, "");
+    //
+    //     // Target the specific section and grid in the HTML
+    //     // const section = document.querySelector("#key_information");
+    //     const section = document.querySelector("#about #key_information");
+    //     const grid = document.querySelector("#key-info-grid");
+    //     if (!section || !grid) return;
+    //
+    //     // Update the section title dynamically
+    //     const titleEl = section.querySelector(".cv-section-title");
+    //     if (titleEl) titleEl.textContent = data.section_info.title;
+    //
+    //     // Split the metrics array into two columns for the 2-column layout
+    //     const midPoint = Math.ceil(data.metrics.length / 2);
+    //     const leftColMetrics = data.metrics.slice(0, midPoint);
+    //     const rightColMetrics = data.metrics.slice(midPoint);
+    //
+    //     // Helper to generate the HTML for each individual metric item
+    //     const renderCol = (metrics) => {
+    //         return metrics.map(m => `
+    //             <div>
+    //                 <i class="${m.icon_class} me-2"></i>
+    //                 <strong>${m.value} ${m.strong_text}</strong> ${m.description}
+    //             </div>
+    //         `).join('');
+    //     };
+    //
+    //     // Inject the columns into the grid
+    //     grid.innerHTML = `
+    //         <div class="col-6">
+    //             ${renderCol(leftColMetrics)}
+    //         </div>
+    //         <div class="col-6">
+    //             ${renderCol(rightColMetrics)}
+    //         </div>
+    //     `;
+    // },
+
+
+
     render_about() {
         const personal = SiteCore.get('personal_information');
         if (!personal || !personal.profile_summary) return;
 
-        console.log("render_about: ", personal, "");
-
         const aboutSection = document.querySelector("#about");
         if (!aboutSection) return;
 
+        // TARGET SPECIFIC ELEMENTS TO PRESERVE NESTED SECTIONS
+        const titleEl = aboutSection.querySelector(".cv-section-title");
+        const introEl = aboutSection.querySelector("p.small");
+
         const summary = personal.profile_summary;
 
-        aboutSection.innerHTML = `
-            <h5 class="cv-section-title">${summary.title || 'Profile Summary'}</h5>
-            <p class="small text-justify mb-2">
-                ${summary.intro_paragraph_short}
-            </p>
-        `;
+        if (titleEl) titleEl.textContent = summary.title || 'Profile Summary';
+        if (introEl) introEl.textContent = summary.intro_paragraph_short;
     },
 
+
     render_key_information() {
-        // Retrieve data from SiteCore cache
         const data = SiteCore.get('key_information');
         if (!data || !data.metrics) return;
 
-        console.log("render_key_information: ", data, "");
-
-        // Target the specific section and grid in the HTML
         const section = document.querySelector("#key_information");
         const grid = document.querySelector("#key-info-grid");
         if (!section || !grid) return;
 
-        // Update the section title dynamically
+        // Use textContent for safety
         const titleEl = section.querySelector(".cv-section-title");
-        if (titleEl) titleEl.textContent = data.section_info.title;
+        if (titleEl && data.section_info) titleEl.textContent = data.section_info.title;
 
-        // Split the metrics array into two columns for the 2-column layout
         const midPoint = Math.ceil(data.metrics.length / 2);
         const leftColMetrics = data.metrics.slice(0, midPoint);
         const rightColMetrics = data.metrics.slice(midPoint);
 
-        // Helper to generate the HTML for each individual metric item
         const renderCol = (metrics) => {
             return metrics.map(m => `
                 <div>
                     <i class="${m.icon_class} me-2"></i>
-                    <strong>${m.value} ${m.strong_text}</strong> ${m.description}
+                    <strong>${m.value} ${m.label || m.strong_text}</strong> ${m.description}
                 </div>
             `).join('');
         };
 
-        // Inject the columns into the grid
         grid.innerHTML = `
-            <div class="col-6">
-                ${renderCol(leftColMetrics)}
-            </div>
-            <div class="col-6">
-                ${renderCol(rightColMetrics)}
-            </div>
+            <div class="col-6">${renderCol(leftColMetrics)}</div>
+            <div class="col-6">${renderCol(rightColMetrics)}</div>
         `;
     },
+
+
+
+
+
 
     render_academic_information() {
         const data = SiteCore.get('academic_information');
