@@ -312,56 +312,50 @@ p {
   transition: 0.3s;
 }
 
-/*!* Hover and Active states *!*/
-/*.navmenu a:hover,*/
-/*.navmenu .active,*/
-/*.navmenu li:hover > a {*/
-/*    !*color: var(--nav-hover-color) !important; !* White color from :root *!*!*/
-/*    !*font-weight: 500 !important;*!*/
-/*    !*color: var(--background-color) !important; !* Forces the highlight color *!*!*/
-/*    color: var(--accent-color) !important; !* Forces the highlight color *!*/
-/*    font-weight: 500 !important;              !* Changed from 450 to 600 for better support *!*/
-/*    !*background: var(--accent-color);    !* Adds a subtle background for clarity *!*!*/
-/*    !*background: var(--background-color);    !* Adds a subtle background for clarity *!*!*/
-/*    !*border-radius: 10px;*!*/
-/*}*/
+/* Hover and Active states */
+.navmenu a:hover,
+.navmenu .active,
+.navmenu li:hover > a {
+    /*color: var(--nav-hover-color) !important; !* White color from :root *!*/
+    /*font-weight: 500 !important;*/
+    /*color: var(--background-color) !important; !* Forces the highlight color *!*/
+    color: var(--accent-color) !important; /* Forces the highlight color */
+    font-weight: 500 !important;              /* Changed from 450 to 600 for better support */
+    /*background: var(--accent-color);    !* Adds a subtle background for clarity *!*/
+    /*background: var(--background-color);    !* Adds a subtle background for clarity *!*/
+    /*border-radius: 10px;*/
+}
 
 .navmenu a:hover .navicon,
 .navmenu .active .navicon,
-.navmenu li:hover > a .navicon,
-.navmenu li.active > a {
+.navmenu li:hover > a .navicon {
   color: var(--accent-color) !important;     /* Highlight icon in blue */
-  /*font-weight: 500 !important;*/
+  font-weight: 500 !important;
 }
 
+/*!* Style the parent link when the parent LI is active *!*/
+/*.navmenu li.active > a {*/
+/*    !*color: var(--accent-color); !* Or your preferred highlight color *!*!*/
+/*    color: var(--background-color); !* Or your preferred highlight color *!*/
+/*    !*font-weight: bold;*!*/
+/*    font-weight: 450;*/
+/*}*/
 
-/* --- High-Specificity Active State Fix --- */
 
-/* 1. Target the link directly when it has the .active class */
-.navmenu a:hover > a,
-.navmenu a.active > a,
-.navmenu li:hover > a,
-.navmenu li.active > a {
-    color: var(--background-color) !important; /* Forces the contrast color */
-    /*color: var(--accent-color) !important;     !* Highlight icon in blue *!*/
-    /*font-weight: 500 !important;              !* Use 700 (Bold) for guaranteed visibility *!*/
-    background: rgba(255, 255, 255, 0.15) !important; /* Slight background to make it 'pop' */
-    /*border-radius: 4px;*/
-    border-radius: 10px;
-}
+/*!* Keep the sub-menu visible when active *!*/
+/*.navmenu .dropdown ul {*/
+/*  display: none;*/
+/*}*/
 
-/* 2. Ensure icons also inherit the highlight color */
-.navmenu a.active i,
-.navmenu li.active > a i {
-    color: var(--background-color) !important;
-}
+/*.navmenu .dropdown.active > ul {*/
+/*  display: block !important;*/
+/*}*/
 
-/* 3. Dropdown Parent fix: Ensure "Expertise" stays bold when a sub-item is active */
-.navmenu li.dropdown:hover > a,
-.navmenu li.dropdown.active> a {
-    /*font-weight: 500 !important;*/
-    color: var(--background-color) !important;
-}
+/*!* Rotate the arrow icon when open *!*/
+/*.navmenu .dropdown.active > a .toggle-dropdown {*/
+/*  transform: rotate(180deg);*/
+/*  transition: 0.3s;*/
+/*}*/
 
 
 /* Ensure the sub-menu displays when EITHER class is present */

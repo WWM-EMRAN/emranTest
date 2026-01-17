@@ -53,7 +53,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             // const section = allParams.get('section');
             section = allParams.section?.toLowerCase() || '';
             console.log(`### Routing to: Section View: ${section}`);
-            homeLink.setAttribute('href', './');
+            // homeLink.setAttribute('href', './');
+            homeLink.setAttribute('href', '#all_details_section');
+            all_details_section
             SiteSection.init(section);
         }
         else if (pathName.includes('page_details.html')) {
@@ -61,6 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             page = allParams.page?.toLowerCase() || '';
             console.log(`### Routing to: Page View: ${pageKey}`);
             homeLink.setAttribute('href', '#hero');
+            // homeLink.setAttribute('href', '#all_cv_wrapper');
             SitePage.init(pageKey);
         }
         else if (pathName.includes('curriculum_vitae.html')) {
@@ -69,7 +72,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             // type = allParams.type?.toLowerCase() || 'standard';
             type = allParams.type || 'standard';
             console.log(`### Routing to: CV View [Type: ${type}]`);
-            homeLink.setAttribute('href', '#all_cv_wrapper');
+            // homeLink.setAttribute('href', '#all_cv_section');
+            homeLink.setAttribute('href', '#all_cv_section');
             SiteCV.init(type);
         }
         

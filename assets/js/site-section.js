@@ -91,7 +91,8 @@ const SiteSection = {
         site.navigation.main_menu.forEach(item => {
             if (item.url === targetUrl) {
                 foundItem = item;
-            } else if (item.is_dropdown && item.submenu) {
+            }
+            else if (item.is_dropdown && item.submenu) {
                 const sub = item.submenu.find(s => s.url === targetUrl);
                 if (sub) foundItem = sub;
             }
