@@ -243,8 +243,11 @@ p {
 
 /* Sidebar Social Icons */
 .header .social-links {
-  margin-bottom: 10px;
+  margin-top: 10px;
   text-align: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--accent-color); /* Blue underline */
 }
 
 .header .social-links a {
@@ -339,8 +342,10 @@ p {
 
 /* 1. Target the link directly when it has the .active class */
 .navmenu a:hover > a,
+/*.navmenu a:hover,*/
 .navmenu a.active > a,
 .navmenu li:hover > a,
+/*.navmenu li:hover,*/
 .navmenu li.active > a {
     color: var(--background-color) !important; /* Forces the contrast color */
     /*color: var(--accent-color) !important;     !* Highlight icon in blue *!*/
@@ -1591,7 +1596,7 @@ body.mode-one-page #standard-page-section {
 
 .cv-section-title {
     color: var(--accent-color) !important;
-  background: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.05);
     border-bottom: 1px solid var(--cv-title-border-color);
     padding: 5px 10px;
     border-left: 5px solid var(--accent-color);
