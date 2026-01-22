@@ -147,6 +147,26 @@
       "award_link": ""
     },
     {
+      "id_ref": "aw_kskauds",
+      "title": "King Abdulaziz Scholarships",
+      "icon_class": "bi bi-mortarboard",
+      "date": "Dec. 15, 2019",
+      "short_description": "Fully funded scholarship for higher education (for Master's Program) - King Abdulaziz University, Saudi Arabia",
+      "issuer_organization": {
+        "name": "King Abdulaziz University, Saudi Arabia",
+        "location": "Jeddah, Saudi Arabia",
+        "link": "https://www.kau.edu.sa/en"
+      },
+      "associated_organization": {
+        "name": "",
+        "location": "",
+        "link": ""
+      },
+      "description_full": "King Abdulaziz Scholarships is a postgraduate scholarship awarded by King Abdulaziz University, Saudi Arabia to support students pursuing a Master's degree in Computer Science. The scholarship covers tuition fees, living stipend, health insurance and travel expenses including families.",
+      "image_path": "",
+      "award_link": ""
+    },
+    {
       "id_ref": "aw_aapbdbestemp",
       "title": "Best Employee Award",
       "icon_class": "bi bi-star",
