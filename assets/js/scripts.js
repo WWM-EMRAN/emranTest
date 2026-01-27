@@ -209,107 +209,261 @@
         // };
 
 
+        // const runScrollSpy = () => {
+        //     // 1. Position calculation
+        //     const position = window.scrollY + (headerOffset + 20);
+        //     let bestMatchLink = null;
+        //
+        //     // --- FIX SEGMENT 1: EXCLUSION ---
+        //     // We ignore the large wrappers during the search loop so they don't fight with content
+        //     navLinks.forEach(link => {
+        //         const hash = link.hash;
+        //         // if (!hash || hash === '#' || hash === '#all_cv_section' || hash === '#all_details_section' || hash === '#hero' || hash === '#details-sticky-bar') return;
+        //         if (!hash || hash === '#' || hash === '#all_cv_wrapper' || hash === '#details-sticky-bar') return;
+        //
+        //         const section = document.querySelector(hash);
+        //
+        //         if (section && position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+        //             // Priority: Always pick the section furthest down the page
+        //             if (!bestMatchLink || section.offsetTop >= document.querySelector(bestMatchLink.hash).offsetTop) {
+        //                 bestMatchLink = link;
+        //             }
+        //         }
+        //     });
+        //     console.log('111======> best link selected', bestMatchLink);
+        //
+        //     // --- FIX SEGMENT 2: FALLBACK PRIORITY ---
+        //     // Only if NO specific section matches, we default to the Home link
+        //     if (!bestMatchLink || window.scrollY < 100) {
+        //         bestMatchLink = document.querySelector('#navmenu a[href="#hero"]')
+        //                         || document.querySelector('#navmenu a[href="#all_cv_section"]')
+        //                         || document.querySelector('#navmenu a[href="#all_details_section"]')
+        //                         || document.querySelector('#navmenu a[href="#details-sticky-bar"]')
+        //                         || document.querySelector('#navmenu a[href="#"]');
+        //     }
+        //     console.log('222======> best link selected after default link setting', bestMatchLink);
+        //
+        //     // 3. Force Update on Initial Load
+        //     if (bestMatchLink) {
+        //         const alreadyActive = bestMatchLink.classList.contains('active');
+        //         const anyActive = document.querySelector('#navmenu a.active');
+        //
+        //         console.log('333======> best link selected | already active | anyActive', bestMatchLink, alreadyActive, anyActive);
+        //
+        //         // --- FIX SEGMENT 3: THE GUARD ---
+        //         // This ensures the DOM is ONLY updated if the section has actually changed
+        //         if (!alreadyActive || !anyActive) {
+        //             document.querySelectorAll('#navmenu a.active, #navmenu li.active').forEach(el => {
+        //                 el.classList.remove('active', 'dropdown-active');
+        //             });
+        //
+        //             bestMatchLink.classList.add('active');
+        //
+        //             let parent = bestMatchLink.parentElement;
+        //             while (parent && parent.tagName !== 'NAV') {
+        //                 if (parent.tagName === 'LI') {
+        //                     parent.classList.add('active');
+        //                     if (parent.classList.contains('dropdown')) parent.classList.add('dropdown-active');
+        //                 }
+        //                 parent = parent.parentElement;
+        //             }
+        //
+        //             console.log('444======> best link set active now or the parent of the dropdown', bestMatchLink, parent);
+        //
+        //             // Sync Sticky Header
+        //             const sectionId = bestMatchLink.hash.replace('#', '');
+        //             if (typeof SiteSection !== 'undefined' && SiteSection.render_sticky_header) {
+        //                 SiteSection.render_sticky_header(sectionId);
+        //             }
+        //
+        //             // Sync URL while preserving parameters
+        //             if (window.location.hash !== bestMatchLink.hash) {
+        //                 console.log('555======> best link matches in browser url:', window.location.hash !== bestMatchLink.hash, window.location.hash, bestMatchLink.hash);
+        //                 const isHome = bestMatchLink.hash === '' ||
+        //                                bestMatchLink.hash === '#hero' ||
+        //                                bestMatchLink.hash === '#all_cv_section' ||
+        //                                bestMatchLink.hash === '#all_details_section' ||
+        //                                bestMatchLink.hash === '' ||
+        //                                bestMatchLink.hash === '#';
+        //
+        //                 const searchParams = window.location.search;
+        //                 const path = window.location.pathname;
+        //
+        //                 console.log('555.1======> best link is home or not:', isHome);
+        //
+        //                 if (isHome) {
+        //                     history.replaceState(null, null, path + searchParams);
+        //                 } else {
+        //                     history.replaceState(null, null, path + searchParams + bestMatchLink.hash);
+        //                 }
+        //             }
+        //             else {
+        //                 console.log('555.2======> best link matches in browser url:', window.location.hash !== bestMatchLink.hash);
+        //             }
+        //         }
+        //         else {
+        //             const searchParams = window.location.search;
+        //             const path = window.location.pathname;
+        //             history.replaceState(null, null, path + searchParams);
+        //             console.log('666======> best link is already active | there is another active link found');
+        //         }
+        //     }
+        //     else {
+        //         console.log('777======> best link not found', bestMatchLink);
+        //     }
+        // };
+
+
+        // const runScrollSpy = () => {
+        //     // 1. Calculate current scroll position with your dynamic offset
+        //     const position = window.scrollY + (headerOffset + 120);
+        //     let bestMatchLink = null;
+        //
+        //     // 2. SEARCH: Identify the most specific content section
+        //     // We ignore general wrappers here so they don't fight with content sections
+        //     navLinks.forEach(link => {
+        //         const hash = link.hash;
+        //         if (!hash || hash === '#' || hash === '#all_cv_section' || hash === '#all_details_section' || hash === '#hero' || hash === '#details-sticky-bar') return;
+        //
+        //         const section = document.querySelector(hash);
+        //         if (section && position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+        //             // Pick the section further down the page if they overlap
+        //             if (!bestMatchLink || section.offsetTop >= document.querySelector(bestMatchLink.hash).offsetTop) {
+        //                 bestMatchLink = link;
+        //             }
+        //         }
+        //     });
+        //
+        //     // 3. FALLBACK: Handle First-Load and Top-of-Page defaults
+        //     // If no content section matches, or we are at the very top, select the correct Home link
+        //     if (!bestMatchLink || window.scrollY < 100) {
+        //         bestMatchLink = document.querySelector('#navmenu a[href="#hero"]')
+        //                         || document.querySelector('#navmenu a[href="#all_cv_section"]')
+        //                         || document.querySelector('#navmenu a[href="#all_details_section"]')
+        //                         || document.querySelector('#navmenu a[href="#details-sticky-bar"]')
+        //                         || document.querySelector('#navmenu a[href="#"]');
+        //     }
+        //
+        //     // 4. UPDATE: Modify DOM and URL only if necessary (Stops Flicker)
+        //     if (bestMatchLink) {
+        //         const alreadyActive = bestMatchLink.classList.contains('active');
+        //         const anyActive = document.querySelector('#navmenu a.active');
+        //
+        //         // Only update if the selection is new OR if nothing is selected (Initial Load)
+        //         if (!alreadyActive || !anyActive) {
+        //             // Clear all active states exactly once
+        //             document.querySelectorAll('#navmenu a.active, #navmenu li.active').forEach(el => {
+        //                 el.classList.remove('active', 'dropdown-active');
+        //             });
+        //
+        //             // Set active state for link and parent tree
+        //             bestMatchLink.classList.add('active');
+        //             let parent = bestMatchLink.parentElement;
+        //             while (parent && parent.tagName !== 'NAV') {
+        //                 if (parent.tagName === 'LI') {
+        //                     parent.classList.add('active');
+        //                     if (parent.classList.contains('dropdown')) parent.classList.add('dropdown-active');
+        //                 }
+        //                 parent = parent.parentElement;
+        //             }
+        //
+        //             // Sync Sticky Header
+        //             const sectionId = bestMatchLink.hash.replace('#', '');
+        //             if (typeof SiteSection !== 'undefined' && SiteSection.render_sticky_header) {
+        //                 SiteSection.render_sticky_header(sectionId);
+        //             }
+        //
+        //             // 5. SYNC URL: Update hash while preserving search parameters (?type=standard)
+        //             if (window.location.hash !== bestMatchLink.hash) {
+        //                 const isHome = bestMatchLink.hash === '#hero' ||
+        //                                bestMatchLink.hash === '#all_cv_section' ||
+        //                                bestMatchLink.hash === '#all_details_section';
+        //
+        //                 const searchParams = window.location.search; // Preserves your URL parameters
+        //                 const path = window.location.pathname;
+        //
+        //                 // Build new URL without losing ?parameters
+        //                 const newHash = isHome ? '' : bestMatchLink.hash;
+        //                 history.replaceState(null, null, path + searchParams + newHash);
+        //             }
+        //         }
+        //     }
+        // };
+
+
         const runScrollSpy = () => {
-            // 1. Position calculation
-            const position = window.scrollY + (headerOffset + 20);
+            // 1. Calculate the current position with your dynamic offset
+            const position = window.scrollY + (headerOffset + 0);
             let bestMatchLink = null;
 
-            // --- FIX SEGMENT 1: EXCLUSION ---
-            // We ignore the large wrappers during the search loop so they don't fight with content
+            // --- STEP 1: FIND CONTENT SECTIONS (THE FLICKER FIX) ---
+            // We ignore the large wrappers in this loop so they don't fight with content sections
             navLinks.forEach(link => {
                 const hash = link.hash;
-                // if (!hash || hash === '#' || hash === '#all_cv_section' || hash === '#all_details_section' || hash === '#hero' || hash === '#details-sticky-bar') return;
-                if (!hash || hash === '#' || hash === '#all_cv_wrapper' || hash === '#details-sticky-bar') return;
+                // EXCLUSION: Skip these because they wrap everything else
+                if (!hash || hash === '#' || hash === '#all_cv_section' || hash === '#all_details_section' || hash === '#hero') return;
 
                 const section = document.querySelector(hash);
-
                 if (section && position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-                    // Priority: Always pick the section furthest down the page
+                    // PRIORITY: If sections overlap, always pick the one further down the page
                     if (!bestMatchLink || section.offsetTop >= document.querySelector(bestMatchLink.hash).offsetTop) {
                         bestMatchLink = link;
                     }
                 }
             });
-            console.log('111======> best link selected', bestMatchLink);
 
-            // --- FIX SEGMENT 2: FALLBACK PRIORITY ---
-            // Only if NO specific section matches, we default to the Home link
+            // --- STEP 2: HANDLE DEFAULTS (THE FIRST LOAD FIX) ---
+            // If no specific content matches (meaning you are at the very top), select Home
             if (!bestMatchLink || window.scrollY < 100) {
                 bestMatchLink = document.querySelector('#navmenu a[href="#hero"]')
                                 || document.querySelector('#navmenu a[href="#all_cv_section"]')
                                 || document.querySelector('#navmenu a[href="#all_details_section"]')
-                                || document.querySelector('#navmenu a[href="#details-sticky-bar"]')
                                 || document.querySelector('#navmenu a[href="#"]');
             }
-            console.log('222======> best link selected after default link setting', bestMatchLink);
 
-            // 3. Force Update on Initial Load
+            // --- STEP 3: FORCE INITIAL UPDATE (The LI Class Fix) ---
             if (bestMatchLink) {
-                const alreadyActive = bestMatchLink.classList.contains('active');
-                const anyActive = document.querySelector('#navmenu a.active');
+                const linkActive = bestMatchLink.classList.contains('active');
+                const parentActive = bestMatchLink.parentElement.classList.contains('active');
 
-                console.log('333======> best link selected | already active | anyActive', bestMatchLink, alreadyActive, anyActive);
-
-                // --- FIX SEGMENT 3: THE GUARD ---
-                // This ensures the DOM is ONLY updated if the section has actually changed
-                if (!alreadyActive || !anyActive) {
+                // If either the link OR the LI is not active, force the update
+                if (!linkActive || !parentActive) {
+                    // 1. Clear everything first to be safe
                     document.querySelectorAll('#navmenu a.active, #navmenu li.active').forEach(el => {
                         el.classList.remove('active', 'dropdown-active');
                     });
 
+                    // 2. Add active to the link
                     bestMatchLink.classList.add('active');
 
+                    // 3. THE FIX: Recursively add 'active' to parent LI elements
+                    // This ensures the CSS rule ".navmenu li.active > a" is triggered
                     let parent = bestMatchLink.parentElement;
                     while (parent && parent.tagName !== 'NAV') {
                         if (parent.tagName === 'LI') {
                             parent.classList.add('active');
-                            if (parent.classList.contains('dropdown')) parent.classList.add('dropdown-active');
+                            // Handle dropdown state if applicable
+                            if (parent.classList.contains('dropdown')) {
+                                parent.classList.add('dropdown-active');
+                            }
                         }
                         parent = parent.parentElement;
                     }
 
-                    console.log('444======> best link set active now or the parent of the dropdown', bestMatchLink, parent);
-
-                    // Sync Sticky Header
+                    // 4. Update Sticky Header Title & Icon
                     const sectionId = bestMatchLink.hash.replace('#', '');
                     if (typeof SiteSection !== 'undefined' && SiteSection.render_sticky_header) {
                         SiteSection.render_sticky_header(sectionId);
                     }
 
-                    // Sync URL while preserving parameters
+                    // 5. Update URL Hash while keeping parameters (?type=standard)
                     if (window.location.hash !== bestMatchLink.hash) {
-                        console.log('555======> best link matches in browser url:', window.location.hash !== bestMatchLink.hash, window.location.hash, bestMatchLink.hash);
-                        const isHome = bestMatchLink.hash === '' ||
-                                       bestMatchLink.hash === '#hero' ||
-                                       bestMatchLink.hash === '#all_cv_section' ||
-                                       bestMatchLink.hash === '#all_details_section' ||
-                                       bestMatchLink.hash === '' ||
-                                       bestMatchLink.hash === '#';
-
+                        const isHome = bestMatchLink.hash === '#hero' || bestMatchLink.hash === '#all_cv_section';
                         const searchParams = window.location.search;
-                        const path = window.location.pathname;
-
-                        console.log('555.1======> best link is home or not:', isHome);
-
-                        if (isHome) {
-                            history.replaceState(null, null, path + searchParams);
-                        } else {
-                            history.replaceState(null, null, path + searchParams + bestMatchLink.hash);
-                        }
-                    }
-                    else {
-                        console.log('555.2======> best link matches in browser url:', window.location.hash !== bestMatchLink.hash);
+                        const newHash = isHome ? '' : bestMatchLink.hash;
+                        history.replaceState(null, null, window.location.pathname + searchParams + newHash);
                     }
                 }
-                else {
-                    const searchParams = window.location.search;
-                    const path = window.location.pathname;
-                    history.replaceState(null, null, path + searchParams);
-                    console.log('666======> best link is already active | there is another active link found');
-                }
-            }
-            else {
-                console.log('777======> best link not found', bestMatchLink);
             }
         };
 

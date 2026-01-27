@@ -2004,7 +2004,7 @@ html {
 
 
 /*!* --- CV Page General Layout --- *!*/
-/*.all-cv-wrapper {*/
+/*.all_cv_wrapper {*/
 /*    background-color: var(--cv-wrapper-background-color);*/
 /*    padding: 30px 0;*/
 /*}*/
@@ -2126,7 +2126,7 @@ html {
 /*    }*/
 
 /*    !* 4. Preserve Flex Layout (Side-by-Side) *!*/
-/*    .main, .all-cv-wrapper, #standard-page-section, .cv-bg-wrapper {*/
+/*    .main, .all_cv_wrapper, #standard-page-section, .cv-bg-wrapper {*/
 /*        display: block !important; !* Wrapper stays block *!*/
 /*        !*width: 100% !important;*!*/
 /*        !*margin: 0 !important;*!*/
@@ -2199,7 +2199,7 @@ html {
     @page { size: A4; margin: 8mm; } /* Your preferred 8mm safety margin */
 
     body.mode-standard .main,
-    body.mode-standard .all-cv-wrapper,
+    body.mode-standard .all_cv_wrapper,
     body.mode-standard #standard-page-section,
     body.mode-standard .cv-bg-wrapper {
         display: block !important;
@@ -2223,7 +2223,7 @@ html {
        -------------------------------------------------------------- */
     body.mode-one-page { margin: 0 !important; }
 
-    /*body.mode-one-page .all-cv-wrapper,*/
+    /*body.mode-one-page .all_cv_wrapper,*/
     /*body.mode-one-page #one-page-section,*/
     /*body.mode-one-page .cv-bg-wrapper {*/
     /*    !*!*display: flex !important;*!*!*/
@@ -2324,7 +2324,7 @@ body.mode-one-page {
     display: block !important;
 }
 
-/*body.mode-one-page .all-cv-wrapper,*/
+/*body.mode-one-page .all_cv_wrapper,*/
 /*body.mode-one-page .cv-bg-wrapper {*/
 /*!*    !*display: flex !important;*!*!*/
 /*!*    justify-content: center !important; !* FORCES CENTERING ON THE PAGE *!*!*/
@@ -2409,7 +2409,7 @@ body.mode-one-page .cv-paper-sheet {
    ========================================================================== */
 
 /*!* 1. Reset the wrapper to handle flow naturally *!*/
-/*.all-cv-wrapper {*/
+/*.all_cv_wrapper {*/
 /*    display: block !important;*/
 /*    width: 100%;*/
 /*    overflow: visible !important; !* Prevents "hidden" content cutting off *!*/
