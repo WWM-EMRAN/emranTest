@@ -250,7 +250,7 @@ const SiteIndex = {
             const h2 = header.querySelector('h2');
             if (h2) {
                 h2.innerHTML = `<i class="${data.section_info.icon_class}"></i> ${data.section_info.title} 
-                    <a href="section_details.html?section=academic_information"><i class="bx bx-link ms-2"></i></a>`;
+                    <a href="section_details.html#academic_information"><i class="bx bx-link ms-2"></i></a>`;
             }
             const h6 = header.querySelector('h6');
             if (h6) h6.textContent = data.section_info.details;
@@ -389,7 +389,7 @@ const SiteIndex = {
             const h2 = header.querySelector('h2');
             if (h2) {
                 h2.innerHTML = `<i class="${data.section_info.icon_class}"></i> ${data.section_info.title} 
-                    <a href="section_details.html?section=professional_experiences"><i class="bx bx-link ms-2"></i></a>`;
+                    <a href="section_details.html#professional_experiences"><i class="bx bx-link ms-2"></i></a>`;
             }
             const h6 = header.querySelector('h6');
             if (h6) h6.textContent = data.section_info.details;
@@ -531,7 +531,7 @@ const SiteIndex = {
             const h2 = header.querySelector('h2');
             if (h2) {
                 h2.innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                    <a href="section_details.html?section=expertise_skills_achievements"><i class="bx bx-link ms-2"></i></a>`;
+                    <a href="section_details.html#expertise_skills_achievements"><i class="bx bx-link ms-2"></i></a>`;
             }
             const h6 = header.querySelector('h6');
             if (h6) h6.textContent = info.details;
@@ -554,7 +554,7 @@ const SiteIndex = {
             const h2 = header.querySelector('h2');
             if (h2) {
                 h2.innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                    <a href="section_details.html?section=skills_tools"><i class="bx bx-link ms-2"></i></a>`;
+                    <a href="section_details.html#skills_tools"><i class="bx bx-link ms-2"></i></a>`;
             }
             const h6 = header.querySelector('h6');
             if (h6) h6.textContent = info.details;
@@ -608,7 +608,7 @@ const SiteIndex = {
             const h2 = header.querySelector('h2');
             if (h2) {
                 h2.innerHTML = `<i class="${data.section_info.icon_class}"></i> ${data.section_info.title} 
-                    <a href="section_details.html?section=honors_awards"><i class="bx bx-link ms-2"></i></a>`;
+                    <a href="section_details.html#honors_awards"><i class="bx bx-link ms-2"></i></a>`;
             }
             const h6 = header.querySelector('h6');
             if (h6) h6.textContent = data.section_info.details;
@@ -675,7 +675,7 @@ const SiteIndex = {
         const header = section.querySelector('.section-title');
         if (header && info) {
             header.querySelector('h2').innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                <a href="section_details.html?section=courses_trainings_certificates"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#courses_trainings_certificates"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = info.details;
         }
 
@@ -743,7 +743,7 @@ const SiteIndex = {
         const header = section.querySelector('.section-title');
         if (header && info) {
             header.querySelector('h2').innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                <a href="section_details.html?section=projects"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#projects"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = info.details;
         }
 
@@ -810,7 +810,7 @@ const SiteIndex = {
         const header = section.querySelector('.section-title');
         if (header && info) {
             header.querySelector('h2').innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                <a href="section_details.html?section=organisational_memberships"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#organisational_memberships"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = info.details;
         }
 
@@ -877,7 +877,7 @@ const SiteIndex = {
         const header = section.querySelector('.section-title');
         if (header && info) {
             header.querySelector('h2').innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                <a href="section_details.html?section=sessions_events"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#sessions_events"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = info.details;
         }
 
@@ -950,7 +950,7 @@ const SiteIndex = {
         const header = section.querySelector('.section-title');
         if (header && info) {
             header.querySelector('h2').innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                <a href="section_details.html?section=languages"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#languages"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = info.details;
         }
 
@@ -1030,7 +1030,7 @@ const SiteIndex = {
         const header = section.querySelector('.section-title');
         if (header && info) {
             header.querySelector('h2').innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                <a href="section_details.html?section=portfolios"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#portfolios"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = info.details;
         }
 
@@ -1088,7 +1088,7 @@ const SiteIndex = {
         const header = section.querySelector('.section-title');
         if (header && info) {
             header.querySelector('h2').innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                <a href="section_details.html?section=volunteering_services"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#volunteering_services"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = info.details;
         }
 
@@ -1161,7 +1161,7 @@ const SiteIndex = {
         const header = section.querySelector('.section-title');
         if (header && info) {
             header.querySelector('h2').innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                <a href="section_details.html?section=publications"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#publications"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = info.details;
         }
 
@@ -1235,7 +1235,7 @@ const SiteIndex = {
         if (header && data.section_info) {
             header.querySelector('h2').innerHTML = `
                 <i class="${data.section_info.icon_class}"></i> ${data.section_info.title} 
-                <a href="section_details.html?section=contact_details"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#contact_details"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = data.section_info.details;
         }
 
