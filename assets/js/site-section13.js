@@ -280,7 +280,7 @@ const SiteSection = {
         if (!contentContainer) return;
         contentContainer.innerHTML = '';
 
-        // Grouping logic remains identical to keep content parity
+        // Grouping logic remains the same
         const groupedDegrees = data.degrees.reduce((acc, deg) => {
             if (!acc[deg.degree_level]) acc[deg.degree_level] = [];
             acc[deg.degree_level].push(deg);
@@ -288,11 +288,11 @@ const SiteSection = {
         }, {});
 
         Object.keys(groupedDegrees).forEach(level => {
-            // Level Header Row using the new .details-category-header class
+            // Level Header Row using new CSS class
             const headerRow = document.createElement('div');
             headerRow.className = 'col-12 mt-5 mb-3';
             headerRow.setAttribute('data-aos', 'fade-up');
-            headerRow.innerHTML = `<h2 class="details-category-header"><i class="bi bi-mortarboard-fill me-2"></i>${level.toUpperCase()}</h2>`;
+            headerRow.innerHTML = `<h2 class="details-category-header"><i class="bi bi-mortarboard-fill me-2"></i>${level}</h2>`;
             contentContainer.appendChild(headerRow);
 
             groupedDegrees[level].forEach(deg => {
@@ -300,7 +300,7 @@ const SiteSection = {
                 cardCol.className = 'col-12 mb-4';
                 cardCol.setAttribute('data-aos', 'fade-up');
 
-                // ADDED: Assigned degree_id for Auto-Scrolling
+                // CRITICAL: Assign the degree_id from JSON as the element ID for auto-scrolling
                 cardCol.id = deg.degree_id;
 
                 cardCol.innerHTML = this._build_details_academic_card(deg);
@@ -314,7 +314,7 @@ const SiteSection = {
      */
     _build_details_academic_card(degree) {
         const collabHtml = (degree.collaboration && degree.collaboration.length > 0) ? `
-            <div class="p-3 mb-3 small academic-collab-box">
+            <div class="p-3 mb-3 small details-collab-box">
                 <span class="fw-bold"><i class="bi bi-people-fill me-2"></i>Institutional Collaboration:</span>
                 <ul class="mb-0 mt-2 small">
                     ${degree.collaboration.map(c => `<li><strong>${c.collaboration_type}:</strong> ${c.degree_major} — 
@@ -352,7 +352,7 @@ const SiteSection = {
                     <div class="row">
                         <div class="col-lg-7 border-end">
                             <p class="mb-3 small"><strong><i class="bi bi-magic me-1"></i> Specialisation:</strong> ${degree.specialisation}</p>
-                            <div class="details-text-justify mb-4 small"><strong><i class="bi bi-file me-1"></i> Details:</strong> ${degree.description_full}</div>
+                            <div class="details-text-content mb-4 small"><strong><i class="bi bi-file me-1"></i> Details:</strong> ${degree.description_full}</div>
                             <p class="mb-0 small"><strong><i class="bi bi-person-arms-up me-2"></i>Activities:</strong> ${degree.activities_involvement}</p>
                         </div>
                         <div class="col-lg-5 mt-4 mt-lg-0">

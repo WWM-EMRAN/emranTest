@@ -77,8 +77,8 @@
       "membership_organization": [
         {
           "name": "Institute of Electrical and Electronics Engineers (IEEE)",
-          "location": "Burwood, Melbourne, VIC-3125, Australia",
-          "link": ""
+          "location": "",
+          "link": "https://www.ieee.org/"
         }
       ],
       "has_expiry": true,

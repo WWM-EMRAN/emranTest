@@ -128,90 +128,6 @@
         });
 
 
-        // const runScrollSpy = () => {
-        //     // 1. Position calculation with a standard offset
-        //     const position = window.scrollY + (headerOffset + 25);
-        //     let bestMatchLink = null;
-        //
-        //     // --- STEP 1: CONTENT SEARCH (Identifies sub-sections) ---
-        //     navLinks.forEach(link => {
-        //         const hash = link.hash;
-        //         // //
-        //         // const parts = fullHash.substring(1).split('-');
-        //         // const sectionId = parts[0];
-        //         // const itemId = parts[1];
-        //         // EXCLUSION: We skip containers so they don't "steal" the highlight
-        //         const isWrapper = ['#hero', '#all_cv_section', '#all_details_section', '#expertise_skills_achievements', '#all_cv_wrapper', '#', ''].includes(hash);
-        //         if (isWrapper) return;
-        //
-        //         const section = document.querySelector(hash);
-        //         if (section && position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        //             // Priority: If sections overlap, the one further down the page wins
-        //             if (!bestMatchLink || section.offsetTop >= document.querySelector(bestMatchLink.hash).offsetTop) {
-        //                 bestMatchLink = link;
-        //             }
-        //         }
-        //     });
-        //
-        //     // --- STEP 2: THE FLICKER FIX (Fallback Logic) ---
-        //     // We only force a fallback to Home if the user is in the "Top Zone" (scrollY < 200).
-        //     // We REMOVED the "!bestMatchLink" check that caused the jump back to Home in gaps.
-        //     if (window.scrollY < 200) {
-        //         const isCV = !!document.getElementById('all_cv_section');
-        //         const isDetails = window.location.pathname.includes('section_details.html');
-        //
-        //         if (isCV) {
-        //             bestMatchLink = document.querySelector('#navmenu a[href="#all_cv_section"]');
-        //         } else if (isDetails) {
-        //             bestMatchLink = document.querySelector('#navmenu a[href="#about"]');
-        //         } else {
-        //             bestMatchLink = document.querySelector('#navmenu a[href="#hero"]');
-        //         }
-        //     }
-        //
-        //     // --- STEP 3: UPDATE (The Sticky Guard) ---
-        //     // If we have a valid bestMatchLink (either found in search or in the Top Zone fallback), update the UI.
-        //     // If we are in a gap deep in the page (bestMatchLink is null), we do NOTHING, keeping the last section active.
-        //     if (bestMatchLink) {
-        //         const linkActive = bestMatchLink.classList.contains('active');
-        //         const parentActive = bestMatchLink.parentElement.classList.contains('active');
-        //
-        //         if (!linkActive || !parentActive) {
-        //             document.querySelectorAll('#navmenu a.active, #navmenu li.active').forEach(el => {
-        //                 el.classList.remove('active', 'dropdown-active');
-        //             });
-        //
-        //             bestMatchLink.classList.add('active');
-        //
-        //             // RECURSIVE PARENT FIX: Confirmed fix for initial load/boldness
-        //             let parent = bestMatchLink.parentElement;
-        //             while (parent && parent.tagName !== 'NAV') {
-        //                 if (parent.tagName === 'LI') {
-        //                     parent.classList.add('active');
-        //                     if (parent.classList.contains('dropdown')) parent.classList.add('dropdown-active');
-        //                 }
-        //                 parent = parent.parentElement;
-        //             }
-        //
-        //             // Sync Header UI components
-        //             const sectionId = bestMatchLink.hash.replace('#', '');
-        //             if (typeof SiteSection !== 'undefined' && SiteSection.render_sticky_header) {
-        //                 SiteSection.render_sticky_header(sectionId);
-        //             }
-        //
-        //             // 4. URL SYNC: Update hash while preserving search parameters (?type=standard)
-        //             if (window.location.hash !== bestMatchLink.hash) {
-        //                 const searchParams = window.location.search;
-        //                 const isHome = bestMatchLink.hash === '#hero' || bestMatchLink.hash === '#all_cv_section';
-        //                 const newHash = isHome ? '' : bestMatchLink.hash;
-        //                 history.replaceState(null, null, window.location.pathname + searchParams + newHash);
-        //             }
-        //         }
-        //     }
-        // };
-
-
-
         const runScrollSpy = () => {
             // 1. Position calculation with a standard offset
             const position = window.scrollY + (headerOffset + 25);
@@ -219,19 +135,12 @@
 
             // --- STEP 1: CONTENT SEARCH (Identifies sub-sections) ---
             navLinks.forEach(link => {
-                // const hash = link.hash;
-                const fullHash = link.hash;
-                const sectionId = fullHash;
-                if (fullHash.includes('-')) {
-                    const parts = fullHash.substring(1).split('-');
-                    const sectionId = parts[0];
-                    const itemId = parts[1];
-                }
+                const hash = link.hash;
                 // EXCLUSION: We skip containers so they don't "steal" the highlight
-                const isWrapper = ['#hero', '#all_cv_section', '#all_details_section', '#expertise_skills_achievements', '#all_cv_wrapper', '#', ''].includes(sectionId);
+                const isWrapper = ['#hero', '#all_cv_section', '#all_details_section', '#expertise_skills_achievements', '#all_cv_wrapper', '#', ''].includes(hash);
                 if (isWrapper) return;
 
-                const section = document.querySelector(sectionId);
+                const section = document.querySelector(hash);
                 if (section && position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
                     // Priority: If sections overlap, the one further down the page wins
                     if (!bestMatchLink || section.offsetTop >= document.querySelector(bestMatchLink.hash).offsetTop) {
@@ -298,52 +207,11 @@
         };
 
 
+
         window.addEventListener('scroll', runScrollSpy);
         setTimeout(runScrollSpy, 150); // Small delay allows browser to finish layout
         runScrollSpy();
     }
-
-
-    /**
-     * Advanced Hash Resolver for Split Tags (e.g., #academic_information-phd_cu_csm)
-     * File: scripts.js
-     */
-    window.resolveHashScroll = () => {
-        const fullHash = window.location.hash; // #section-item
-        if (!fullHash) return;
-
-        // Split the hash into section and specific ID
-        const parts = fullHash.substring(1).split('-');
-        const sectionId = parts[0];
-        const itemId = parts[1];
-
-        // 1. Manually scroll to the main section first so ScrollSpy/Menu updates
-        const sectionElement = document.getElementById(sectionId);
-        if (sectionElement && !itemId) {
-            window.scrollTo({ top: sectionElement.offsetTop - 80, behavior: 'smooth' });
-        }
-
-        // 2. If an item ID exists, wait for rendering and scroll to the specific card
-        if (itemId) {
-            setTimeout(() => {
-                const itemElement = document.getElementById(itemId);
-                if (itemElement) {
-                    const headerOffset = 100;
-                    const elementPosition = itemElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-
-                    // Apply highlight effect
-                    itemElement.classList.add('target-highlight');
-                    setTimeout(() => itemElement.classList.remove('target-highlight'), 3000);
-                }
-            }, 500); // Buffer for data-rendering
-        }
-    };
 
     /**
      * --- 3. GLOBAL ACTIONS ---
@@ -360,7 +228,6 @@
             }, 2000);
         });
     };
-
 
     /**
      * --- 4. EXTERNAL INITIALIZERS ---

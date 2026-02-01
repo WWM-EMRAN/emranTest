@@ -17,7 +17,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_kaggleGoogleAgAI",
       "details": {
         "type": "All, Certificate, Course",
         "date": "Dec. 19, 2025",
@@ -48,7 +47,6 @@
         "filter-cour",
         "filter-train"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_berudand608genAI",
       "details": {
         "type": "All, Certificate, Training, Course",
         "date": "Jul. 27, 2025",
@@ -79,7 +77,6 @@
         "filter-cert",
         "filter-train"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#train_akkodisMsMsfsAgntCopilot",
       "details": {
         "type": "All, Certificate, Training",
         "date": "June 13, 2025",
@@ -107,7 +104,6 @@
         "filter-cour",
         "filter-train"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_berudand608foundGenAI",
       "details": {
         "type": "All, Certificate, Training, Course",
         "date": "Dec. 27, 2024",
@@ -139,7 +135,6 @@
         "filter-cour",
         "filter-train"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_awsudand189mlFun",
       "details": {
         "type": "All, Certificate, Training, Course",
         "date": "Aug. 21, 2024",
@@ -171,7 +166,6 @@
         "filter-cour",
         "filter-train"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_awsudand089aiProPy",
       "details": {
         "type": "All, Certificate, Training, Course",
         "date": "Dec. 24, 2023",
@@ -202,7 +196,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_mscertai900",
       "details": {
         "type": "All, Certificate",
         "date": "Feb. 21, 2024",
@@ -229,7 +222,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_mscertdp900",
       "details": {
         "type": "All, Certificate",
         "date": "Apr 28, 2024",
@@ -256,7 +248,6 @@
         "filter-conf",
         "filter-boot"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_gtecsprschl2022",
       "details": {
         "type": "Conference, Bootcamp",
         "date": "May 20, 2022",
@@ -283,7 +274,6 @@
       "filter_tags": [
         "filter-boot"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_embssumschl2022",
       "details": {
         "type": "Bootcamp",
         "date": "Oct. 5, 2022",
@@ -312,7 +302,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_llcritdecmakprobsolv2023",
       "details": {
         "type": "Certificate, Course",
         "date": "Feb. 27, 2023",
@@ -341,15 +330,20 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_atndigfutdatana2023",
       "details": {
         "type": "Certificate, Course",
         "date": "Jul 7, 2023",
-        "offering_organization": "Australian Technology Networkd of Universities",
+        "offering_organization": "Australian Technology Networks of Universities",
         "funding_organization": "Deakin University",
         "description": "In today’s data-driven world, the ability to harness and communicate insights from data is essential across diverse sectors—including STEM research, public policy, education, business, and sports. Building upon foundational knowledge from Level 1, this module focuses on advanced approaches for wrangling, analyzing, and presenting both numerical and textual data effectively. What You Will Learn: Use Structured Query Language (SQL) to extract, organize, filter, and summarize data from relational databases. Apply Regular Expressions (Regex) to mine meaningful information from unstructured text sources such as spreadsheets, documents, web pages, or log files. Explore the role of Artificial Intelligence (AI) in augmenting data analysis tasks—while critically evaluating its current capabilities and limitations. Master the principles of data visualization and narrative storytelling to transform raw information into compelling insights. Learning Approach: The course combines interactive webinars, rich self-paced study materials, practical hands-on exercises, and collaborative team activities to ensure a dynamic and engaging learning experience. Learning Outcomes: By the end of this module, you will be able to: Extract structured and unstructured data using SQL and Regex. Analyze and link datasets to discover insights. Visualize information into clear, concise, and audience-appropriate formats. Craft and deliver data-driven stories that inform decisions and inspire action.",
         "course_link": "https://www.atn.edu.au/atn-frontiers/digital-futures/",
-        "key_information": [],
+        "key_information": [
+          "Online learning from OpenLearning platform",
+          "Online live workshops",
+          "4-week learning pathway",
+          "Intermediate course in Data Analytics",
+          "Section and end of course test"
+        ],
         "certificate_link": "https://drive.google.com/file/d/12P7pJxW6FkIhDfZgsG5xsu4deZ2jUGrQ/view"
       }
     },
@@ -364,15 +358,20 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_atnfutdatana2023",
       "details": {
         "type": "Certificate, Course",
         "date": "Mar 26, 2023",
-        "offering_organization": "Australian Technology Networkd of Universities",
+        "offering_organization": "Australian Technology Networks of Universities",
         "funding_organization": "Deakin University",
         "description": "This module is designed to transform how you think, feel, and act in relation to data, preparing you to confidently navigate the demands of a data-driven professional world. Through a structured blend of self-directed learning and interactive workshops, this course cultivates your awareness and adoption of best practices for the effective, efficient, and ethical use of data. You will engage in a curated sequence of eight topical themes delivered across a five-week learning journey: Concepts, Drivers &amp; Trends: Defining key ideas and principles relating to data, analytics and modelling [self-directed] Privacy, Security, Ethics [self-directed] Responsible Data Management [self-directed] From Question to Data to Insights [self-directed] Data Analytics Toolkit: Introducing principles, aids and insights for coding and analytics by syntax. [self-directed] Start to Code: Overview and hands-on Python, markdown, Jupyter Notebooks and Kaggle. [blended: self-directed + interactive workshop] Explore, Describe, Visualise: Convert and communicate data through graphic representation. [blended: self-directed + interactive workshop] Tests, Models, Predict: Demonstrating basic analytical computations using the Analytics Toolkit. [blended: self-directed + interactive workshop] Learning hours: Total of approximately 8-10 hours of learning across 4 weeks. Your learning will consist of approx. 7 hours of asynchronous online learning within the OpenLearning platform + 3 hours of synchronous learning in a series of live online facilitated workshops with your expert facilitators (dates and times in the 2024 Delivery Dates section below).",
         "course_link": "https://www.atn.edu.au/atn-frontiers/the-future-of-data/",
-        "key_information": [],
+        "key_information": [
+          "Online learning from OpenLearning platform",
+          "Online live workshops",
+          "4-week learning pathway",
+          "Fundamental course in Data Analytics",
+          "Section and end of course test"
+        ],
         "certificate_link": "https://opencreds.openlearning.com/c19d0789-20db-4402-b40f-d4fe9ac777ed#gs.he0ef5"
       }
     },
@@ -386,7 +385,6 @@
       "filter_tags": [
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_keggleintml",
       "details": {
         "type": "Course",
         "date": "Jul 5, 2024",
@@ -414,7 +412,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_stanfordcip2023",
       "details": {
         "type": "Certificate, Course",
         "date": "Apr 1, 2023",
@@ -442,7 +439,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_gcldfnd2022",
       "details": {
         "type": "Certificate, Course",
         "date": "Apr 25, 2022",
@@ -471,7 +467,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_gldsfound2022",
       "details": {
         "type": "Certificate, Course",
         "date": "Apr 1, 2022",
@@ -499,7 +494,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_glpy4ml2022",
       "details": {
         "type": "Certificate, Course",
         "date": "Apr 1, 2022",
@@ -527,7 +521,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_glmlalgo2022",
       "details": {
         "type": "Certificate, Course",
         "date": "Apr 1, 2022",
@@ -555,7 +548,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_glintr2dl2022",
       "details": {
         "type": "Certificate, Course",
         "date": "Apr 1, 2022",
@@ -583,7 +575,6 @@
         "filter-cert",
         "filter-cour"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_glintr2tfkr2022",
       "details": {
         "type": "Certificate, Course",
         "date": "Apr 1, 2022",
@@ -611,7 +602,6 @@
         "filter-cert",
         "filter-train"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_intdatman2022",
       "details": {
         "type": "Certificate, Training",
         "date": "Mar 1, 2022",
@@ -638,7 +628,6 @@
         "filter-cert",
         "filter-train"
       ],
-      "link_target": "coursesTrainingsAndCertificates-details.html#cert_intdatvis2022",
       "details": {
         "type": "Certificate, Training",
         "date": "Apr 1, 2022",

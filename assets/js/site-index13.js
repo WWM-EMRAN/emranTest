@@ -250,7 +250,7 @@ const SiteIndex = {
             const h2 = header.querySelector('h2');
             if (h2) {
                 h2.innerHTML = `<i class="${data.section_info.icon_class}"></i> ${data.section_info.title} 
-                    <a href="section_details.html#${data.section_info.hashtag}"><i class="bx bx-link ms-2"></i></a>`;
+                    <a href="section_details.html#academic_information"><i class="bx bx-link ms-2"></i></a>`;
             }
             const h6 = header.querySelector('h6');
             if (h6) h6.textContent = data.section_info.details;
@@ -301,7 +301,7 @@ const SiteIndex = {
             rowDiv.innerHTML = `
                 <div class="col-lg-12">
                     <h2 class="pub-category-title" data-aos="fade-in" data-aos-delay="100"><i class="bi bi-mortarboard-fill me-2"></i> ${level}</h2>
-                    ${groupedDegrees[level].map(deg => this._build_academic_item(data.section_info, deg)).join('')}
+                    ${groupedDegrees[level].map(deg => this._build_academic_item(deg)).join('')}
                 </div>`;
 
             contentContainer.appendChild(rowDiv);
@@ -311,7 +311,7 @@ const SiteIndex = {
     /**
      * Helper to build individual degree items
      */
-    _build_academic_item(section_info, degree) {
+    _build_academic_item(degree) {
         // Collaboration Box
         const collabHtml = (degree.collaboration && degree.collaboration.length > 0) ? `
             <div class="collab-box rounded mb-3 p-3 bg-light border" data-aos="fade-up" data-aos-delay="100">
@@ -332,7 +332,7 @@ const SiteIndex = {
             <div class="resume-item border-start ps-4 pb-5" id="${degree.degree_id}">
                 <div class="d-flex justify-content-between align-items-start flex-wrap">
                     <div>
-                        <h4 class="text-primary fw-bold mb-1" data-aos="fade-in" data-aos-delay="100"><a href="section_details.html#${section_info.hashtag}-${degree.degree_id}">${degree.degree_major} - (${degree.degree_short_name})</a></h4>
+                        <h4 class="text-primary fw-bold mb-1" data-aos="fade-in" data-aos-delay="100"><a href="section_details.html#${degree.degree_id}">${degree.degree_major} - (${degree.degree_short_name})</a></h4>
                         <p class="mb-1 ms-2 fw-bold" data-aos="fade-in" data-aos-delay="100">${degree.department_name}</p>
                         <h6 class="fw-bold" data-aos="fade-in" data-aos-delay="100">
                             <a href="${degree.institution_link}" target="_blank">${degree.institution_name} <i class="bx bx-link-external ms-1 small"></i></a>
@@ -389,7 +389,7 @@ const SiteIndex = {
             const h2 = header.querySelector('h2');
             if (h2) {
                 h2.innerHTML = `<i class="${data.section_info.icon_class}"></i> ${data.section_info.title} 
-                    <a href="section_details.html#${data.section_info.hashtag}"><i class="bx bx-link ms-2"></i></a>`;
+                    <a href="section_details.html#professional_experiences"><i class="bx bx-link ms-2"></i></a>`;
             }
             const h6 = header.querySelector('h6');
             if (h6) h6.textContent = data.section_info.details;
@@ -450,7 +450,7 @@ const SiteIndex = {
                                         <a href="${org.link}" target="_blank">${org.organization} <i class="bx bx-link-external ms-1 small"></i></a>
                                         <span class="ms-2 small text-muted fw-normal"><i class="bi bi-geo-alt me-1"></i> ${org.location}</span>
                                     </h3>
-                                    ${org.roles.map(role => this._build_professional_item(data.section_info, role)).join('')}
+                                    ${org.roles.map(role => this._build_professional_item(role)).join('')}
                                 </div>
                             `).join('')}
                         </div>
@@ -465,7 +465,7 @@ const SiteIndex = {
     /**
      * Helper to build individual professional role cards
      */
-    _build_professional_item(section_info, role) {
+    _build_professional_item(role) {
         // Calculate dynamic duration using SiteUtil
         const duration = role.timeframe_details.duration || SiteUtil.calculateDuration(role.timeframe_details.start_date, role.timeframe_details.end_date);
 
@@ -492,7 +492,7 @@ const SiteIndex = {
         return `
             <div class="resume-item border-start ps-4 pb-4" id="${role.role_id}">
                 <div class="d-flex justify-content-between align-items-start flex-wrap">
-                    <h4 class="text-primary fw-bold mb-1" data-aos="fade-in" data-aos-delay="100"><a href="section_details.html#${section_info.hashtag}-${role.role_id}">${role.title}</a></h4>
+                    <h4 class="text-primary fw-bold mb-1" data-aos="fade-in" data-aos-delay="100">${role.title}</h4>
                     <div class="text-md-end mb-3">
                         <span class="badge badge-dates d-block mb-1" data-aos="fade-in" data-aos-delay="100"><i class="bi bi-calendar3 me-1"></i> ${role.timeframe_details.start_date} – ${role.timeframe_details.end_date}</span>
                         <span class="badge badge-duration d-block mb-1" data-aos="fade-in" data-aos-delay="100"><i class="bi bi-hourglass-split me-1"></i> ${duration}</span>
@@ -531,7 +531,7 @@ const SiteIndex = {
             const h2 = header.querySelector('h2');
             if (h2) {
                 h2.innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                    <a href="section_details.html#${info.hashtag}"><i class="bx bx-link ms-2"></i></a>`;
+                    <a href="section_details.html#expertise_skills_achievements"><i class="bx bx-link ms-2"></i></a>`;
             }
             const h6 = header.querySelector('h6');
             if (h6) h6.textContent = info.details;
@@ -554,7 +554,7 @@ const SiteIndex = {
             const h2 = header.querySelector('h2');
             if (h2) {
                 h2.innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                    <a href="section_details.html#${info.hashtag}"><i class="bx bx-link ms-2"></i></a>`;
+                    <a href="section_details.html#skills_tools"><i class="bx bx-link ms-2"></i></a>`;
             }
             const h6 = header.querySelector('h6');
             if (h6) h6.textContent = info.details;
@@ -608,7 +608,7 @@ const SiteIndex = {
             const h2 = header.querySelector('h2');
             if (h2) {
                 h2.innerHTML = `<i class="${data.section_info.icon_class}"></i> ${data.section_info.title} 
-                    <a href="section_details.html#${data.section_info.hashtag}"><i class="bx bx-link ms-2"></i></a>`;
+                    <a href="section_details.html#honors_awards"><i class="bx bx-link ms-2"></i></a>`;
             }
             const h6 = header.querySelector('h6');
             if (h6) h6.textContent = data.section_info.details;
@@ -642,7 +642,7 @@ const SiteIndex = {
                         </div>
                         <div>
                             <h4 class="title">
-                                <a href="section_details.html#${data.section_info.hashtag}-${award.id_ref}" class="stretched-link">
+                                <a href="section_details.html?section=honors_awards&award=${award.id_ref}" class="stretched-link">
                                     ${award.title}
                                 </a>
                             </h4>
@@ -675,7 +675,7 @@ const SiteIndex = {
         const header = section.querySelector('.section-title');
         if (header && info) {
             header.querySelector('h2').innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                <a href="section_details.html#${info.hashtag}"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#courses_trainings_certificates"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = info.details;
         }
 
@@ -716,7 +716,7 @@ const SiteIndex = {
                                     <a href="${item.image_path}" title="${item.title}" data-gallery="portfolio-gallery-cert" class="glightbox preview-link">
                                         <i class="bi bi-zoom-in"></i>
                                     </a>
-                                    <a href="section_details.html${info.hashtag}-${item.id_ref}" title="More Details" class="details-link">
+                                    <a href="section_details.html?section=courses_trainings_certificates&id=${item.id_ref}" title="More Details" class="details-link">
                                         <i class="bi bi-link-45deg"></i>
                                     </a>
                                 </div>
@@ -743,7 +743,7 @@ const SiteIndex = {
         const header = section.querySelector('.section-title');
         if (header && info) {
             header.querySelector('h2').innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                <a href="section_details.html#${info.hashtag}"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#projects"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = info.details;
         }
 
@@ -775,7 +775,7 @@ const SiteIndex = {
                         </div>
                         <div>
                             <h4 class="title">
-                                <a href="section_details.html#${info.hashtag}-${project.id_ref}" class="stretched-link">
+                                <a href="section_details.html?section=projects&id=${project.id_ref}" class="stretched-link">
                                     ${project.role}
                                 </a>
                             </h4>
@@ -810,7 +810,7 @@ const SiteIndex = {
         const header = section.querySelector('.section-title');
         if (header && info) {
             header.querySelector('h2').innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                <a href="section_details.html#${info.hashtag}"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#organisational_memberships"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = info.details;
         }
 
@@ -839,7 +839,7 @@ const SiteIndex = {
                         </div>
                         <div>
                             <h4 class="title">
-                                <a href="section_details.html#${info.hashtag}-${mem.id_ref}" class="stretched-link">
+                                <a href="section_details.html?section=organisational_memberships${mem.id_ref}" class="stretched-link">
                                     ${mem.title}
                                 </a>
                             </h4>
@@ -877,7 +877,7 @@ const SiteIndex = {
         const header = section.querySelector('.section-title');
         if (header && info) {
             header.querySelector('h2').innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                <a href="section_details.html#${info.hashtag}"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#sessions_events"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = info.details;
         }
 
@@ -908,7 +908,7 @@ const SiteIndex = {
                         </div>
                         <div>
                             <h4 class="title">
-                                <a href="section_details.html#${info.hashtag}-${event.id_ref}" class="stretched-link">
+                                <a href="section_details.html?section=sessions_events&id=${event.id_ref}" class="stretched-link">
                                     ${event.title}
                                 </a>
                             </h4>
@@ -950,7 +950,7 @@ const SiteIndex = {
         const header = section.querySelector('.section-title');
         if (header && info) {
             header.querySelector('h2').innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                <a href="section_details.html#${info.hashtag}"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#languages"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = info.details;
         }
 
@@ -996,7 +996,7 @@ const SiteIndex = {
                         </div>
                         <div>
                             <h4 class="title">
-                                <a href="section_details.html#${info.hashtag}-${lan.id_ref}" class="stretched-link">
+                                <a href="section_details.html?section=languages&id=${lan.id_ref}" class="stretched-link">
                                     ${lan.language}
                                 </a>
                                 <span class="${lan.icon_class} flag-icon ms-2"></span>
@@ -1030,7 +1030,7 @@ const SiteIndex = {
         const header = section.querySelector('.section-title');
         if (header && info) {
             header.querySelector('h2').innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                <a href="section_details.html#${info.hashtag}"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#portfolios"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = info.details;
         }
 
@@ -1052,7 +1052,7 @@ const SiteIndex = {
                         <div>
                             <h4 class="title">
 <!--                                <a href="section_details.html?section=portfolios&id=${item.id_ref}" class="stretched-link">-->
-                                <a href="section_details.html#${info.hashtag}-${item.id_ref}">
+                                <a href="section_details.html?section=portfolios&id=${item.id_ref}">
                                     ${item.title}
                                 </a>
                             </h4>
@@ -1088,7 +1088,7 @@ const SiteIndex = {
         const header = section.querySelector('.section-title');
         if (header && info) {
             header.querySelector('h2').innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                <a href="section_details.html#${info.hashtag}"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#volunteering_services"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = info.details;
         }
 
@@ -1118,7 +1118,7 @@ const SiteIndex = {
                         </div>
                         <div>
                             <h4 class="title">
-                                <a href="section_details.html#${info.hashtag}-${vol.id_ref}" class="stretched-link">
+                                <a href="section_details.html?section=volunteering_services&id=${vol.id_ref}" class="stretched-link">
                                     ${vol.title}
                                 </a>
                             </h4>
@@ -1161,7 +1161,7 @@ const SiteIndex = {
         const header = section.querySelector('.section-title');
         if (header && info) {
             header.querySelector('h2').innerHTML = `<i class="${info.icon_class}"></i> ${info.title} 
-                <a href="section_details.html#${info.hashtag}"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#publications"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = info.details;
         }
 
@@ -1192,7 +1192,7 @@ const SiteIndex = {
                     <div class="resume-item border-start ps-4 pb-4" id="${pub.id_ref}" data-aos="fade-up">
                         <div class="d-flex justify-content-between align-items-start flex-wrap">
                             <h4 class="text-primary fw-bold mb-1 pe-3">
-                                <a href="section_details.html#${info.hashtag}-${pub.id_ref}">${pub.title}</a>
+                                <a href="section_details.html?section=publications&id=${pub.id_ref}">${pub.title}</a>
                             </h4>
                             <div class="d-flex gap-1 justify-content-md-end flex-wrap mb-2">
                                 <button class="badge border-0 badge-dates" 
@@ -1235,7 +1235,7 @@ const SiteIndex = {
         if (header && data.section_info) {
             header.querySelector('h2').innerHTML = `
                 <i class="${data.section_info.icon_class}"></i> ${data.section_info.title} 
-                <a href="section_details.html#${data.section_info.hashtag}"><i class="bx bx-link ms-2"></i></a>`;
+                <a href="section_details.html#contact_details"><i class="bx bx-link ms-2"></i></a>`;
             header.querySelector('h6').textContent = data.section_info.details;
         }
 
