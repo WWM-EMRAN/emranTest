@@ -19,13 +19,13 @@ const SiteSection = {
         // --- 1. RENDER ALL SECTIONS ---
         this.render_all_details_sections(section);
 
-            // --- THE FIX: Hide preloader once finished ---
-            window.hide_preloader();
-        }
-        catch (error) {
-            console.error("Render Error in Section Details page:", error);
-            window.hide_preloader(); // Hide anyway to stop the hang
-        }
+        // --- THE FIX: Hide preloader once finished ---
+        window.hide_preloader();
+     }
+     catch (error) {
+         console.error("Render Error in Section Details page:", error);
+         window.hide_preloader(); // Hide anyway to stop the hang
+     }
    },
 
     // Render all or catch rendering problem, also deal with preloader and page 404
