@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         else if (pathName.includes('section_details.html')) {
             // const section = allParams.get('section');
             // section = allParams.section?.toLowerCase() || '';
-            // print('XXX====>', hashes)
             const section = (hashes && hashes.length > 0) ? hashes[0].toLowerCase() : '';
             console.log(`### Routing to: Section View: ${section}`);
             // homeLink.setAttribute('href', './');
