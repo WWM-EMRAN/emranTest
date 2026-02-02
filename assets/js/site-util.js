@@ -194,6 +194,50 @@ const SiteUtil = {
         // console.log('--->', allParams.mode, hashes[0]); // true
 
         return [url, origin, pathName, fileName, allParams, hashes];
-    }
+    },
 
 };
+
+
+/**
+ * Global 404 View Renderer
+ * Replaces the entire <main> content with a standalone error page.
+ * File: site-util.js
+ */
+window.render_404_page = (missingItemName = "Page") => {
+    const mainElement = document.querySelector('main');
+    if (!mainElement) return;
+
+    // 1. Completely overwrite the main content to break out of any section IDs
+    mainElement.innerHTML = `
+        <div id="notfound-container" class="d-flex align-items-center justify-content-center" style="min-height: 80vh;">
+            <div class="error-content text-center" data-aos="fade-up">
+                <img src="assets/img/Emran_Ali_Logo2.gif" alt="Emran Ali Logo" style="height: 130px;" class="mb-4">
+                <h1 class="display-1 fw-bold text-primary">404</h1>
+                <h2 class="fw-bold mb-3">Oops! ${missingItemName} Not Found</h2>
+                <p class="text-secondary mb-4 mx-auto" style="max-width: 500px;">
+                    The information you are looking for might have been removed, 
+                    had its name changed, or is temporarily unavailable in our database.
+                </p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="./" class="btn btn-primary px-4 py-2 fw-bold rounded-pill">
+                        <i class="bi bi-house-door me-2"></i> Back to Homepage
+                    </a>
+                    <a href="javascript:history.back()" class="btn btn-outline-secondary px-4 py-2 fw-bold rounded-pill">
+                        <i class="bi bi-backspace me-2"></i> Back to Previous Page
+                    </a>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // 2. Hide the sticky header if it exists on page_details.html
+    const stickyHeader = document.getElementById('section_details-header');
+    if (stickyHeader) stickyHeader.style.display = 'none';
+
+    // 3. Refresh AOS for the new content
+    if (typeof AOS !== 'undefined') AOS.init();
+    window.hide_preloader();
+};
+
+

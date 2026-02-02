@@ -55,7 +55,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log(`### Routing to: Section View: ${section}`);
             // homeLink.setAttribute('href', './');
             homeLink.setAttribute('href', '#all_details_section');
-            all_details_section
+
+            // CHECK RESPONSE: If section data is missing from cache
+            if (!section || !SiteCore.get(section)) {
+                return window.render_404_page(section.toUpperCase() || "Section");
+            }
+
             SiteSection.init(section);
         }
         else if (pathName.includes('page_details.html')) {
@@ -64,6 +69,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log(`### Routing to: Page View: ${page}`);
             homeLink.setAttribute('href', '#hero');
             // homeLink.setAttribute('href', '#all_cv_wrapper');
+
+            // CHECK RESPONSE: If page data (e.g. diary.json) failed to load
+            if (!page || !SiteCore.get(page)) {
+                return window.render_404_page(page.toUpperCase() || "Page");
+            }
+
             SitePage.init(page);
         }
         else if (pathName.includes('curriculum_vitae.html')) {
@@ -76,6 +87,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             homeLink.setAttribute('href', '#all_cv_section');
             SiteCV.init(type);
         }
+        else{
+            // Fallback for valid data but unknown rendering function
+            console.error("Render error for the requested page...");
+            window.render_404_page("Content");
+        }
         
         // 4. Re-initialize UI Libraries
         window.initExternalLibraries();
@@ -83,6 +99,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     catch (error) {
         console.error("Critical Load Error:", error);
+        window.render_404_page("Content");
+        window.hide_preloader();
     }
 
 

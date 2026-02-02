@@ -3060,5 +3060,45 @@ body.mode-one-page .cv-paper-sheet {
 
 
 
+/* --- 404 Error Page Styling --- */
+/* --- Global 404 Error Styling --- */
+.error-404-wrapper {
+    padding: 80px 20px;
+    text-align: center;
+    background: #fff;
+    border-radius: 15px;
+}
+
+.error-404-icon {
+    font-size: 100px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.error-404-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--heading-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.error-404-msg {
+    color: #6c757d;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    line-height: 1.6;
+}
+
+.error-404-btn {
+    padding: 12px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+
 
 
