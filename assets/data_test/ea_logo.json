@@ -3,19 +3,19 @@
     "title": "EA Logo_XX",
     "details": "Logos and animated logos_XX",
     "icon_class": "bi bi-images",
-    "hashtag": "EA Logo"
+    "hashtag": "ea_logo"
   },
   "logos": [
   {
     "id_ref": "logo_8",
-    "category": "logo",
+    "category": "animation",
     "image_path": "assets/img/ealogo/EA_Logo_8.gif",
     "title": "EA Logo 8_XX",
     "description": ""
   },
   {
     "id_ref": "logo_7",
-    "category": "logo",
+    "category": "animation",
     "image_path": "assets/img/ealogo/EA_Logo_7.gif",
     "title": "EA Logo 7_XX",
     "description": ""
