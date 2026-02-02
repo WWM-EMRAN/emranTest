@@ -49,11 +49,11 @@ const SiteIndex = {
             this.render_contact_details();
 
             // --- THE FIX: Hide preloader once finished ---
-            window.hide_preloader();
+            // window.hide_preloader();
         }
         catch (error) {
             console.error("Render Error in index page:", error);
-            window.hide_preloader(); // Hide anyway to stop the hang
+            // window.hide_preloader(); // Hide anyway to stop the hang
         }
     },
 

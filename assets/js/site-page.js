@@ -53,11 +53,11 @@ const SitePage = {
             }
 
             // --- THE FIX: Hide preloader once finished ---
-            window.hide_preloader();
+            // window.hide_preloader();
         }
         catch (error) {
             console.error("Render Error in index page:", error);
-            window.hide_preloader(); // Hide anyway to stop the hang
+            // window.hide_preloader(); // Hide anyway to stop the hang
         }
     },
 
@@ -195,7 +195,8 @@ const SitePage = {
         // 3. Render each Copyright version
         data.copyrights.forEach((item, index) => {
             const card = document.createElement('div');
-            card.className = 'resume-item shadow-sm p-4 mb-4 legal-card';
+            // card.className = 'resume-item shadow-sm p-4 mb-4 legal-card';
+            card.className = 'legal-card shadow-sm p-4 mb-4';
             card.setAttribute('data-aos', 'fade-up');
             card.id = `copyright-${item.id_ref}`; // Hybrid ID for deep-linking
 
@@ -434,7 +435,8 @@ const SitePage = {
                     </div>` : '';
 
                 wrapper.innerHTML = `
-                    <div class="resume-item shadow-sm p-4 mb-4 diary-card">
+<!--                    <div class="resume-item shadow-sm p-4 mb-4 diary-card">-->
+                    <div class="diary-card shadow-sm p-4 mb-4">
                         <h4 class="diary-accent-text text-uppercase mb-2">
                             <i class="bi bi-journal-text me-2"></i>${item.title}
                         </h4>

@@ -51,7 +51,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         else if (pathName.includes('section_details.html')) {
             // const section = allParams.get('section');
-            section = allParams.section?.toLowerCase() || '';
+            // section = allParams.section?.toLowerCase() || '';
+            // print('XXX====>', hashes)
+            const section = (hashes && hashes.length > 0) ? hashes[0].toLowerCase() : '';
             console.log(`### Routing to: Section View: ${section}`);
             // homeLink.setAttribute('href', './');
             homeLink.setAttribute('href', '#all_details_section');
@@ -65,7 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         else if (pathName.includes('page_details.html')) {
             // const page = allParams.get('page');
-            page = allParams.page?.toLowerCase() || '';
+            const page = allParams.page?.toLowerCase() || '';
             console.log(`### Routing to: Page View: ${page}`);
             homeLink.setAttribute('href', '#hero');
             // homeLink.setAttribute('href', '#all_cv_wrapper');
@@ -96,10 +98,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         // 4. Re-initialize UI Libraries
         window.initExternalLibraries();
 
+        // // --- 5. Hide preloader once finished ---
+        // window.hide_preloader();
+
     }
     catch (error) {
         console.error("Critical Load Error:", error);
         window.render_404_page("Content");
+        // window.hide_preloader();
+    }
+    finally {
+        // FINALLY: This executes no matter what happened in 'try' or 'catch'
+        // This is your ultimate insurance against an infinite preloader
+        console.error("Something went wrong...");
         window.hide_preloader();
     }
 
