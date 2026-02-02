@@ -477,6 +477,9 @@ const SiteSection = {
                 </ul>
             </div>` : '';
 
+        // Calculate dynamic duration using SiteUtil
+        const duration = role.timeframe_details.duration || SiteUtil.calculateDuration(role.timeframe_details.start_date, role.timeframe_details.end_date);
+
         return `
             <div class="card shadow-sm border-0" style="border-left: 5px solid var(--accent-color) !important; border-radius: 12px;">
                 <div class="card-body p-4">
@@ -486,7 +489,7 @@ const SiteSection = {
 
                     <div class="d-flex flex-wrap gap-2 mb-4">
                         <span class="badge badge-dates"><i class="bi bi-calendar3 me-1"></i> ${role.timeframe_details.start_date} – ${role.timeframe_details.end_date}</span>
-                        <span class="badge badge-duration"><i class="bi bi-hourglass-split me-1"></i> ${role.timeframe_details.duration || 'N/A'}</span>
+                        <span class="badge badge-duration"><i class="bi bi-hourglass-split me-1"></i> ${duration}</span>
                         <span class="badge badge-institute"><i class="bi bi-person-workspace me-1"></i> ${role.role_type}</span>
                         ${role.timeframe_details.end_date === 'Present' ? '<span class="badge badge-status"><i class="bx bx-medal me-1"></i> Ongoing</span>' : ''}
                     </div>
