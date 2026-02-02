@@ -61,10 +61,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         else if (pathName.includes('page_details.html')) {
             // const page = allParams.get('page');
             page = allParams.page?.toLowerCase() || '';
-            console.log(`### Routing to: Page View: ${pageKey}`);
+            console.log(`### Routing to: Page View: ${page}`);
             homeLink.setAttribute('href', '#hero');
             // homeLink.setAttribute('href', '#all_cv_wrapper');
-            SitePage.init(pageKey);
+            SitePage.init(page);
         }
         else if (pathName.includes('curriculum_vitae.html')) {
             // CV types: standard, onePage, twoPage, detailed

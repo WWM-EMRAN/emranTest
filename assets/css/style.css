@@ -2857,3 +2857,208 @@ body.mode-one-page .cv-paper-sheet {
 }
 
 
+
+/* --- Logo Page Components --- */
+.logo-gallery-wrapper {
+    padding: 20px 0;
+}
+
+.logo-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.logo-image-box {
+    background: #fafafa;
+    padding: 30px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.logo-display-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.logo-details-box {
+    padding: 15px;
+    border-top: 1px solid #f5f5f5;
+    text-align: center;
+}
+
+.logo-tag {
+    font-size: 11px;
+    color: var(--accent-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.logo-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--heading-color);
+    margin: 0;
+}
+
+/* Highlight for target hash navigation */
+.logo-target-highlight {
+    animation: logo-pulse 2s ease-out;
+}
+
+@keyframes logo-pulse {
+    0% { background-color: rgba(var(--accent-color-rgb), 0.1); }
+    100% { background-color: transparent; }
+}
+
+
+/* --- Copyright Page Components --- */
+.legal-card {
+    border-left: 5px solid var(--accent-color) !important;
+    background-color: #fff;
+    border-radius: 12px;
+}
+
+.legal-accent-text {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.legal-description {
+    text-align: justify;
+    line-height: 1.8;
+    color: #444;
+}
+
+.legal-meta-box {
+    background-color: #f8f9fa;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+
+
+/* --- Gallery Page Components --- */
+.gallery-filter-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    border: 1px solid var(--accent-color);
+    background: transparent;
+    color: var(--accent-color);
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+.gallery-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+.gallery-card:hover {
+    transform: scale(1.02);
+}
+
+.gallery-img-box {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.gallery-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-info-box {
+    padding: 15px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.gallery-item-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--heading-color);
+}
+
+.gallery-item-desc {
+    font-size: 12px;
+    color: #666;
+    text-align: justify;
+}
+
+
+
+
+/* --- Diary Page Components --- */
+.diary-filter-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.diary-card {
+    border-left: 5px solid var(--accent-color) !important;
+    background-color: #fff;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.diary-card:hover {
+    transform: translateX(5px);
+}
+
+.diary-accent-text {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.diary-description {
+    text-align: justify;
+    line-height: 1.6;
+    color: #444;
+}
+
+
+
+
+
+
