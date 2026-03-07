@@ -51,12 +51,9 @@
      6. GLOBAL TYPOGRAPHY
      The three primary font families defined in the site design.
      ========================================================================== */
-  /*--default-font: "Titillium Web", system-ui, -apple-system, sans-serif;*/
-  /*--heading-font: "Oswald", sans-serif;*/
-  /*--nav-font: "Oswald", sans-serif;*/
-  --default-font: "Meow Script", "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Poppins";
-  --heading-font: "Satisfy", sans-serif;
-  --nav-font: "Helvetica Neue", sans-serif;
+  --default-font: "Titillium Web", system-ui, -apple-system, sans-serif;
+  --heading-font: "Oswald", sans-serif;
+  --nav-font: "Oswald", sans-serif;
 }
 
 
